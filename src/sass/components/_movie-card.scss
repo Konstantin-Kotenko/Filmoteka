@@ -1,0 +1,43 @@
+.movie-card {
+    //flex-basis: ;
+  }
+  .movie-card__img {
+    width: 280px;
+    height: 443px;
+    border-radius: 8px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    @media screen and (min-width: $tablet) {
+      width: 336px;
+      height: 494px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 309px;
+      height: 449px;
+    }
+  }
+  .movie-card__info {
+    margin-top: 8px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 10px;
+    }
+  }
+  .movie-card__title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+    text-transform: uppercase;
+    @media screen and (min-width: $tablet) {
+      line-height: 1.14;
+    }
+  }
+  .movie-card__brief {
+    margin-top: 7px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.14;
+    color: #ff6b08;
+  }
