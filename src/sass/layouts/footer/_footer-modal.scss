@@ -97,15 +97,36 @@
     .slides__name {
         @include font(500, 18px, 1.14);
         text-align: center;
+        margin-bottom: 5px;
     }
 
-    .slides__link {
-        display: block;
-        @include font(400, 10px, 1.14);
-        text-decoration: none;
-        text-align: center;
-        color: $secondary-color-shade-dark;
+    .slides-social {
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+
+        .slides-social__item:not(:last-child) {
+            margin-right: 15px;
+        }
+
+        .slides__link {
+            display: block;
+
+
+        }
+
+        .slides-social__icon {
+            width: 20px;
+            height: 20px;
+            fill: $secondary-color-shade-dark;
+            transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            &:hover {
+                fill: $accent-color;
+            }
+        }
     }
+
+
 }
 
 .slides__item:target {
