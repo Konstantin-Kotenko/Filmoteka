@@ -1,8 +1,10 @@
 @import './utils/variables';
 @import './utils/mixins';
+@import './utils/placeholders';
 
 @import './components/reset';
 @import './components/container';
 @import './components/movie-card';
+@import './components/pagination';
 
 @import './layouts/footer';
