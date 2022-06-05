@@ -3,14 +3,13 @@
     padding: 60px 0;
 }
 .pagination__button {
-    @include transition (background-color);
-    @include transition (color);
+    @include transition (border-color);
     @include transition (box-shadow);
     @include font(500, 12px, 1.33);
     font-family: $primary-font;
     width: 40px;
     height: 40px;
-    margin: 0 2px;
+    // margin: 0 2px;
     padding: 8px;
     background-color: $secondary-color;
     color: $primary-color;
@@ -19,21 +18,14 @@
     cursor: pointer;
     &:hover,
     &:focus {
-    background-color: $accent-color;
-    color: $secondary-color;
+    border-color: $secondary-color-shade-dark;
     box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
     }
 }
-.pagination--current {
-    @include transition (background-color);
-    @include transition (color);
-    @include transition (box-shadow);
-    &:hover,
-    &:focus {
+.pagination__button--current {
     background-color: $accent-color;
     color: $secondary-color;
     box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
-    }
 }
 .arrow-left, .arrow-right {
     background-color: $secondary-color-shade-light;
@@ -47,4 +39,9 @@
 }
 .arrow-right {
     background-image: url('/src/images/arrow-right.svg');
+}
+.dots {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
 }
