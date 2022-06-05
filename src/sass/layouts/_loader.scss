@@ -1,8 +1,19 @@
+.click{
+  padding: 10px 30px;
+  background-color: $btn-color;
+  color: $secondary-color;
+  cursor: pointer;
+
+}
+
 .loader{
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
+  opacity: 0;
+  pointer-events: none;
   
 }
 
@@ -77,4 +88,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.is-hiden{
+  opacity: 1;
+  pointer-events: all;
 }

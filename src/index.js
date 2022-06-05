@@ -1,1 +1,1 @@
-
+import './js/loader';
