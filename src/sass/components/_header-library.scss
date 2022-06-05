@@ -1,0 +1,123 @@
+.header-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-repeat:no-repeat;
+    @media screen and (max-width: 767px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    };
+    @media screen and (min-width: $tablet) {
+        padding-left: 32px;
+        padding-right: 32px;
+        background-image: url(/src/images/header-background-image-desktop.jpg);
+    };
+    @media screen and (min-width: $desktop) {
+        padding-left: 70px;
+        padding-right: 70px;
+        background-image: url(/src/images/header-background-image-desktop.jpg);
+    };
+    @media screen and (max-width: $mobile) {
+    background-image: url(/src/images/header-background-image-mobile.jpg);
+    };
+    @media screen and (max-width: $tablet) {
+        background-image: url(/src/images/header-background-image-tablet.jpg);
+    };
+
+}
+
+.logo-container {
+    text-decoration: none;
+}
+
+.logo-name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    color: $secondary-color;
+    
+}
+
+nav {
+    
+    margin-bottom: 40px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-name {
+    @media screen and (max-width: 767px) {
+        visibility: hidden;
+    };
+    @media screen and (min-width: $tablet) {
+        visibility: visible;
+    };
+
+        margin-left:10px;
+}
+
+.pages {
+    display: flex;
+}
+
+.page-link {
+    margin-left: 40px;
+}
+
+.header-buttons-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.header-button {
+@media screen and (max-width: 767px) {
+    width: 129px;
+    heigth: 44px;
+};
+
+@media screen and (min-width: $tablet) {
+    width: 152px;
+    heigth: 44px;
+};
+@media screen and (min-width: $desktop) {
+    width: 147px;
+    heigth: 42px;
+}
+    
+}
+
+.queue {
+
+    @media screen and (max-width: 767px) {
+       margin-left: 20px;
+    }
+
+    @media screen and (min-width:$tablet) {
+      margin-left: 32px;
+    }
+
+        @media screen and (min-width:$desktop) {
+            margin-left: 16px;
+        }
+        
+    }
+
+.page-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    color: $secondary-color;
+    text-decoration: none;
+}
+
+
+
