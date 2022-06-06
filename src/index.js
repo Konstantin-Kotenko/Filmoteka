@@ -1,0 +1,1 @@
+import * as footerModal from './js/api/footer-modal';
