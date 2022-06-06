@@ -14,245 +14,267 @@ $mainFont: 'Roboto', sans-serif;
 // -------------------------------------------------------------------------------------------
 
 html {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 h2 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 p {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 // -----------------------------------------------------------------------------------------
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 
-    @media screen and (min-width: $mobile) {
-        width: $mobile;
-    }
+  @media screen and (min-width: $mobile) {
+    width: $mobile;
+  }
 
-    @media screen and (min-width: $tablet) {
-        width: $tablet;
-        padding-left: 75px;
-        padding-right: 75px;
-    }
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+    padding-left: 75px;
+    padding-right: 75px;
+  }
 
-    @media screen and (min-width: $desktop) {
-        width: $desktop;
-        padding-left: 71px;
-        padding-right: 71px;
-    }
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+    padding-left: 71px;
+    padding-right: 71px;
+  }
 }
 
 // ---------------------------------------------------------------------------------------------
 
 .endless-bg-color {
-    background-color: $dark;
+  background-color: $dark;
 }
 
 .header-bg {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $mobile;
-    min-height: 230px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../images/header-home-page/header-bg-main-mobile.jpg');
-    background-color: #000000;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $mobile;
+  min-height: 230px;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('../images/header-home-page/header-bg-main-mobile.jpg');
+  background-color: #000000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    @media screen and (max-width: ($tablet - 1)) and (min-device-pixel-ratio: 2),
+  @media screen and (max-width: ($tablet - 1)) and (min-device-pixel-ratio: 2),
     screen and (max-width: ($tablet - 1)) and (min-resolution: 192dpi),
     screen and (max-width: ($tablet - 1)) and (min-resolution: 2dppx) {
-        background-image: linear-gradient(to right,rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url('../images/header-home-page/header-bg-main-mobile@2x.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-home-page/header-bg-main-mobile@2x.jpg');
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: $tablet;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-home-page/header-bg-main-tablet.jpg');
+
+    @media screen and (max-width: ($desktop - 1)) and (min-device-pixel-ratio: 2),
+      screen and (max-width: ($desktop - 1)) and (min-resolution: 192dpi),
+      screen and (max-width: ($desktop - 1)) and (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/header-home-page/header-bg-main-tablet@2x.jpg');
     }
+  }
 
-    @media screen and (min-width: $tablet) {
-        max-width: $tablet;
+  @media screen and (min-width: $desktop) {
+    max-width: $desktop;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-home-page/header-bg-main-desktop.jpg');
 
-        background-image: linear-gradient(to right,rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url('../images/header-home-page/header-bg-main-tablet.jpg');
-
-        @media screen and (max-width: ($desktop - 1)) and (min-device-pixel-ratio: 2),
-        screen and (max-width: ($desktop - 1)) and (min-resolution: 192dpi),
-        screen and (max-width: ($desktop - 1)) and (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right,rgba(0, 0, 0, 0.56),
-                    rgba(0, 0, 0, 0.56)),
-                url('../images/header-home-page/header-bg-main-tablet@2x.jpg');
-        }
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/header-home-page/header-bg-main-desktop@2x.jpg');
     }
-
-    @media screen and (min-width: $desktop) {
-        max-width: $desktop;
-        background-image: linear-gradient(to right,rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url('../images/header-home-page/header-bg-main-desktop.jpg');
-
-        @media screen and (min-device-pixel-ratio: 2),
-        screen and (min-resolution: 192dpi),
-        screen and (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right,rgba(0, 0, 0, 0.56),
-                    rgba(0, 0, 0, 0.56)),
-                url('../images/header-home-page/header-bg-main-desktop@2x.jpg');
-        }
-    }
+  }
 }
 
 .header-section {
-    padding-top: 58px;
+  padding-top: 58px;
 }
 
 .logo {
-    position: absolute;
-    top: 46px;
+  position: absolute;
+  top: 46px;
 
-    @media screen and (min-width: $tablet) {
-        display: flex;
-        align-items: baseline;
-    }
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    align-items: baseline;
+  }
 
-    text-decoration: none;
-    color: $svgColor;
-    cursor: pointer;
+  text-decoration: none;
+  color: $svgColor;
+  cursor: pointer;
 }
 
 .logo__icon {
-    @media screen and (min-width: $tablet) {
-        margin-right: 10px;
-    }
+  @media screen and (min-width: $tablet) {
+    margin-right: 10px;
+  }
 }
 
 .logo__name {
-    @media screen and (max-width: ($tablet - 1)) {
-        display: none;
-    }
+  @media screen and (max-width: ($tablet - 1)) {
+    display: none;
+  }
 
-    font-family: $mainFont;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1.16;
-    color: $white;
+  font-family: $mainFont;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+  color: $white;
 }
 
 .side-nav {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 40px;
-    font-family: $mainFont;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    text-transform: uppercase;
-    color: $white;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+  font-family: $mainFont;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: $white;
 }
 
 .side-nav__item {
-    &:first-child {
-        margin-right: 39px;
-    }
+  &:first-child {
+    margin-right: 39px;
+  }
 }
 
 .side-nav__link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .side-nav__link--current-page {
-    position: relative;
+  position: relative;
 
-    &::after {
-        content: '';
+  &::after {
+    content: '';
 
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        height: 3px;
-        width: 100%;
-        background-color: $accentColor;
-    }
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $accentColor;
+  }
 }
 
 // ---------------------------------------------------------------------------------------------
 
 .search-form {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 .search-field {
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.14;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.14;
 
-    @media screen and (min-width: $tablet) {
-        width: 336px;
-    }
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
 
-    background-color: transparent;
-    border: transparent;
-    border-bottom: 1px solid $white;
-    font-family: $mainFont;
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 1px solid $white;
+  font-family: $mainFont;
+  color: $white;
+
+  &::placeholder {
     color: $white;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accentColor;
 
     &::placeholder {
-        color: $white; 
+      color: $accentColor;
     }
-
-    &:focus {
-        outline: none;
-        border-bottom: 1px solid $accentColor;
-
-        &::placeholder {
-            color: $accentColor;
-        }
-    }
+  }
 }
 
 .search-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 
-    @media screen and (min-width: $tablet) {
-        right: 142px;
-    }
+  @media screen and (min-width: $tablet) {
+    right: 142px;
+  }
 
-    @media screen and (min-width: $desktop) {
-        right: 273px;
-    }
+  @media screen and (min-width: $desktop) {
+    right: 273px;
+  }
 
-    padding: 0;
-    background-color: transparent;
-    border: transparent;
-    color: $white;
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  color: $white;
 
-    .search-field:focus~& {
-        color: $accentColor;
-    }
+  .search-field:focus ~ & {
+    color: $accentColor;
+  }
 }
