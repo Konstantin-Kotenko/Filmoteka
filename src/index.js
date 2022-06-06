@@ -1,3 +1,3 @@
-import "./js/api/pagination.js";
-import './js/api/scrollTop';
-
+import './js/pagination.js';
+import './js/scrollTop';
+import './js/footer-modal.js';
