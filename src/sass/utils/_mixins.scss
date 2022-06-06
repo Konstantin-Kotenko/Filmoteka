@@ -3,3 +3,6 @@
   font-size: $fz;
   line-height: $lh;
 }
+@mixin transition($property) {
+  transition: $property $transition-duration $transition-timing-function;
+}

@@ -1,0 +1,80 @@
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+}
+
+.loader-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 100%;
+  animation: animate 0.9s linear infinite;
+}
+
+.loader-box{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color:#fee8d8;
+  border-radius: 50%;
+
+  &::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to top, transparent,  rgba(170, 50, 2, 2));
+    background-size: 100px 180px;
+    background-repeat: no-repeat;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color:$btn-color;
+    box-shadow: 0 0 10px $btn-color,
+    0 0 20px $btn-color,
+    0 0 30px $btn-color,
+    0 0 40px $btn-color,
+    0 0 50px $btn-color,
+    0 0 60px $btn-color,
+    0 0 70px $btn-color,
+    0 0 80px $btn-color,
+    0 0 90px $btn-color,
+    0 0 100px $btn-color;
+    border-radius: 50%;
+    z-index: 15;
+  }
+}
+
+.loader-box__elem{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 50%;
+  background-color: $secondary-color;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

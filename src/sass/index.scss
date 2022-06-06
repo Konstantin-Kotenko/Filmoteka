@@ -1,10 +1,14 @@
 @import './utils/variables';
 @import './utils/mixins';
+@import './utils/placeholders';
 
 @import './components/reset';
 @import './components/container';
 @import './components/movie-card';
-
-@import './layouts/footer';
-
+@import './components/pagination';
+@import './components/header-home-page.scss';
 @import './components/header-library';
+
+@import './layouts/footer/footer';
+@import './layouts/footer/footer-modal';
+@import './layouts/loader';
