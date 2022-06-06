@@ -6,8 +6,9 @@
 @import './components/container';
 @import './components/movie-card';
 @import './components/pagination';
-@import './components/header-home-page.scss';
+@import './components/_button';
 
+@import './components/header-home-page.scss';
 @import './layouts/footer/footer';
 @import './layouts/footer/footer-modal';
 @import './layouts/loader';
