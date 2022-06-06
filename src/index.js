@@ -1,1 +1,2 @@
-import { pageRefs } from "./js/api/pagination";
+import "./js/api/pagination.js";
+import './js/api/scrollTop';
