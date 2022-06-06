@@ -1,1 +1,1 @@
-import { pageRefs } from "./js/api/pagination";
+import { pageRefs } from './js/api/pagination';
