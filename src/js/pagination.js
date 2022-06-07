@@ -1,7 +1,6 @@
 
 const pageRefs = {
     paginationContainer: document.querySelector('.pagination__container'),
-    paginationMobileContainer: document.querySelector('.pagination__container--mobile'),
     pageBtn: document.querySelector('.pagination__button'),
     arrowLeftBtn: document.querySelector('.arrow-left'),
     arrowRightBtn: document.querySelector('.arrow-right'),
@@ -11,7 +10,7 @@ const pageRefs = {
     prevDotsPage: document.querySelector('#previous'),
     afterDotsPage: document.querySelector('#after'),
 }
-console.log(pageRefs);
+
 let page = 1; 
 let btns = document.querySelectorAll('.pagination__button');
 
