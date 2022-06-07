@@ -1,0 +1,33 @@
+.scrolltop {
+    z-index: 99;
+    opacity: 0;
+    @extend %flex-center-style;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: $btn-color;
+    color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+    background-color: rgba($btn-color, 0.85);
+    box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
+    }
+      }
+.showBtn {
+    opacity: 1;
+    }
+.scroll-top__btn {
+    border: solid $secondary-color;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    &--up {
+        transform: rotate(-135deg);
+        }
+    }
