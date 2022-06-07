@@ -6,9 +6,14 @@
 @import './components/container';
 @import './components/movie-card';
 @import './components/pagination';
+<<<<<<< HEAD
 @import './components/header-home-page.scss';
 @import './components/header-library';
+=======
+@import './components/_button';
+>>>>>>> 422d97e2b775d781e6c5488aca2be3abf820f101
 
+@import './components/header-home-page.scss';
 @import './layouts/footer/footer';
 @import './layouts/footer/footer-modal';
 @import './layouts/loader';
