@@ -1,30 +1,54 @@
-.header-container {
+.overlay {
+    max-width: 1600px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: black;
-    background-repeat:no-repeat;
+    background:linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('/src/images/header-background-image-mobile.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
-    @media screen and (max-width: 767px) {
-    padding-left: 20px;
-    padding-right: 20px;
-    background-image: url(/src/images/header-background-image-tablet.jpg);
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: $mobile) {
+      height: 230px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+              url('/src/images/header-background-image-mobile.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      };
+    @media screen and (min-width: $tablet) {
+    height: 219px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url('/src/images/header-background-image-tablet.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     };
     @media screen and (min-width: $tablet) {
-        padding-left: 32px;
-        padding-right: 32px;
-        background-image: url(/src/images/header-background-image-tablet.jpg);
+        height: 216px;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('/src/images/header-background-image-desktop.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     };
+}
+.header-container {
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: $mobile) {
+    padding-left: 20px;
+    padding-right: 20px;
+    };
+    @media screen and (min-width: $tablet) {
+    padding-left: 32px;
+    padding-right: 32px;
+    }
     @media screen and (min-width: $desktop) {
-        padding-left: 70px;
-        padding-right: 70px;
-        background-image: url(/src/images/header-background-image-desktop.jpg);
+    padding-left: 70px;
+    padding-right: 70px;
     };
-        @media screen and (max-width: $mobile) {
-            
-            background-image: url(/src/images/header-background-image-mobile.jpg);
-        }
-    
-        ;
 }
 
 .logo-container {
@@ -45,7 +69,7 @@ nav {
 }
 
 .logo-name {
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: ($tablet - 1)) {
         display: none;
     };
     @media screen and (min-width: $tablet) {
@@ -81,7 +105,7 @@ border: 2px solid $secondary-color;
 border-radius: 5px;
 color:$secondary-color;
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: ($tablet - 1)) {
     width: 129px;
     height: 44px;
 };
@@ -99,7 +123,7 @@ color:$secondary-color;
 
 .queue {
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: ($tablet - 1)) {
        margin-left: 20px;
     }
 
@@ -123,9 +147,22 @@ color:$secondary-color;
     text-transform: uppercase;
 }
 
-.active {
+.header-button:hover {
     background-color: $accent-color;
     border:2px solid $accent-color;
+    box-shadow: 0px 8px 43px 0px $accent-color;
+}
+.page-link:hover{
+    border-bottom: 3px solid $accent-color;
+}
+.header-button:focus {
+    background-color: $accent-color;
+    border: 2px solid $accent-color;
+    box-shadow: 0px 8px 43px 0px $accent-color;
+}
+
+.page-link:focus {
+    border-bottom: 3px solid $accent-color;
 }
 
 
