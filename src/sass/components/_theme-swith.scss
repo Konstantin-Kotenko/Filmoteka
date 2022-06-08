@@ -1,15 +1,19 @@
 body.light-theme {
-    background-color: #fff;
-    color: #000000;
+    background-color: $secondary-color;
+    color: $primary-color;
 }
 
 body.dark-theme {
     background-color: #333333;
-    color: #ffffff;
+    color: $secondary-color;
 
     & .pagination__button {
         background-color: #333333;
         color: lightgrey;
+    }
+
+    & .arrow-left {
+        stroke: darkgrey
     }
 
     & .arrow-right {
@@ -17,7 +21,7 @@ body.dark-theme {
     }
 
     & .pagination__button--current {
-        background-color: #ff6b08;
+        background-color: $accent-color;
     }
 
     & .movie-card__title {
@@ -25,7 +29,7 @@ body.dark-theme {
     }
 
     & .movie-card__brief {
-        color: #ff8800
+        color: $accent-color;
     }
 
     & .footer__text {
@@ -48,7 +52,7 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-    fill:#fff;
+    fill:$secondary-color;
     color: currentColor;
     height: 15px;
     width: 15px;
@@ -95,7 +99,7 @@ body.dark-theme {
 
 .theme-switch__marker {
     position: relative;
-    background-color: #fff;
+    background-color: $secondary-color;
     width: 13px;
     height: 13px;
     border-radius: 50%;
@@ -107,7 +111,7 @@ body.dark-theme {
 }
 
 .theme-switch__toggle:checked+.theme-switch__track {
-    background-color: #ff6b08;
+    background-color: $accent-color;
 }
 
 .theme-switch__toggle:checked~.theme-switch__marker {
@@ -116,7 +120,7 @@ body.dark-theme {
 
 .theme-switch__toggle:focus+.theme-switch__track,
 .theme-switch__toggle:active+.theme-switch__track {
-    box-shadow: 0 0 0 3px #ff6b08;
+    box-shadow: 0 0 0 3px $accent-color;
 }
 
 .dark-theme {
