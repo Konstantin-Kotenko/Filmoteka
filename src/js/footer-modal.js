@@ -31,14 +31,14 @@ const swiper = new Swiper('.swiper', {
     },
     768: {
       slidesPerView: 2,
-    }
-  }
+    },
+  },
 });
 
 const openModal = () => {
   refs.backdrop.classList.remove('is-hidden');
 };
-const closeModal = (evt) => {
+const closeModal = evt => {
   if (evt.target === evt.currentTarget) {
     refs.backdrop.classList.add('is-hidden');
   }
