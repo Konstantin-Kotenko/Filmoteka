@@ -1,0 +1,8 @@
+.main__container {
+  padding: 20px;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-direction: row;
+    padding: 52px 24px;
+  }
+}
