@@ -19,8 +19,10 @@ const fetchfilmsByKey = async params => {
     const { data } = await customAxios.get('', { params });
     console.log(data);
     return data;
-  } catch (error) {
-    // console.error(error);
+  } catch {
+    Notify.failure(
+      'Search result not successful. Enter the correct movie name and  try again'
+    );
   }
 };
 
@@ -33,14 +35,14 @@ const onSearch = e => {
 formEl.addEventListener('submit', onSearch);
 
 const createGallery = data => {
-  console.log(data.results.map(result => result.backdrop_path).join(''));
+  //   console.log(data.results[0].backdrop_path);
 
   const markUp = data.results
     .map(
       result => `<div class="movie-card" id="movie-card">
         <img
           class="movie-card__img"
-          src="${result.backdrop_path}"
+          src="https://image.tmdb.org/t/p/w500${result.poster_path}"
           alt="#"
         />
         <div class="movie-card__info">
