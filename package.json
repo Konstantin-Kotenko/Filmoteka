@@ -35,7 +35,5 @@
     "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
-    "@parcel/transformer-html": "^2.6.0"
-  }
-
-
+  "@parcel/transformer-html": "^2.6.0"
+}
