@@ -1,25 +1,25 @@
 import { body, toggle, footerDarktheme } from './change-theme';
 
-const savedTheme = localStorage.getItem('theme');
+const theme = localStorage.getItem('theme');
 
 toggle.addEventListener('change', event => {
     localStorage.setItem('theme', body.classList);
 });
 
 function updataTheme() {
-    if (savedTheme) {
-        body.classList = savedTheme;
+    if (theme) {
+        body.classList = theme;
     }
 }
 
 function checkboxChecked() {
-    if (savedTheme === 'dark-theme') {
+    if (theme === 'dark-theme') {
         toggle.setAttribute('checked', true);
     }
 }
 
 function footerTheme() {
-    if (savedTheme === 'dark-theme') {
+    if (theme === 'dark-theme') {
         footerDarktheme.classList.add('dark-theme');
     }
 }
