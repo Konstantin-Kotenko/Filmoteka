@@ -1,9 +1,7 @@
 .pagination__container {
     @extend %flex-center-style;
-    padding-top: 40px;
     padding-bottom: 40px;
     @media screen and (min-width: $tablet){
-        padding-top: 60px;
         padding-bottom: 60px;  
     }
 }
