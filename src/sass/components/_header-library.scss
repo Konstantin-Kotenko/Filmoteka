@@ -177,7 +177,7 @@ nav {
   }
 }
 
-.queue {
+.btn--queue {
   @media screen and (max-width: ($tablet - 1)) {
     margin-left: 20px;
   }
@@ -217,4 +217,9 @@ nav {
 
 .page-link:focus {
   border-bottom: 3px solid $accent-color;
+}
+.orange {
+  background-color: $accent-color;
+  border: 2px solid $accent-color;
+  box-shadow: 0px 8px 43px 0px $accent-color;
 }
