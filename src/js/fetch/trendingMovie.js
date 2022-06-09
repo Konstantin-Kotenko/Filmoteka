@@ -14,7 +14,7 @@ const gallery = document.querySelector('.gallery');
 const renderMovie = data =>
   gallery.insertAdjacentHTML('beforeend', movieCard(data));
 
-export const fetchPopularMovie = async (page) => {
+export const fetchPopularMovie = async page => {
   try {
     const { data } = await axios.get(
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${currentPage}`
@@ -30,6 +30,4 @@ export const fetchPopularMovie = async (page) => {
   }
 };
 
- document.addEventListener('DOMContentLoaded', fetchPopularMovie);
-
-
+document.addEventListener('DOMContentLoaded', fetchPopularMovie);
