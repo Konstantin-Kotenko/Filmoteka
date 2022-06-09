@@ -6,9 +6,12 @@ toggle.addEventListener('change', event => {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         body.classList.add('light-theme');
+        body.classList.add('theme-switch__icon--accent1');
         footerDarktheme.classList.remove('dark-theme');
     } else {
         body.classList.remove('light-theme');
+        // body.classList.remove('theme-switch__icon--accent1');
+        // body.classList.add('theme-switch__icon--accent2');
         body.classList.add('dark-theme');
         footerDarktheme.classList.add('dark-theme');
     }
@@ -16,3 +19,4 @@ toggle.addEventListener('change', event => {
 
 
 export { body, toggle, footerDarktheme };
+
