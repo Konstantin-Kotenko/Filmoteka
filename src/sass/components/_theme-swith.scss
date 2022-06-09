@@ -35,7 +35,18 @@ body.dark-theme {
     & .footer__text {
         color: lightgrey;
     }
+
+    & .theme-switch__icon--accent1{
+        fill: $secondary-color;
+        transition: 0.5s;
+    }
+
+    & .theme-switch__icon--accent2{
+        fill: $accent-color;
+        transition: 0.5s;
+    }
 }
+
 
 .toolbar {
     display: flex;
@@ -121,9 +132,15 @@ body.dark-theme {
 .theme-switch__toggle:focus+.theme-switch__track,
 .theme-switch__toggle:active+.theme-switch__track {
     box-shadow: 0 0 0 3px $accent-color;
+    transition: 0.5s;
 }
 
 .dark-theme {
     color: lightgrey;
     background-color: #222;
+}
+
+.theme-switch__icon--accent1{
+    fill: $accent-color;
+    transition: 0.5s;
 }
