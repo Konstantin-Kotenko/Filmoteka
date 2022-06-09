@@ -310,3 +310,8 @@ font-style: normal;
     color: #ffffff;
   }
 }
+.active {
+  border: none;
+  background-color: $accent-color;
+  color: #ffffff;
+}

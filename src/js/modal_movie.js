@@ -14,8 +14,8 @@ const lightbox = new SimpleLightbox('.modal-info', {
   captionDelay: 250,
 });
 
-function modal_movieHandler{
+function modal_movieHandler(movie) {
 modalMovieRefs.overlayModal.insertAdjacentHTML(
   'beforeend',
-  modalMovieTemplate()
+  modalMovieTemplate)
 }
