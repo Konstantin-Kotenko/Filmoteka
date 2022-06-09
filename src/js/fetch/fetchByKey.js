@@ -42,12 +42,16 @@ const createGallery = data => {
       result => `<div class="movie-card" id="movie-card">
         <img
           class="movie-card__img"
-          src="https://image.tmdb.org/t/p/w500${result.poster_path}"
+          src="https://image.tmdb.org/t/p/w500${
+            result.poster_path ? result.poster_path : result.backdrop_path
+          }"
           alt="#"
         />
         <div class="movie-card__info">
           <h2 class="movie-card__title">${result.original_title}</h2>
-          <p class="movie-card__brief">some brife | ${result.release_date}</p>
+          <p class="movie-card__brief">some brife | ${
+            result.release_date ? result.release_date.substring(0, 4) : ' '
+          }</p>
         </div>
       </div>`
     )
