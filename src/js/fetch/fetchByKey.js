@@ -32,7 +32,7 @@ const onSearch = e => {
   filmsParams.query = e.currentTarget.elements[0].value;
   fetchfilmsByKey(filmsParams).then(data => createGallery(data));
   pageRefs.page1Btn.hidden = false;
-  pageRefs.showedPageArr.forEach(page => page.hidden = true) ;
+  pageRefs.showedPageArr.forEach(page => page.hidden = true);
   pageRefs.afterDotsPage.hidden = true;
   pageRefs.lastPageBtn.hidden = true;
   pageRefs.arrowRightBtn.hidden = true;

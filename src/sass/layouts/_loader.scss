@@ -1,9 +1,18 @@
 .loader{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  
+  position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: block; 
+}
+
+.is-hiden {
+  display: none;
 }
 
 .loader-container{

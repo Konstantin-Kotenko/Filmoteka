@@ -7,11 +7,24 @@ const refsMovie = {
   lenguage: 'en-US',
 };
 
+
 const gallery = document.querySelector('.gallery');
 const axios = require('axios');
+// const mainCont = document.querySelector('.main__container');
+const loaderMarkap = `<div class="loader">
+  <div class="loader-container">
+    <div class="loader-box">
+      <span class="loader-box__elem"></span>
+    </div>
+  </div>
+</div>`;
 
+// console.log(mainCont)
 const fetchPopularMovie = async () => {
+
   try {
+    gallery.innerHTML = '';
+    gallery.innerHTML = loaderMarkap;
     const { data } = await axios.get(
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
     );
@@ -23,7 +36,8 @@ const fetchPopularMovie = async () => {
   }
 };
 
-const renderMovie = data =>
+const renderMovie = data => {
+  gallery.innerHTML = '';
   gallery.insertAdjacentHTML('beforeend', movieCard(data));
-
+}
 fetchPopularMovie().then(data => renderMovie(data));
