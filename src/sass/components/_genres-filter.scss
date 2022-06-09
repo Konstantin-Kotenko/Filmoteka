@@ -1,0 +1,38 @@
+.genres-filter-section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.genres-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.genres-filter-list {
+    padding-left: 10px;
+    padding-right: 10px;
+    @include font(500, 12px, 1.17);
+    color: $secondary-color-shade-dark;
+    height: 40px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border:3px solid $accent-color;
+    background-color: $secondary-color-shade-light;
+    box-shadow: 0 4px 4px #00000040;
+}
+.genres-filter-button {
+    display:flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $accent-color;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border:none;
+    box-shadow: 0 4px 4px #00000040;
+    @include font(700, 12px, 1.17);
+    color: $secondary-color;
+}
+.genres-button-span {
+    text-transform: uppercase;
+}

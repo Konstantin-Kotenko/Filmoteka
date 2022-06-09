@@ -113,9 +113,9 @@
   text-decoration: none;
 }
 
-nav {
+.header-navigation {
   margin-bottom: 40px;
-  // display:flex;
+  display:flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -132,10 +132,9 @@ nav {
   @media screen and (min-width: $tablet) {
     display: block;
   }
+  font-family: $primary-font;
+  @include font(500, 30px, 1.17);
   font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
   color: $secondary-color;
   margin-left: 10px;
   margin-left: 10px;
@@ -192,10 +191,8 @@ nav {
 }
 
 .page-link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
+@include font(500, 12px, 1.16);
+    font-style: normal;
   color: $secondary-color;
   text-decoration: none;
   text-transform: uppercase;
