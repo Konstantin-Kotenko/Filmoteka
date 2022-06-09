@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
 import { BASE_URL, API_KEY } from '../api/api.js';
-import { pageRefs } from '../pagination.js'
+import { pageRefs } from '../pagination.js';
 
 const formEl = document.querySelector('.search-form');
 const containerEl = document.querySelector('#abc');
@@ -32,7 +32,7 @@ const onSearch = e => {
   filmsParams.query = e.currentTarget.elements[0].value;
   fetchfilmsByKey(filmsParams).then(data => createGallery(data));
   pageRefs.page1Btn.hidden = false;
-  pageRefs.showedPageArr.forEach(page => page.hidden = true) ;
+  pageRefs.showedPageArr.forEach(page => (page.hidden = true));
   pageRefs.afterDotsPage.hidden = true;
   pageRefs.lastPageBtn.hidden = true;
   pageRefs.arrowRightBtn.hidden = true;
@@ -62,3 +62,5 @@ const createGallery = data => {
 
   containerEl.innerHTML = markUp;
 };
+
+export { filmsParams, fetchfilmsByKey, onSearch };
