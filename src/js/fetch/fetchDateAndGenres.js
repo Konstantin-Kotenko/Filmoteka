@@ -20,11 +20,11 @@ function createGenresFromID(array) {
     .flat();
 }
 
-function dataCombine(films, allGenres) {
+function dataCombine(films, getGenres) {
   return films.map(film => ({
     ...film,
     year: createYear(film),
-    genres: createGenresFromTrend(film.genre_ids, allGenres),
+    genres: createGenresFromTrend(film.genre_ids, getGenres),
   }));
 }
 
@@ -32,9 +32,9 @@ const customAxiosGenres = axios.create({
   baseURL: `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
 });
 
-const getGenres = async params => {
+const getGenres = async => {
   try {
-    const { data } = await customAxiosGenres.get('', { params });
+    const { data } = await customAxiosGenres.get();
     return data;
   } catch {
     Notify.failure(

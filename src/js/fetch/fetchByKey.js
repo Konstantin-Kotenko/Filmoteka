@@ -14,6 +14,7 @@ const renderMovie = data =>
 const filmsParams = {
   query: '',
 };
+
 const fetchfilmsByKey = async params =>
   await axios
     .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&page=${currentPage}`, {
@@ -30,7 +31,7 @@ export const requestForMovie = async () => {
     const allGenres = getGenres();
     console.log(allGenres);
     const fullSearchData = dataCombine(movies, allGenres);
-    renderMovie(movies);
+    renderMovie(fullSearchData);
   });
 };
 
