@@ -1,10 +1,9 @@
-.overlay {
-  max-width: 1600px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background: linear-gradient(to right,
+.header-home {
+  background: linear-gradient(
+      to right,
       rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)),
+      rgba(0, 0, 0, 0.56)
+    ),
     url('../images/header-home-page/header-bg-main-mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,29 +13,35 @@
 
   @media screen and (min-width: $mobile) {
     height: 230px;
-    background: linear-gradient(to right,
+    background: linear-gradient(
+        to right,
         rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)),
+        rgba(0, 0, 0, 0.56)
+      ),
       url('../images/header-home-page/header-bg-main-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 
     @media screen and (max-width: ($tablet - 1)) and (min-device-pixel-ratio: 2),
-    screen and (max-width: ($tablet - 1)) and (min-resolution: 192dpi),
-    screen and (max-width: ($tablet - 1)) and (min-resolution: 2dppx) {
-      background-image: linear-gradient(to right,
+      screen and (max-width: ($tablet - 1)) and (min-resolution: 192dpi),
+      screen and (max-width: ($tablet - 1)) and (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
           rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+          rgba(0, 0, 0, 0.56)
+        ),
         url('../images/header-home-page/header-bg-main-mobile@2x.jpg');
     }
   }
 
   @media screen and (min-width: $tablet) {
     height: 219px;
-    background: linear-gradient(to right,
+    background: linear-gradient(
+        to right,
         rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)),
+        rgba(0, 0, 0, 0.56)
+      ),
       url('../images/header-home-page/header-bg-main-tablet.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -45,163 +50,51 @@
 
   @media screen and (min-width: $tablet) {
     height: 216px;
-    background: linear-gradient(to right,
+    background: linear-gradient(
+        to right,
         rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)),
+        rgba(0, 0, 0, 0.56)
+      ),
       url('../images/header-home-page/header-bg-main-tablet.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 
     @media screen and (max-width: ($desktop - 1)) and (min-device-pixel-ratio: 2),
-    screen and (max-width: ($desktop - 1)) and (min-resolution: 192dpi),
-    screen and (max-width: ($desktop - 1)) and (min-resolution: 2dppx) {
-      background-image: linear-gradient(to right,
+      screen and (max-width: ($desktop - 1)) and (min-resolution: 192dpi),
+      screen and (max-width: ($desktop - 1)) and (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
           rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+          rgba(0, 0, 0, 0.56)
+        ),
         url('../images/header-home-page/header-bg-main-tablet@2x.jpg');
     }
 
     @media screen and (min-width: $desktop) {
       height: 216px;
-      background: linear-gradient(to right,
+      background: linear-gradient(
+          to right,
           rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+          rgba(0, 0, 0, 0.56)
+        ),
         url('../images/header-home-page/header-bg-main-desktop.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
 
       @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-        background-image: linear-gradient(to right,
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+        background-image: linear-gradient(
+            to right,
             rgba(0, 0, 0, 0.56),
-            rgba(0, 0, 0, 0.56)),
+            rgba(0, 0, 0, 0.56)
+          ),
           url('../images/header-home-page/header-bg-main-desktop@2x.jpg');
       }
     }
   }
-}
-
-.header-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media screen and (min-width: $mobile) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-}
-
-nav {
-  margin-bottom: 40px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  position: absolute;
-  top: 40px;
-
-  @media screen and (min-width: $tablet) {
-    display: flex;
-    align-items: baseline;
-  }
-
-  text-decoration: none;
-
-  color: #818181;
-
-  cursor: pointer;
-}
-
-.icon-logo {
-  @media screen and (max-width: ($tablet - 1)) {
-    margin-right: 8px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    margin-right: 10px;
-  }
-}
-
-.logo-name {
-  @media screen and (max-width: ($tablet - 1)) {
-    display: none;
-  }
-
-  @media screen and (min-width: $tablet) {
-    display: block;
-  }
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
-  color: $secondary-color;
-}
-
-.pages {
-  display: flex;
-  margin-top: 9px;
-  justify-content: flex-end;
-  font-family: $primary-font;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  text-transform: uppercase;
-  color: $secondary-color;
-}
-
-.page {
-  &:first-child {
-    margin-right: 39px;
-  }
-}
-
-.page-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.page-link--current-page {
-  position: relative;
-
-  &::after {
-    content: '';
-
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    height: 3px;
-    width: 100%;
-    background-color: $accent-color;
-  }
-}
-
-.page-link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  color: $secondary-color;
-  text-decoration: none;
-  text-transform: uppercase;
 }
 
 .page-link:hover {
@@ -237,7 +130,6 @@ nav {
   font-family: $primary-font;
   color: $secondary-color;
 
-
   &::placeholder {
     color: $secondary-color;
   }
@@ -261,7 +153,7 @@ nav {
   border: transparent;
   color: $secondary-color;
 
-  .search-field:focus~& {
+  .search-field:focus ~ & {
     color: $accent-color;
   }
 }

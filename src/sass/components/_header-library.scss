@@ -1,7 +1,4 @@
-.overlay {
-  max-width: 1600px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+.header-library {
   background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.56),
@@ -92,63 +89,6 @@
     }
   }
 }
-.header-container {
-  margin-left: auto;
-  margin-right: auto;
-  @media screen and (min-width: $mobile) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  @media screen and (min-width: $tablet) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media screen and (min-width: $desktop) {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-}
-
-.logo-container {
-  text-decoration: none;
-}
-
-nav {
-  margin-bottom: 40px;
-  // display:flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-name {
-  @media screen and (max-width: ($tablet - 1)) {
-    display: none;
-  }
-  @media screen and (min-width: $tablet) {
-    display: block;
-  }
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
-  color: $secondary-color;
-  margin-left: 10px;
-  margin-left: 10px;
-}
-
-.pages {
-  display: flex;
-}
-
-.library {
-  margin-left: 40px;
-  border-bottom: 3px solid $accent-color;
-}
 
 .header-buttons-list {
   display: flex;
@@ -191,24 +131,12 @@ nav {
   }
 }
 
-.page-link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  color: $secondary-color;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
 .header-button:hover {
   background-color: $accent-color;
   border: 2px solid $accent-color;
   box-shadow: 0px 8px 43px 0px $accent-color;
 }
-.page-link:hover {
-  border-bottom: 3px solid $accent-color;
-}
+
 .header-button:focus {
   background-color: $accent-color;
   border: 2px solid $accent-color;
