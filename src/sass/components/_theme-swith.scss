@@ -1,23 +1,18 @@
 body.light-theme {
     background-color: $secondary-color;
     color: $primary-color;
+    transition: 0.5s;
 }
 
 body.dark-theme {
     background-color: #333333;
     color: $secondary-color;
+    transition: 0.5s;
 
     & .pagination__button {
         background-color: #333333;
         color: lightgrey;
-    }
-
-    & .arrow-left {
-        stroke: darkgrey
-    }
-
-    & .arrow-right {
-        stroke: darkgrey
+        transition: 0.5s;
     }
 
     & .pagination__button--current {
@@ -102,7 +97,7 @@ body.dark-theme {
     height: 100%;
     color: transparent;
     user-select: none;
-    background-color: #333;
+    background-color: $accent-color;
     border-radius: inherit;
     z-index: 1;
     cursor: pointer;
@@ -122,7 +117,7 @@ body.dark-theme {
 }
 
 .theme-switch__toggle:checked+.theme-switch__track {
-    background-color: $accent-color;
+    background-color: #333;
 }
 
 .theme-switch__toggle:checked~.theme-switch__marker {
@@ -138,6 +133,7 @@ body.dark-theme {
 .dark-theme {
     color: lightgrey;
     background-color: #222;
+    transition: 0.5s;
 }
 
 .theme-switch__icon--accent1{
