@@ -1,0 +1,317 @@
+.modal-is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 5px, rgba(0, 0, 0, 0.1) -1px -1px 5px,
+    rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;
+  padding: 20px 15px;
+  background-color: rgb(184, 184, 187);
+}
+.modal-info {
+  display: flex;
+  @media screen and (max-width: 767px) {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block;
+height: 900px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    margin-left: 36px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-left: 16px;
+    display: flex;
+  }
+}
+.modal-card-overlay {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  background-color: $secondary-color;
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+    height: 940px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    display: block;
+    width: 704px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 40px;
+    margin-left: 16px;
+    width: 814px;
+    display: block;
+  }
+}
+
+.modal-close {
+  fill: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-left: auto;
+  margin-right: 16px;
+  margin-top: 16px;
+  background-color: transparent;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 10px;
+    margin-top: 16px;
+    margin-right: 10px;
+  }
+
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 10px;
+  }
+}
+
+.modal-movie-poster {
+  height: auto;
+  border-radius: 5px;
+  @media screen and (max-width: 767px) {
+    width: 240px;
+    height: 357px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+    height: 374px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 375px;
+    height: auto;
+    margin-bottom: 40px;
+  }
+}
+
+.modal-movie-information {
+  background-color: $secondary-color;
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 0;
+    margin-bottom: 40px;
+    margin-left: 68px;
+    margin-right: 72px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 375px;
+    height: auto;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.modal-movie-title {
+  font-family: $primary-font;
+  font-size: 20px;
+  line-height: 1.15;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 767px) {
+    font-family: $primary-font;
+font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: $tablet) {
+    font-size: 30px;
+    line-height: 1.16;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.modal-movie-data-reiting {
+  display: flex;
+}
+.modal-movie-data {
+  margin-top: 20px;
+  padding: 0;
+}
+.modal-movie-info {
+  margin-top: 20px;
+}
+.modal-movie-data-name {
+  font-family: $primary-font;
+  margin: 0;
+  margin-right: 30px;
+  padding-bottom: 8px;
+  color: #8c8c8c;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.modal-movie-data-slash {
+  color: #8c8c8c;
+}
+
+.modal-movie-description {
+  line-height: 1.16;
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
+
+.modal-movie-popularity {
+  line-height: 1.16;
+  margin-bottom: 9px;
+  margin-top: 0;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 8px;
+  }
+}
+
+.modal-movie-description-title {
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 0;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 6px;
+  }
+}
+
+.modal-movie-description-vote {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  padding-top: 2px;
+  text-align: center;
+  color: $secondary-color;
+  background-color: $accent-color;
+  border-radius: 5px;
+}
+.modal-movie-description-votes {
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
+.modal-movie-genre-name {
+  font-family: $primary-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.modal-movie-about {
+  margin-top: 20px;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.modal-movie-descript {
+  font-family: $primary-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.66;
+  color: $primary-color;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 294px;
+    height: auto;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 426px;
+    height: auto;
+  }
+}
+.modal-movie-button-wrapper {
+  display: flex;
+  // margin-top: 40px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 20px;
+    margin-left: 8px;
+  }
+}
+
+.modal-movie-button {
+  width: 136px;
+  height: 44px;
+  background: $secondary-color;
+  border-radius: 5px;
+  padding: 0 13px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  font-family: $primary-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  &:focus,
+  &:hover {
+    border: none;
+    background-color: $accent-color;
+  }
+}
+.modal-left-button {
+  margin-right: 15px;
+  background-color: $secondary-color;
+  &:focus,
+  &:hover {
+    color: #ffffff;
+  }
+}
+.modal-right-button {
+  &:focus,
+  &:hover {
+    color: #ffffff;
+  }
+}
+.active {
+  border: none;
+  background-color: $accent-color;
+  color: #ffffff;
+}
