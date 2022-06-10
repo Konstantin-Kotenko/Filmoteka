@@ -1,0 +1,45 @@
+<article class="modal-movie-wrapper" id="{{id}}">
+  <div class="modal-info">
+      <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" class="modal-movie-poster"  alt='#'/>
+      <div class="modal-movie-information">
+        <h2 class="modal-movie-title">{{title}}</h2>
+        <div class="modal-movie-data-reiting">
+        <div class="modal-movie-data">          
+              <p class="modal-movie-data-name">Vote / Votes</p>
+              <p class="modal-movie-data-name">Popularity</p>              
+              <p class="modal-movie-data-name">Original Title</p>              
+              <p class="modal-movie-data-name">Genre</p>            
+        </div>
+        <div class="modal-movie-info">        
+              <p class="modal-movie-description">
+                <span class="modal-movie-description-vote">{{vote_average}}</span>
+                <span class="modal-movie-data-slash">/</span>
+                <span class="modal-movie-description-votes">{{vote_count}}</span>
+              </p>              
+              <p class="modal-movie-popularity">{{popularity}}</p>              
+              <p class="modal-movie-description-title">{{original_title}}</p>
+              <p class="modal-movie-description">
+
+                <span class="modal-movie-genre-name">{{name}}</span>
+
+              </p>
+        </div>
+      </div>
+        <p class="modal-movie-about">About</p>
+        <p class="modal-movie-descript">{{overview}}
+        </p>
+        <div class="modal-movie-button-wrapper">
+          <button
+            data-name="watched"
+            class="modal-movie-button modal-left-button"
+            type="button"
+          >
+            ADD TO WATCHED
+          </button>
+          <button data-name="queue" class="modal-movie-button modal-right-button" type="button">
+            ADD TO QUEUE
+          </button>
+        </div>
+      </div>
+      </div>
+      </article>
