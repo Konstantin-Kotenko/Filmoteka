@@ -1,66 +1,84 @@
-import Notiflix from 'notiflix';
+import { currentPage, pageRefs } from '../pagination.js';
+import { Notify } from 'notiflix';
 import axios from 'axios';
 import { BASE_URL, API_KEY } from '../api/api.js';
-import { pageRefs } from '../pagination.js';
+
+import movieCard from '../../template/movieCard.hbs';
+
+// function createYear(obj) {
+//   return obj.release_date ? obj.release_date.split('-')[0] : '';
+// }
+
+// function createGenresFromTrend(array, genres) {
+//   return array
+//     .map(id => genres.filter(element => element.id === id))
+//     .slice(0, 3)
+//     .flat();
+// }
+
+// function createGenresFromID(array) {
+//   return array.genres
+//     .map(genre => genre.name)
+//     .slice(0, 3)
+//     .flat();
+// }
+
+// function dataCombine(films, allGenres) {
+//   return films.map(film => ({
+//     ...film,
+//     year: createYear(film),
+//     genres: createGenresFromTrend(film.genre_ids, allGenres),
+//   }));
+// }
+
+// const customAxiosGenres = axios.create({
+//   baseURL: `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
+// });
+
+// const getGenres = async () => {
+//   try {
+//     const { data } = await customAxiosGenres.get();
+//     return data;
+//   } catch {
+//     Notify.failure(
+//       'Search result not successful. Enter the correct movie name and  try again'
+//     );
+//   }
+// };
 
 const formEl = document.querySelector('.search-form');
-const containerEl = document.querySelector('#abc');
+const gallery = document.querySelector('.gallery');
+
+const renderMovie = data =>
+  gallery.insertAdjacentHTML('beforeend', movieCard(data));
 
 const filmsParams = {
   query: '',
-  page: 1,
 };
 
-const customAxios = axios.create({
-  baseURL: `${BASE_URL}search/movie?api_key=${API_KEY}`,
-});
+const fetchfilmsByKey = async params => await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&page=${currentPage}`, { params }).catch((e)=>console.error(e));
 
-const fetchfilmsByKey = async params => {
-  try {
-    const { data } = await customAxios.get('', { params });
-    console.log(data);
-    return data;
-  } catch {
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and  try again'
-    );
-  }
-};
+export const requestForMovie = async() => {
+  await fetchfilmsByKey(filmsParams).then(({data}) => {
+const movies = data.results;
+const totalPages = data.total_pages;
+console.log(data);
+pageRefs.lastPageBtn.textContent = totalPages;
+
+// const fullSearchData = dataCombine(movies, allGenres);
+console.log(totalPages);
+renderMovie(movies);
+  });
+}
 
 const onSearch = e => {
   e.preventDefault();
   filmsParams.query = e.currentTarget.elements[0].value;
-  fetchfilmsByKey(filmsParams).then(data => createGallery(data));
-  pageRefs.page1Btn.hidden = false;
-  pageRefs.showedPageArr.forEach(page => (page.hidden = true));
-  pageRefs.afterDotsPage.hidden = true;
-  pageRefs.lastPageBtn.hidden = true;
-  pageRefs.arrowRightBtn.hidden = true;
-  pageRefs.page1Btn.classList.add('pagination__button--current');
+  gallery.innerHTML = '';
+  requestForMovie();
 };
 
 formEl.addEventListener('submit', onSearch);
 
-const createGallery = data => {
-  //   console.log(data.results[0].backdrop_path);
 
-  const markUp = data.results
-    .map(
-      result => `<div class="movie-card" id="movie-card">
-        <img
-          class="movie-card__img"
-          src="https://image.tmdb.org/t/p/w500${result.poster_path}"
-          alt="#"
-        />
-        <div class="movie-card__info">
-          <h2 class="movie-card__title">${result.original_title}</h2>
-          <p class="movie-card__brief">some brife | ${result.release_date}</p>
-        </div>
-      </div>`
-    )
-    .join('');
 
-  containerEl.innerHTML = markUp;
-};
-
-export { filmsParams, fetchfilmsByKey, onSearch };
