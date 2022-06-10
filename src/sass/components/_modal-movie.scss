@@ -25,7 +25,7 @@
   display: flex;
   // border: 1px solid red;
   @media screen and (max-width: 767px) {
-    // 
+    //
     display: block;
     height: 900px;
   }
@@ -39,7 +39,7 @@
   }
 }
 .modal-movie-wrapper {
-    margin: 0;
+  margin: 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
@@ -48,7 +48,7 @@
   border: 1px solid $secondary-color;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 5px, rgba(0, 0, 0, 0.1) -1px -1px 5px,
-  rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;;
+    rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;
 
   padding: 20px 15px;
 
@@ -71,7 +71,7 @@
 }
 
 .modal-movie-poster {
-   width: 280px;
+  width: 280px;
   height: auto;
   border-radius: 5px;
   @media screen and (max-width: 767px) {
@@ -242,7 +242,6 @@
   }
 
   @media screen and (min-width: $desktop) {
-    
   }
 }
 .modal-movie-button-wrapper {
@@ -280,7 +279,7 @@
     background-color: $accent-color;
   }
 }
-.modal-left-button {
+.modal-watched-button {
   margin-right: 15px;
   background-color: $secondary-color;
   &:focus,
@@ -288,7 +287,7 @@
     color: #ffffff;
   }
 }
-.modal-right-button {
+.modal-queue-button {
   &:focus,
   &:hover {
     color: #ffffff;
