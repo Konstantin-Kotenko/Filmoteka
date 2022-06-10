@@ -44,16 +44,28 @@ body.dark-theme {
 
 .toolbar {
   display: flex;
-  justify-content: flex-end;
   padding: 16px 24px;
   position: absolute;
-  right: 0;
   top: 180px;
+  right: 0;
+  
+    @media screen and (min-width: $mobile) {
+      padding: 16px 20px;
+    }
+  
+    @media screen and (min-width: $tablet) {
+      padding: 16px 32px;
+    }
+  
+    @media screen and (min-width: $desktop) {
+      padding: 16px 71px;
+    }
 }
 
 .theme-switch {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .theme-switch__icon {
