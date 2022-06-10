@@ -7,7 +7,8 @@
   display: none;
 }
 
-.backdrop {
+.modal-is-open .modal-movie-overlay {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -22,11 +23,12 @@
 }
 .modal-info {
   display: flex;
+  border: 1px solid red;
   @media screen and (max-width: 767px) {
     margin-left: 20px;
     margin-right: 20px;
     display: block;
-height: 900px;
+    height: 900px;
   }
 
   @media screen and (min-width: $tablet) {
@@ -39,7 +41,7 @@ height: 900px;
     display: flex;
   }
 }
-.modal-card-overlay {
+.modal-card {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   position: absolute;
   background-color: $secondary-color;
@@ -130,7 +132,7 @@ height: 900px;
 
   @media screen and (max-width: 767px) {
     font-family: $primary-font;
-font-style: normal;
+    font-style: normal;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 20px;
@@ -265,7 +267,7 @@ font-style: normal;
   display: flex;
   // margin-top: 40px;
   @media screen and (max-width: 767px) {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   @media screen and (min-width: $tablet) {
