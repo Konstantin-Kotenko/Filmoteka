@@ -10,9 +10,9 @@
   background-position: center;
   margin-left: auto;
   margin-right: auto;
-
+height: 230px;
   @media screen and (min-width: $mobile) {
-    height: 230px;
+    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -36,7 +36,7 @@
   }
 
   @media screen and (min-width: $tablet) {
-    height: 219px;
+    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -49,7 +49,7 @@
   }
 
   @media screen and (min-width: $tablet) {
-    height: 216px;
+    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -72,7 +72,7 @@
     }
 
     @media screen and (min-width: $desktop) {
-      height: 216px;
+      
       background: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.56),
@@ -109,13 +109,17 @@
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  width: 100%;
+  max-width: auto;
 
   @media screen and (min-width: $mobile) {
     width: 280px;
   }
 
   @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: $desktop) {
     width: 336px;
   }
 }
