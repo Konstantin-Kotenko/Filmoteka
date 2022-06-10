@@ -1,10 +1,12 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 import axios from 'axios';
 import { BASE_URL, API_KEY } from '../api/api.js';
-import { pageRefs } from '../pagination.js'
+import { pageRefs } from '../pagination.js';
+import movieCard from '../../template/movieCard.hbs';
+import { dataCombine, getGenres } from './fetchDateAndGenres.js';
 
-const formEl = document.querySelector('.search-form');
-const containerEl = document.querySelector('#abc');
+const formEl = document.querySelector('#search-form');
+const gallery = document.querySelector('.gallery');
 
 const filmsParams = {
   query: '',
@@ -12,7 +14,7 @@ const filmsParams = {
 };
 
 const customAxios = axios.create({
-  baseURL: `${BASE_URL}search/movie?api_key=${API_KEY}`,
+  baseURL: `${BASE_URL}/search/movie?api_key=${API_KEY}`,
 });
 
 const fetchfilmsByKey = async params => {
@@ -27,42 +29,39 @@ const fetchfilmsByKey = async params => {
   }
 };
 
+const renderMovie = movie =>
+  gallery.insertAdjacentHTML('beforeend', movieCard(movie));
+
+const creatGallary = async () => {
+  await fetchfilmsByKey(filmsParams).then(data => {
+    const movies = data.results;
+    renderMovie(movies);
+    console.log(movies);
+    const allGenres = getGenres();
+    console.log(allGenres);
+    const fullSearchData = dataCombine(movies, allGenres);
+  });
+};
+
 const onSearch = e => {
   e.preventDefault();
   filmsParams.query = e.currentTarget.elements[0].value;
-  fetchfilmsByKey(filmsParams).then(data => createGallery(data));
-  pageRefs.page1Btn.hidden = false;
-  pageRefs.showedPageArr.forEach(page => page.hidden = true) ;
-  pageRefs.afterDotsPage.hidden = true;
-  pageRefs.lastPageBtn.hidden = true;
-  pageRefs.arrowRightBtn.hidden = true;
-  pageRefs.page1Btn.classList.add('pagination__button--current');
+
+  if (filmsParams.query.length <= 1) {
+    return Notify.info(
+      'No matches found for your query. Enter the correct movie name.'
+    );
+  }
+
+  gallery.innerHTML = '';
+  creatGallary();
+
+  // pageRefs.page1Btn.hidden = false;
+  // pageRefs.showedPageArr.forEach(page => (page.hidden = true));
+  // pageRefs.afterDotsPage.hidden = true;
+  // pageRefs.lastPageBtn.hidden = true;
+  // pageRefs.arrowRightBtn.hidden = true;
+  // pageRefs.page1Btn.classList.add('pagination__button--current');
 };
 
 formEl.addEventListener('submit', onSearch);
-
-const createGallery = data => {
-  //   console.log(data.results[0].backdrop_path);
-
-  const markUp = data.results
-    .map(
-      result => `<div class="movie-card" id="movie-card">
-        <img
-          class="movie-card__img"
-          src="https://image.tmdb.org/t/p/w500${
-            result.poster_path ? result.poster_path : result.backdrop_path
-          }"
-          alt="#"
-        />
-        <div class="movie-card__info">
-          <h2 class="movie-card__title">${result.original_title}</h2>
-          <p class="movie-card__brief">some brife | ${
-            result.release_date ? result.release_date.substring(0, 4) : ' '
-          }</p>
-        </div>
-      </div>`
-    )
-    .join('');
-
-  containerEl.innerHTML = markUp;
-};
