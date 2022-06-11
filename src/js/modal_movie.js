@@ -46,98 +46,99 @@ async function fetchMovie(id) {
   const response = await fetch(url);
   return await response.json();
 }
-
+modalRefs.galleryMovie.addEventListener('click', showMovieCard);
+let id;
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
   event.preventDefault();
   openModal();
-  const movieId = event.target.id;
-  const data = await fetchMovie(movieId);
+   id = event.target.id;
+   console.log(id);
+  const data = await fetchMovie(id);
   modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+  
+const watchedBtn = document.querySelector('.modal-watched-button');
+const queueBtn = document.querySelector('.modal-queue-button');
 
-  const watchedBtn = document.querySelector('.modal-watched-button');
-  const queueBtn = document.querySelector('.modal-queue-button');
-  console.log(watchedBtn);
-  console.log(queueBtn);
-}
-
-modalRefs.galleryMovie.addEventListener('click', showMovieCard);
-
-/*--------------------------------------------------------------*/
-
-const monitorBtnChange = () => {
-  let filmsWatched = [];
-  let localStorageData = getFromStorage('filmsWatched');
-  if (localStorageData) {
-    filmsWatched = [...JSON.parse(localStorageData)];
-  }
-  let currentIdFilm = id;
-
-  let filmId = filmsWatched.find(el => el === currentIdFilm);
-  if (filmId === currentIdFilm) {
-    watchedBtn.textContent = 'Delete from watched';
-    watchedBtn.classList.remove('active');
-  } else {
-    watchedBtn.textContent = 'Add to watched';
-    watchedBtn.classList.add('active');
-  }
-
-  let filmsQueue = [];
-  localStorageData = getFromStorage('filmsQueue');
-  if (localStorageData) {
-    filmsQueue = [...JSON.parse(localStorageData)];
-  }
-
-  filmId = filmsQueue.find(el => el === currentIdFilm);
-  if (filmId === currentIdFilm) {
-    queueBtn.textContent = 'Delete from Queue';
-    queueBtn.classList.remove('active');
-  } else {
-    queueBtn.textContent = 'Add to Queue';
-    queueBtn.classList.add('active');
-  }
-};
-
-// monitorBtnChange();
-const toggleToWatched = () => {
-  let filmsWatched = [];
-  let localStorageData = getFromStorage('filmsWatched');
-  if (localStorageData) {
-    filmsWatched = [...JSON.parse(localStorageData)];
-  }
-  let currentIdFilm = id;
-  const index = filmsWatched.indexOf(currentIdFilm);
-  if (index > -1) {
-    filmsWatched.splice(index, 1);
-  } else filmsWatched.push(id);
-  addToStorage('filmsWatched', filmsWatched);
-  if (monitorBtnChange()) {
-    removeFromStorage('filmsWatched');
-  }
-};
-const toggleToQueue = () => {
-  let filmsQueue = [];
-  let localStorageData = getFromStorage('filmsQueue');
-  if (localStorageData) {
-    filmsQueue = [...JSON.parse(localStorageData)];
-  }
-  let currentIdFilm = id;
-  const index = filmsQueue.indexOf(currentIdFilm);
-  if (index > -1) {
-    filmsQueue.splice(index, 1);
-  } else filmsQueue.push(id);
-  addToStorage('filmsQueue', filmsQueue);
-  if (monitorBtnChange()) {
-    removeFromStorage('filmsQueue');
-  }
-};
-
-const handleBtnWatched = () => toggleToWatched(id);
-const handleBtnQueue = () => toggleToQueue(id);
-
+monitorBtnChange();
 watchedBtn.addEventListener('click', handleBtnWatched);
 queueBtn.addEventListener('click', handleBtnQueue);
 
-console.log(watchedBtn);
+  function handleBtnWatched() {
+    toggleToWatched(id);
+  }
+
+  function handleBtnQueue() {
+    toggleToQueue(id);
+  }
+
+  function toggleToWatched() {
+    let filmsWatched = [];
+    let localStorageData = getFromStorage('filmsWatched');
+    if (localStorageData) {
+      filmsWatched = localStorageData;
+    }
+    let currentIdFilm = id;
+    const index = filmsWatched.indexOf(currentIdFilm);
+    if (index > -1) {
+      filmsWatched.splice(index, 1);
+    } else filmsWatched.push(id);
+    addToStorage('filmsWatched', filmsWatched);
+    monitorBtnChange();
+  }
+
+  function toggleToQueue() {
+    let filmsQueue = [];
+    let localStorageData = getFromStorage('filmsQueue');
+    if (localStorageData) {
+      filmsQueue = localStorageData;
+    }
+    let currentIdFilm = id;
+    const index = filmsQueue.indexOf(currentIdFilm);
+    if (index > -1) {
+      filmsQueue.splice(index, 1);
+    } else filmsQueue.push(id);
+    addToStorage('filmsQueue', filmsQueue);
+    monitorBtnChange();
+  }
+
+  function monitorBtnChange() {
+    let filmsWatched = [];
+    let localStorageData = getFromStorage('filmsWatched');
+    if (localStorageData) {
+      filmsWatched = localStorageData;
+    }
+    let currentIdFilm = id;
+    let filmId = filmsWatched.find(el => el === currentIdFilm);
+    if (filmId === currentIdFilm) {
+      watchedBtn.textContent = 'Delete from watched';
+      watchedBtn.classList.remove('active');
+    } else {
+      watchedBtn.textContent = 'Add to watched';
+      watchedBtn.classList.add('active');
+    }
+    
+    let filmsQueue = [];
+    localStorageData = getFromStorage('filmsQueue');
+    if (localStorageData) {
+      filmsQueue = localStorageData;
+    }
+
+    filmId = filmsQueue.find(el => el === currentIdFilm);
+    if (filmId === currentIdFilm) {
+      queueBtn.textContent = 'Delete from Queue';
+      queueBtn.classList.remove('active');
+    } else {
+      queueBtn.textContent = 'Add to Queue';
+      queueBtn.classList.add('active');
+    }
+  }
+}
+
+
+
+
+
+
