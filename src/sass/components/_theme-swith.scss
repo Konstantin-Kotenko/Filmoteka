@@ -40,6 +40,18 @@ body.dark-theme {
     fill: $accent-color;
     transition: 0.5s;
   }
+
+  & .modal-movie-info{
+    color: $primary-color;
+  }
+
+  & .modal-movie-title{
+    color: $primary-color;
+  }
+
+  & .modal-movie-descript{
+    color: $primary-color;
+  }
 }
 
 .toolbar {
