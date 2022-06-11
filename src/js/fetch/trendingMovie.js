@@ -4,6 +4,7 @@ import { currentPage, pageRefs } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
+import { genres, dataCombine } from './fetchDateAndGenres.js';
 
 // const refsMovie = {
 //   page: currentPage,
@@ -11,18 +12,17 @@ import { showLoader, hideLoader } from '../loader.js';
 
 // };
 
-
 const gallery = document.querySelector('.gallery');
 
 const renderMovie = data =>
   gallery.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const fetchPopularMovie = async page =>
-  await axios.get(
-    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${currentPage}`
-
-  ).catch((e) => console.error(e))
-
+  await axios
+    .get(
+      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${currentPage}`
+    )
+    .catch(e => console.error(e));
 
 export const requestForPage = async () => {
   hideLoader();
@@ -31,10 +31,11 @@ export const requestForPage = async () => {
     const movies = data.results;
     const totalPages = data.total_pages;
     pageRefs.lastPageBtn.textContent = totalPages;
-    console.log(totalPages);
-    renderMovie(movies);
+    const allGenres = genres();
+    const fullInfo = dataCombine(movies, allGenres);
+    renderMovie(fullInfo);
     showLoader();
   });
-}
+};
 requestForPage();
 document.addEventListener('DOMContentLoaded', fetchPopularMovie);
