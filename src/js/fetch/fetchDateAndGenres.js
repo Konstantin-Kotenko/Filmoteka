@@ -25,7 +25,7 @@ function genres() {
 function createGenresFromTrend(array, allGenres) {
   return array
     .map(id =>
-      allGenres.filter(element => {
+      allGenres?.filter(element => {
         if (element.id === id) {
           return element.name;
         }

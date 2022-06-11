@@ -51,4 +51,4 @@ const onSearch = e => {
   requestForMovie();
 };
 
-formEl.addEventListener('submit', onSearch);
+formEl?.addEventListener('submit', onSearch);
