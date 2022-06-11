@@ -1,15 +1,16 @@
-import { currentPage, defineResultsPerPage, pageRefs } from '../pagination.js';
 import axios from 'axios';
+
+import { currentPage, pageRefs } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
-const axios = require('axios');
+
 // const refsMovie = {
 //   page: currentPage,
 //   language: 'en-US',
 
 // };
-// const cutItems = (array, number) => array.slice(0, number);
+
 
 const gallery = document.querySelector('.gallery');
 
@@ -22,8 +23,6 @@ export const fetchPopularMovie = async page =>
 
   ).catch((e) => console.error(e))
 
-// const allGenres = getGenres();
-// const fullTrendData = dataCombine(movies, allGenres);
 
 export const requestForPage = async () => {
   hideLoader();
