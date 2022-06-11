@@ -45,7 +45,9 @@ async function fetchMovie(id) {
   const response = await fetch(url);
   return await response.json();
 }
-modalRefs.galleryMovie.addEventListener('click', showMovieCard);
+
+modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
+
 let id;
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
