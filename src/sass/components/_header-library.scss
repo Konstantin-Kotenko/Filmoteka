@@ -166,17 +166,14 @@
     }
 }
 
-<<<<<<< HEAD
 .page-link {
 @include font(500, 12px, 1.16);
     font-style: normal;
   color: $secondary-color;
   text-decoration: none;
   text-transform: uppercase;
-=======
 .btn--queue {
   margin-left: 20px;
->>>>>>> main
 }
 
 .header-button:hover {
@@ -193,13 +190,10 @@
 
 .page-link:focus {
   border-bottom: 3px solid $accent-color;
-<<<<<<< HEAD
 }
-=======
 }
 .orange {
   background-color: $accent-color;
   border: 2px solid $accent-color;
   box-shadow: 0px 8px 43px 0px $accent-color;
 }
->>>>>>> main

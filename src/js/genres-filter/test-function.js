@@ -4,7 +4,8 @@ import API_KEY from "../api/api";
 import { getGenresArray } from "./getGenresArray";
 import { getMoviesArray } from "./getMoviesData";
 
-getMoviesDataForMarkup(BASE_URL, API_KEY);
+export const movieDataForHTML = getMoviesDataForMarkup(BASE_URL, API_KEY);
+
 
 export async function getMoviesDataForMarkup(url, apiKey) {
     const genreArray = await getGenresArray(url, apiKey);
