@@ -1,7 +1,9 @@
-import { currentPage, pageRefs } from '../pagination.js'; 
 import { Notify } from 'notiflix'; 
 import axios from 'axios'; 
+
+import { currentPage, pageRefs, onPageSearch } from '../pagination.js'; 
 import { BASE_URL, API_KEY } from '../api/api.js'; 
+import { showLoader, hideLoader } from '../loader.js';
  
 import movieCard from '../../template/movieCard.hbs'; 
  
@@ -11,13 +13,15 @@ const gallery = document.querySelector('.gallery');
 const renderMovie = data => 
   gallery.insertAdjacentHTML('beforeend', movieCard(data)); 
  
-const filmsParams = { 
-  query: '', 
+export const filmsParams = { 
+  query: '',
+  page: 1, 
 }; 
- 
-const fetchfilmsByKey = async params => await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&page=${currentPage}`, { params }).catch((e)=>console.error(e)); 
- 
+
+const fetchfilmsByKey = async (params) => await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}`, { params }).catch((e)=>console.error(e)); 
+
 export const requestForMovie = async() => { 
+  hideLoader();
   await fetchfilmsByKey(filmsParams).then(({data}) => { 
 const movies = data.results; 
 const totalPages = data.total_pages; 
@@ -26,13 +30,16 @@ pageRefs.lastPageBtn.textContent = totalPages;
 // const fullSearchData = dataCombine(movies, allGenres); 
 console.log(totalPages); 
 renderMovie(movies); 
+showLoader();
   }); 
-} 
  
+} 
+
 const onSearch = e => { 
   e.preventDefault(); 
-  filmsParams.query = e.currentTarget.elements[0].value; 
-  gallery.innerHTML = ''; 
+  onPageSearch();
+  gallery.innerHTML = '';
+  filmsParams.query = e.currentTarget.elements[0].value;
   requestForMovie(); 
 }; 
  

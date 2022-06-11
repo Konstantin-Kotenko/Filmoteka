@@ -1,4 +1,4 @@
-import { requestForMovie } from '../js/fetch/fetchByKey';
+import { requestForMovie, filmsParams } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
 
 const pageRefs = {
@@ -96,24 +96,16 @@ const onPageBtnClick = e => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (pageRefs.input.value !== '') {
       console.log(pageRefs.input.value);
-     
+      filmsParams.page = currentPage; 
       requestForMovie();
     } else {
       requestForPage();
     }
   }
 };
-// let pageSize = 9;
-// export const defineResultsPerPage = () => {
-//   if (window.innerWidth >= 1024) {
-//     pageSize = 9;
-//   } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-//     pageSize = 8;
-//   } else if (window.innerWidth < 768) {
-//     pageSize = 4;
-//   }
-//   return pageSize;
-// };
-
+const onPageSearch = () => {
+  btns.forEach(btn => btn.classList.remove('pagination__button--current'));
+  pageRefs.pageArr[0].classList.add('pagination__button--current');
+}
 pageRefs.paginationContainer.addEventListener('click', onPageBtnClick);
-export { currentPage, pageRefs };
+export { currentPage, pageRefs, onPageSearch };
