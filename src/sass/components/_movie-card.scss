@@ -1,5 +1,23 @@
 .movie-card {
-  //flex-basis: ;
+  margin-bottom: 20px;
+  cursor: pointer;
+  @media screen and (min-width: $tablet) {
+    flex-basis: calc((100% - 32px) / 2);
+    margin: 16px 8px;
+  }
+  @media screen and (min-width: $desktop) {
+    flex-basis: calc((100% - 48px) / 3);
+    
+  }
+  transform: translateY(0);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.movie-card:hover {
+  transform: translateY(-3%);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .movie-card__img {
   width: 280px;

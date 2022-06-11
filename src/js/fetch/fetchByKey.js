@@ -1,57 +1,46 @@
-import Notiflix from 'notiflix';
-import axios from 'axios';
-import { BASE_URL, API_KEY } from '../api/api.js';
+import { Notify } from 'notiflix'; 
+import axios from 'axios'; 
 
-const formEl = document.querySelector('.search-form');
-const containerEl = document.querySelector('#abc');
-
-const filmsParams = {
+import { currentPage, pageRefs, onPageSearch } from '../pagination.js'; 
+import { BASE_URL, API_KEY } from '../api/api.js'; 
+import { showLoader, hideLoader } from '../loader.js';
+ 
+import movieCard from '../../template/movieCard.hbs'; 
+ 
+const formEl = document.querySelector('.search-form'); 
+const gallery = document.querySelector('.gallery'); 
+ 
+const renderMovie = data => 
+  gallery.insertAdjacentHTML('beforeend', movieCard(data)); 
+ 
+export const filmsParams = { 
   query: '',
-  page: 1,
-};
+  page: 1, 
+}; 
 
-const customAxios = axios.create({
-  baseURL: `${BASE_URL}search/movie?api_key=${API_KEY}`,
-});
+const fetchfilmsByKey = async (params) => await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}`, { params }).catch((e)=>console.error(e)); 
 
-const fetchfilmsByKey = async params => {
-  try {
-    const { data } = await customAxios.get('', { params });
-    console.log(data);
-    return data;
-  } catch {
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and  try again'
-    );
-  }
-};
+export const requestForMovie = async() => { 
+  hideLoader();
+  await fetchfilmsByKey(filmsParams).then(({data}) => { 
+const movies = data.results; 
+const totalPages = data.total_pages; 
+console.log(data); 
+pageRefs.lastPageBtn.textContent = totalPages; 
+// const fullSearchData = dataCombine(movies, allGenres); 
+console.log(totalPages); 
+renderMovie(movies); 
+showLoader();
+  }); 
+ 
+} 
 
-const onSearch = e => {
-  e.preventDefault();
+const onSearch = e => { 
+  e.preventDefault(); 
+  onPageSearch();
+  gallery.innerHTML = '';
   filmsParams.query = e.currentTarget.elements[0].value;
-  fetchfilmsByKey(filmsParams).then(data => createGallery(data));
-};
-
+  requestForMovie(); 
+}; 
+ 
 formEl.addEventListener('submit', onSearch);
-
-const createGallery = data => {
-  //   console.log(data.results[0].backdrop_path);
-
-  const markUp = data.results
-    .map(
-      result => `<div class="movie-card" id="movie-card">
-        <img
-          class="movie-card__img"
-          src="https://image.tmdb.org/t/p/w500${result.poster_path}"
-          alt="#"
-        />
-        <div class="movie-card__info">
-          <h2 class="movie-card__title">${result.original_title}</h2>
-          <p class="movie-card__brief">some brife | ${result.release_date}</p>
-        </div>
-      </div>`
-    )
-    .join('');
-
-  containerEl.innerHTML = markUp;
-};
