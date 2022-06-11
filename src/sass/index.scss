@@ -7,14 +7,14 @@
 @import './components/main-container';
 @import './components/movie-card';
 @import './components/pagination';
+@import './layouts/header';
 @import './components/header-home-page.scss';
 @import './components/header-library';
 @import './components/genres-filter';
 @import './components/_button';
-@import './components/modal-movie';
+@import './components/_modal-movie';
 
-@import './components/header-home-page.scss';
 @import './layouts/footer/footer';
 @import './layouts/footer/footer-modal';
 @import './layouts/loader';
-@import './components/_theme-swith'
+@import './components/_theme-swith';

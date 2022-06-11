@@ -1,6 +1,7 @@
 .footer {
     padding: 30px 0;
     text-align: center;
+    transition: 0.5s;
     @include font(400, 14px, 1.14);
     color: $secondary-color-shade-dark;
     background-color: $secondary-color-shade-light;
