@@ -9,7 +9,25 @@
     />
     <div class='movie-card__info'>
       <h2 class='movie-card__title'>{{original_title}}</h2>
-      <p class='movie-card__brief'> {{createYear}}</p>
+
+      <div class='movie-card__data'>
+        <ul class='movie-card__genres'>
+          {{#if genres}}
+            {{#each genres}}
+              <li class='movie-card__genre'><a
+                  href=''
+                  class='movie-card__text'
+                >{{name}}{{#unless @last}},{{/unless}}</a></li>
+            {{/each}}
+          {{else}}<li class='movie-card__genre movie-card__text'>N/A</li>
+          {{/if}}
+        </ul>
+        {{#if year}}
+          <p class='movie-card__year movie-card__text'>| {{year}}</p>
+        {{else}}<p class='movie-card__text'>| N/A</p>
+        {{/if}}
+      </div>
+
     </div>
   </div>
 {{/each}}
