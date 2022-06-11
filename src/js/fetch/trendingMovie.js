@@ -5,7 +5,7 @@ import { currentPage, pageRefs } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
-import { genres, dataCombine } from './fetchDateAndGenres.js';
+import { getGenres, dataCombine } from './fetchDateAndGenres.js';
 
 // const refsMovie = {
 //   page: currentPage,
@@ -27,16 +27,16 @@ export const fetchPopularMovie = async page =>
 
 export const requestForPage = async () => {
   hideLoader();
-  await fetchPopularMovie(currentPage).then(({ data }) => {
-    console.log(data);
-    const movies = data.results;
-    const totalPages = data.total_pages;
-    pageRefs.lastPageBtn.textContent = totalPages;
-    const allGenres = genres();
-    const fullInfo = dataCombine(movies, allGenres);
-    renderMovie(fullInfo);
-    showLoader();
-  });
+  const { data, total_pages } = await fetchPopularMovie(currentPage);
+
+  const movies = data.results;
+
+  pageRefs.lastPageBtn.textContent = total_pages;
+  const { genres } = await getGenres();
+  const fullInfo = dataCombine(movies, genres);
+  console.log(fullInfo);
+  renderMovie(fullInfo);
+  showLoader();
 };
 requestForPage();
 document.addEventListener('DOMContentLoaded', fetchPopularMovie);

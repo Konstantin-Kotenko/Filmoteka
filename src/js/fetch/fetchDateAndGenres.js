@@ -6,7 +6,7 @@ const getGenres = async () =>
   await axios
     .get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
     .then(({ data }) => {
-      console.log(data);
+      console.log(data.genres);
       return data;
     })
     .catch(e => console.error(e));
@@ -15,24 +15,8 @@ function createYear(obj) {
   return obj.release_date ? obj.release_date.split('-')[0] : '';
 }
 
-const allGenres = getGenres();
-
-function genres() {
-  const { genres } = allGenres;
-  return genres;
-}
-
 function createGenresFromTrend(array, allGenres) {
-  return array
-    .map(id =>
-      allGenres.filter(element => {
-        if (element.id === id) {
-          return element.name;
-        }
-      })
-    )
-    .slice(0, 3)
-    .flat();
+  return array.map(id => allGenres.find(element => element.id === id)?.name);
 }
 
 function dataCombine(films, allGenres) {
@@ -43,15 +27,4 @@ function dataCombine(films, allGenres) {
   }));
 }
 
-const customAxiosGenres = axios.create({
-  baseURL: `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
-});
-
-export {
-  dataCombine,
-  createGenresFromTrend,
-  createYear,
-  getGenres,
-  allGenres,
-  genres,
-};
+export { dataCombine, createGenresFromTrend, createYear, getGenres, allGenres };

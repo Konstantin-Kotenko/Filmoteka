@@ -17,7 +17,8 @@
               <li class='movie-card__genre'><a
                   href=''
                   class='movie-card__text'
-                >{{name}}{{#unless @last}},{{/unless}}</a></li>
+                >{{this}}{{#unless @last}},{{/unless}}</a>
+              </li>
             {{/each}}
           {{else}}<li class='movie-card__genre movie-card__text'>N/A</li>
           {{/if}}
