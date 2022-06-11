@@ -1,6 +1,7 @@
 import { getFromStorage } from './storage';
 import { movieCard } from '../template/movieCard.hbs';
 import { fetchMovie } from './modal_movie';
+import { renderMovie } from './fetch/fetchByKey';
 
 const btnWatched = document.querySelector('.btn--watched');
 const libraryGallery = document.querySelector('.gallery--library');

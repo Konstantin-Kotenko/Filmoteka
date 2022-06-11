@@ -10,7 +10,7 @@ import movieCard from '../../template/movieCard.hbs';
 const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 
-const renderMovie = data =>
+export const renderMovie = data =>
   gallery.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const filmsParams = {
