@@ -22,9 +22,15 @@ function genres() {
   return genres;
 }
 
-function createGenresFromTrend(array, genres) {
+function createGenresFromTrend(array, allGenres) {
   return array
-    .map(id => genres.filter(element => element.id === id))
+    .map(id =>
+      allGenres.filter(element => {
+        if (element.id === id) {
+          return element.name;
+        }
+      })
+    )
     .slice(0, 3)
     .flat();
 }

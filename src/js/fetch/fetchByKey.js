@@ -7,7 +7,7 @@ import { showLoader, hideLoader } from '../loader.js';
 
 import movieCard from '../../template/movieCard.hbs';
 
-const formEl = document.querySelector('.search-form');
+const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 
 const renderMovie = data =>
@@ -29,7 +29,7 @@ export const requestForMovie = async () => {
     const totalPages = data.total_pages;
     console.log(data);
     pageRefs.lastPageBtn.textContent = totalPages;
-    // const fullSearchData = dataCombine(movies, allGenres);
+
     console.log(totalPages);
     renderMovie(movies);
     showLoader();
@@ -41,6 +41,13 @@ const onSearch = e => {
   onPageSearch();
   gallery.innerHTML = '';
   filmsParams.query = e.currentTarget.elements[0].value;
+
+  if (filmsParams.query.length <= 1) {
+    Notify.info(
+      'No matches found for your query. Enter the correct movie name.'
+    );
+  }
+
   requestForMovie();
 };
 

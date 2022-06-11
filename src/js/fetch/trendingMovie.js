@@ -1,4 +1,5 @@
 import axios from 'axios';
+import './fetchByKey.js';
 
 import { currentPage, pageRefs } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
