@@ -41,7 +41,7 @@ function closeModal() {
 } 
  
 async function fetchMovie(id) { 
-  const url = ${BASE_URL}/movie/${id}?api_key=${API_KEY}; 
+  const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`; 
   console.log('object :>> ', url); 
   const response = await fetch(url); 
   return await response.json(); 
