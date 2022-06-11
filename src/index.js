@@ -6,3 +6,5 @@ import './js/fetch/fetchByKey.js';
 import './js/change-theme';
 import './js/storage-theme-switch';
 import './js/genres-filter/markupGenresFilter.js';
+import './js/getGenresNamesForMarkup/getGenresNamesForMarkup.js';
+import './js/genres-filter/test-function.js';
