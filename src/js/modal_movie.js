@@ -1,7 +1,7 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { BASE_URL, API_KEY } from './api/api';
 import { getFromStorage, addToStorage, removeFromStorage } from './storage';
-
+import { renderTrailer } from './fetch/fetchTrailer';
 
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
@@ -42,9 +42,14 @@ function closeModal() {
 
 async function fetchMovie(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
-  console.log('object :>> ', url);
+  // console.log('object :>> ', url);
   const response = await fetch(url);
   return await response.json();
+}
+
+const showTrailer = (evt) => {
+  const queryID = evt.target.getAttribute('data-attribute');
+  renderTrailer(queryID);
 }
 
 async function showMovieCard(event) {
@@ -59,8 +64,8 @@ async function showMovieCard(event) {
 
   const watchedBtn = document.querySelector('.modal-watched-button');
   const queueBtn = document.querySelector('.modal-queue-button');
-  console.log(watchedBtn);
-  console.log(queueBtn);
+  const openTrailerBtn = document.querySelector('.modal-movie-trailer');
+  openTrailerBtn.addEventListener('click', showTrailer);
 }
 
 modalRefs.galleryMovie.addEventListener('click', showMovieCard);
@@ -136,8 +141,3 @@ const toggleToQueue = () => {
 
 const handleBtnWatched = () => toggleToWatched(id);
 const handleBtnQueue = () => toggleToQueue(id);
-
-watchedBtn.addEventListener('click', handleBtnWatched);
-queueBtn.addEventListener('click', handleBtnQueue);
-
-console.log(watchedBtn);
