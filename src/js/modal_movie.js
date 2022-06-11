@@ -42,7 +42,7 @@ function closeModal() {
   modalRefs.overlayModal.innerHTML = '';
 }
 
-async function fetchMovie(id) {
+export async function fetchMovie(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
   console.log('object :>> ', url);
   const response = await fetch(url);
