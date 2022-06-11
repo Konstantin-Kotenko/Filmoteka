@@ -16,7 +16,7 @@ import { genres, dataCombine } from './fetchDateAndGenres.js';
 const gallery = document.querySelector('.gallery');
 
 const renderMovie = data =>
-  gallery.insertAdjacentHTML('beforeend', movieCard(data));
+  gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const fetchPopularMovie = async page =>
   await axios
