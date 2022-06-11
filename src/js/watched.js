@@ -1,4 +1,4 @@
-import { getFromStorage } from "./storage"
+import { getFromStorage } from './storage';
 
 // const libraryContainer = document.querySelector('.gallery--library')
 // const watchedBtn = document.querySelector(".btn--watched");
@@ -15,22 +15,23 @@ import { getFromStorage } from "./storage"
 const btnWatched = document.querySelector('.btn--watched');
 const libraryGallery = document.querySelector('.gallery--library');
 
-const clearLibrary = () => libraryGallery.innerHTML = '';
+const clearLibrary = () => (libraryGallery.innerHTML = '');
 
-const showFilms = (key) => {
-    clearLibrary();
-    const localStr = getFromStorage(key);
+const showFilms = key => {
+  clearLibrary();
 
-    const watchedArr = getFromStorage('watchedList');
-    watchedArr.forEach(id => searchMovieById.then(data => renderMovie(data)))
-}
+  //const localStr = getFromStorage(key);
+
+  const watchedArr = getFromStorage('filmsWatched');
+  watchedArr.forEach(id => searchMovieById.then(data => renderMovie(data)));
+};
 
 const watchedBtn = () => {
-    refs.watchedBtnRef.classList.add('orange');
-    refs.queueBtnRef.classList.remove('orange');
-}
+  refs.watchedBtnRef.classList.add('orange');
+  refs.queueBtnRef.classList.remove('orange');
+};
 
 btnWatched.addEventListener('click', () => {
-    showFilms('watchedList');
-    watchedBtn();
+  showFilms('filmsWatched');
+  watchedBtn();
 });
