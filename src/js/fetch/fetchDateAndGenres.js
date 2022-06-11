@@ -43,21 +43,9 @@ function dataCombine(films, allGenres) {
   }));
 }
 
-
 const customAxiosGenres = axios.create({
   baseURL: `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
 });
-
-const getGenres = async () => {
-  try {
-    const { data } = await customAxiosGenres.get();
-    return data;
-  } catch {
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and  try again'
-    );
-  }
-};
 
 export {
   dataCombine,
