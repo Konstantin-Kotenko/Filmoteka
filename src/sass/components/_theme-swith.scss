@@ -40,12 +40,23 @@ body.dark-theme {
     fill: $accent-color;
     transition: 0.5s;
   }
+
+  & .modal-movie-info{
+    color: $primary-color;
+  }
+
+  & .modal-movie-title{
+    color: $primary-color;
+  }
+
+  & .modal-movie-descript{
+    color: $primary-color;
+  }
 }
 
 .toolbar {
   display: flex;
   padding: 16px 24px;
-  position: absolute;
   top: 180px;
   right: 0;
   
@@ -86,6 +97,7 @@ body.dark-theme {
   height: 16px;
   border-radius: 50em;
   padding: 3px 0;
+  z-index: 0;
 }
 
 .theme-switch__toggle {
