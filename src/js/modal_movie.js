@@ -1,5 +1,6 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { BASE_URL, API_KEY } from './api/api';
+
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
   closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
