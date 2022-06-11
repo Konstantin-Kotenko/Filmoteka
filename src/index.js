@@ -9,3 +9,4 @@ import './js/storage-theme-switch';
 import './js/modal_movie.js';
 import './js/storage.js';
 import './js/fetch/fetchTrailer';
+

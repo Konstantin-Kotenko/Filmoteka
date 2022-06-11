@@ -1,7 +1,7 @@
 import { getFromStorage } from "./storage.js";
 
 
-import { getFromStorage } from "./storage";
+
 
 const btnQueue = document.querySelector('.btn--queue');
 const libraryGallery = document.querySelector('.gallery--library');
