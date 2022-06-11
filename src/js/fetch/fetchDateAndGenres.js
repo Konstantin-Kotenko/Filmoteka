@@ -32,7 +32,9 @@ const customAxiosGenres = axios.create({
   baseURL: `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
 });
 
+
 const getGenres = async () => {
+
   try {
     const { data } = await customAxiosGenres.get();
     return data;

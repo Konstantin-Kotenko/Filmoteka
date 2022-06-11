@@ -5,8 +5,8 @@
 }
 
 .header-container {
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 
   @media screen and (min-width: $mobile) {
     padding-left: 20px;
@@ -18,8 +18,8 @@
     padding-right: 32px;
   }
   @media screen and (min-width: $desktop) {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 71px;
+    padding-right: 71px;
   }
 }
 
@@ -28,6 +28,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 35px;
 }
 
 .logo-container {
@@ -42,14 +43,19 @@ nav {
   }
   @media screen and (min-width: $tablet) {
     display: block;
+    margin-left: 8px;
   }
+    @media screen and (min-width: $desktop) {
+      display: block;
+      margin-left: 10px;
+    }
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 1.17;
   color: $secondary-color;
-  margin-left: 10px;
-  margin-left: 10px;
+  
+  
 }
 
 .pages {
@@ -85,12 +91,4 @@ nav {
   }
 }
 
-.icon-logo {
-  @media screen and (max-width: ($tablet - 1)) {
-    margin-right: 8px;
-  }
 
-  @media screen and (min-width: $tablet) {
-    margin-right: 10px;
-  }
-}

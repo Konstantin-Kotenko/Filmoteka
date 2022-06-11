@@ -23,9 +23,7 @@
 }
 .modal-info {
   display: flex;
-  // border: 1px solid red;
   @media screen and (max-width: 767px) {
-    //
     display: block;
     height: 900px;
   }
@@ -94,8 +92,6 @@
   background-color: $secondary-color;
 
   @media screen and (min-width: $tablet) {
-    // margin-top: 0;
-    // margin-bottom: 40px;
     margin-left: 32px;
     margin-right: 30px;
   }
@@ -137,6 +133,7 @@
   margin-top: 20px;
   padding: 0;
 }
+
 .modal-movie-info {
   margin-top: 20px;
 }
@@ -246,7 +243,6 @@
 }
 .modal-movie-button-wrapper {
   display: flex;
-  // margin-top: 40px;
   @media screen and (max-width: 767px) {
     margin-top: 20px;
   }
@@ -279,7 +275,44 @@
     background-color: $accent-color;
   }
 }
-.modal-watched-button {
+
+.modal-movie-trailer{
+  width: 136px;
+  height: 44px;
+  background: $secondary-color;
+  border-radius: 5px;
+  padding: 0 13px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  font-family: $primary-font;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  &:focus,
+  &:hover {
+    border: none;
+    background-color: $accent-color;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 20px;
+    margin-left: 8px;
+  }
+}
+
+.buttonTrailer{
+  justify-content: space-between;
+  align-items: center;   
+}
+
+.modal-left-button {
   margin-right: 15px;
   background-color: $secondary-color;
   &:focus,
@@ -287,6 +320,7 @@
     color: #ffffff;
   }
 }
+
 .modal-queue-button {
   &:focus,
   &:hover {
