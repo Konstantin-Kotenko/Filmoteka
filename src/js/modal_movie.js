@@ -7,6 +7,7 @@ const modalRefs = {
   closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
   overlayModal: document.querySelector('.modal-movie-overlay'),
   galleryMovie: document.querySelector('.gallery'),
+  mainContainer: document.querySelector('.main__container'),
 };
 
 function pressEsc(evt) {
@@ -27,16 +28,21 @@ function onOverlayClick(evt) {
 
 function openModal() {
   modalRefs.lightbox.classList.add('modal-is-open');
+  // modalRefs.mainContainer.style.overflow = 'hidden';
   window.addEventListener('keydown', pressEsc);
   modalRefs.closeModalBtn.addEventListener('click', closeModal);
   modalRefs.overlayModal.addEventListener('click', onOverlayClick);
-}
+  
+  }
+
+
 
 function closeModal() {
   modalRefs.lightbox.classList.remove('modal-is-open');
   window.removeEventListener('keydown', pressEsc);
   modalRefs.closeModalBtn.removeEventListener('click', closeModal);
   modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
+  modalRefs.overlayModal.innerHTML = '';
 }
 
 async function fetchMovie(id) {
