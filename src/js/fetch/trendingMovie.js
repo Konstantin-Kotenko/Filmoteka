@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   currentPage,
-  maxPage,
+  // maxPage,
   renderingPaginationMarkup,
 } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
@@ -40,7 +40,7 @@ export const requestForPage = async () => {
   renderMovie(fullInfo);
   const totalPages = data.total_pages;
   console.log(data.total_pages);
-  maxPage = totalPages;
+  // maxPage = totalPages;
   renderingPaginationMarkup(currentPage);
   showLoader();
 };
