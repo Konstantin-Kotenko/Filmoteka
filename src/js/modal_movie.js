@@ -63,6 +63,8 @@ async function showMovieCard(event) {
   const data = await fetchMovie(id);
   modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
+  console.log('data:', data);
+
   const watchedBtn = document.querySelector('.modal-watched-button');
   const queueBtn = document.querySelector('.modal-queue-button');
 
