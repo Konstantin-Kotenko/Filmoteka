@@ -1,5 +1,4 @@
 import { body, toggle, footerDarktheme } from './change-theme';
-
 const theme = localStorage.getItem('theme');
 
 toggle.addEventListener('change', event => {

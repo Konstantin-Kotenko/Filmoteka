@@ -1,5 +1,5 @@
 const body = document.querySelector('body');
-const toggle = document.querySelector('.theme-switch__toggle');
+const toggle = document.querySelector('#theme-switch-toggle');
 const footerDarktheme = document.querySelector('.footer');
 
 toggle.addEventListener('change', event => {
