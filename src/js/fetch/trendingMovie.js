@@ -1,6 +1,9 @@
 import axios from 'axios';
-
-import { currentPage, maxPage, renderingPaginationMarkup} from '../pagination.js';
+import {
+  currentPage,
+  maxPage,
+  renderingPaginationMarkup,
+} from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
@@ -36,12 +39,12 @@ export const requestForPage = async () => {
 
   renderMovie(fullInfo);
   const totalPages = data.total_pages;
-console.log(data.total_pages);
-maxPage = totalPages;
+  console.log(data.total_pages);
+  maxPage = totalPages;
   renderingPaginationMarkup(currentPage);
   showLoader();
 };
 requestForPage();
 document.addEventListener('DOMContentLoaded', fetchPopularMovie);
 
-export {totalPages}
+export { totalPages };
