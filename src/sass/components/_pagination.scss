@@ -1,8 +1,15 @@
 .pagination {
      @extend %flex-center-style;
-     padding-bottom: 40px;
-    @media screen and (min-width: $tablet){
-        padding-bottom: 60px;  
+   
+     padding-bottom: 150px;
+    @media screen and (min-width: $mobile) {
+        
+        padding-bottom: 150px;
+        }
+     
+    @media screen and (min-width: $tablet) {
+      
+        padding-bottom: 140px;  
     }
 }
 .pagination-list {
