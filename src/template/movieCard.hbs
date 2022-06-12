@@ -14,18 +14,17 @@
         <ul class='movie-card__genres'>
           {{#if genres}}
             {{#each genres}}
-              <li class='movie-card__genre'><a
-                  href=''
-                  class='movie-card__text'
-                >{{this}}{{#unless @last}},{{/unless}}</a>
+              <li class='movie-card__genre'>
+                <a href='' class='movie-card__text'>{{this}}{{#unless @last}},
+                  {{/unless}}</a>
               </li>
             {{/each}}
-          {{else}}<li class='movie-card__genre movie-card__text'>N/A</li>
+          {{else}}<li class='movie-card__genre movie-card__text'> N/A </li>
           {{/if}}
         </ul>
         {{#if year}}
-          <p class='movie-card__year movie-card__text'>| {{year}}</p>
-        {{else}}<p class='movie-card__text'>| N/A</p>
+          <p class='movie-card__year movie-card__text'> | {{year}}</p>
+        {{else}}<p class='movie-card__text'> | N/A </p>
         {{/if}}
       </div>
 

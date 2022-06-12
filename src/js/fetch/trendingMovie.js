@@ -1,5 +1,4 @@
 import axios from 'axios';
-import './fetchByKey.js';
 
 import { currentPage, pageRefs } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
@@ -34,7 +33,6 @@ export const requestForPage = async () => {
   pageRefs.lastPageBtn.textContent = total_pages;
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
-  console.log(fullInfo);
   renderMovie(fullInfo);
   showLoader();
 };
