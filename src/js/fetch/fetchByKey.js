@@ -4,8 +4,8 @@ import axios from 'axios';
 import { currentPage } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
-
 import movieCard from '../../template/movieCard.hbs';
+import { getGenres, dataCombine } from './fetchDateAndGenres.js';
 
 const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
@@ -24,6 +24,7 @@ const fetchfilmsByKey = async params =>
 
 export const requestForMovie = async () => {
   hideLoader();
+
   await fetchfilmsByKey(filmsParams).then(({ data }) => {
     const movies = data.results;
     const totalPages = data.total_pages;
@@ -34,6 +35,7 @@ export const requestForMovie = async () => {
     renderMovie(movies);
     showLoader();
   });
+
 };
 
 const onSearch = e => {

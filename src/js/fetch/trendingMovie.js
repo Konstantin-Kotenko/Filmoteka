@@ -1,5 +1,4 @@
 import axios from 'axios';
-import './fetchByKey.js';
 
 import { currentPage, maxPage, renderingPaginationMarkup} from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
@@ -32,7 +31,9 @@ export const requestForPage = async () => {
 
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
+
   console.log(data);
+
   renderMovie(fullInfo);
   const totalPages = data.total_pages;
 console.log(data.total_pages);
