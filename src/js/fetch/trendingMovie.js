@@ -45,6 +45,6 @@ export const requestForPage = async () => {
   showLoader();
 };
 requestForPage();
-document.addEventListener('DOMContentLoaded', fetchPopularMovie);
+document?.addEventListener('DOMContentLoaded', fetchPopularMovie);
 
 export { totalPages };

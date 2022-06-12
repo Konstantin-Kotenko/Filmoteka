@@ -10,19 +10,19 @@ const Theme = {
 body.classList.add(Theme.LIGHT);
 
 if (localStorage.getItem('theme')) {
-    toggle.setAttribute('checked', true);
-    body.classList.add(Theme.DARK);
-    footerDarktheme.classList.add(Theme.DARK);
+  toggle.setAttribute('checked', true);
+  body.classList.add(Theme.DARK);
+  footerDarktheme.classList.add(Theme.DARK);
 }
 
 const onChange = () => {
-    body.classList.toggle(Theme.DARK);
-    footerDarktheme.classList.toggle(Theme.DARK);
-    if (body.classList.contains(Theme.DARK)) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.removeItem('theme');
-    }    
+  body.classList.toggle(Theme.DARK);
+  footerDarktheme.classList.toggle(Theme.DARK);
+  if (body.classList.contains(Theme.DARK)) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.removeItem('theme');
+  }
 };
 
-toggle.addEventListener('change', onChange);
+toggle?.addEventListener('change', onChange);
