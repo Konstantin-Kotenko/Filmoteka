@@ -15,7 +15,9 @@ function createYear(obj) {
 }
 
 function createGenresFromTrend(array, allGenres) {
-  return array.map(id => allGenres.find(element => element.id === id)?.name);
+  return array
+    .map(id => allGenres.find(element => element.id === id)?.name)
+    .slice(0, 3);
 }
 
 function dataCombine(films, allGenres) {
