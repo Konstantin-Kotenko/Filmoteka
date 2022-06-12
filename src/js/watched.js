@@ -1,36 +1,31 @@
 import { getFromStorage } from "./storage"
+import {refs} from './refs.js'
+import { fetchMovie } from './modal_movie';
+import  cardFilm from '../template/cardFilm.hbs';
 
-// const libraryContainer = document.querySelector('.gallery--library')
-// const watchedBtn = document.querySelector(".btn--watched");
+const onLibraryPageWatched = () => {
+const renderMovie = movie =>
+refs.libraryGallery?.insertAdjacentHTML('beforeend', cardFilm(movie));
+const watchedArr = getFromStorage('filmsWatched');
 
-// const watchedListRender = () => {
-//     const watchedList = getFromStorage('watchedList')
-//     watchedList.map(id => {
-//         libraryContainer.insertAdjacentHTML('beforeend', movieCard(id))
-//     })
-// }
-
-// watchedBtn.addEventListener("click", watchedListRender);
-
-const btnWatched = document.querySelector('.btn--watched');
-const libraryGallery = document.querySelector('.gallery--library');
-
-const clearLibrary = () => libraryGallery.innerHTML = '';
-
-const showFilms = (key) => {
-    clearLibrary();
-    const localStr = getFromStorage(key);
-
-    const watchedArr = getFromStorage('watchedList');
-    watchedArr.forEach(id => searchMovieById.then(data => renderMovie(data)))
+const showFilms = async () => {
+refs.libraryGallery.innerHTML = '';
+   await watchedArr.forEach(id => {fetchMovie(id)
+    .then(data => {console.log(data);
+        renderMovie(data)})
+  
+});
 }
 
 const watchedBtn = () => {
-    refs.watchedBtnRef.classList.add('orange');
-    refs.queueBtnRef.classList.remove('orange');
+    refs.btnWatched.classList.add('orange');
+    refs.btnQueue.classList.remove('orange');
 }
 
-btnWatched.addEventListener('click', () => {
-    showFilms('watchedList');
+refs.btnWatched?.addEventListener('click', () => {
+    showFilms('filmsWatched');
     watchedBtn();
 });
+showFilms('filmsWatched');
+}
+addEventListener('DOMContentLoaded', onLibraryPageWatched)

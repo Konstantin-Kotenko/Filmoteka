@@ -1,7 +1,7 @@
 import axios from 'axios';
+import {refs} from '../refs.js';
 import {
   currentPage,
-  // maxPage,
   renderingPaginationMarkup,
 } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
@@ -20,6 +20,7 @@ const gallery = document.querySelector('.gallery');
 const renderMovie = data =>
   gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
+
 export const fetchPopularMovie = async page =>
   await axios
     .get(
@@ -29,22 +30,22 @@ export const fetchPopularMovie = async page =>
 
 export const requestForPage = async () => {
   hideLoader();
+
   const { data } = await fetchPopularMovie(currentPage);
   const movies = data.results;
 
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
-
   console.log(data);
-
   renderMovie(fullInfo);
   const totalPages = data.total_pages;
   console.log(data.total_pages);
-  // maxPage = totalPages;
   renderingPaginationMarkup(currentPage);
+ 
   showLoader();
 };
 requestForPage();
-document.addEventListener('DOMContentLoaded', fetchPopularMovie);
 
-export { totalPages };
+
+
+

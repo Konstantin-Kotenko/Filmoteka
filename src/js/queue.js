@@ -1,28 +1,34 @@
-import { getFromStorage } from "./storage.js";
+import { getFromStorage } from "./storage"
+import {refs} from './refs'
+import { fetchMovie } from './modal_movie';
+import  cardFilm from '../template/cardFilm.hbs';
+
+const onLibraryPageQueue = () => {console.log(document);
 
 
 
+const renderMovie = movie =>
+refs.libraryGallery?.insertAdjacentHTML('beforeend', cardFilm(movie));
+const queuedArr = getFromStorage('filmsQueue');
 
-const btnQueue = document.querySelector('.btn--queue');
-const libraryGallery = document.querySelector('.gallery--library');
-const clearLibrary = () => libraryGallery. innerHtml = '';
-const showFilms = (key) => {
-    clearLibrary();
-    const localStr = getFromStorage(key);
-   
+const showQueue = async () => {
+  refs.libraryGallery.innerHTML = '';
+   await queuedArr.forEach(id => {fetchMovie(id)
+    .then(data => {console.log(data);
+        renderMovie(data)})
   
-    const queueArr = getFromStorage('filmsQueue');
-    queueArr.forEach(id => searchMovieById.then(data => renderMovie(data)))
-  }
-  const queueBtn = () => {
-    refs.watchedBtnRef.classList.remove('orange');
-    refs.queueBtnRef.classList.add('orange');
-  }
-  const watchedBtn = () => {
-    refs.watchedBtnRef.classList.add('orange');
-    refs.queueBtnRef.classList.remove('orange');
-  }
-btnQueue.addEventListener('click', () => {
-    showFilms('filmsQueue');
-    queueBtn();
-  });
+});
+}
+
+const watchedBtn = () => {
+    refs.btnWatched.classList.add('orange');
+    refs.queueBtn.classList.remove('orange');
+}
+
+refs.queueBtn?.addEventListener('click', () => {
+  showQueue('filmsQueue');
+  watchedBtn()
+});
+
+}
+addEventListener('DOMContentLoaded', onLibraryPageQueue)
