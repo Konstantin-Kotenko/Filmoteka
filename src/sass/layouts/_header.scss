@@ -45,26 +45,34 @@ nav {
     display: block;
     margin-left: 8px;
   }
-    @media screen and (min-width: $desktop) {
-      display: block;
-      margin-left: 10px;
-    }
+  @media screen and (min-width: $desktop) {
+    display: block;
+    margin-left: 10px;
+  }
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 1.17;
   color: $secondary-color;
-  
-  
 }
 
 .pages {
   display: flex;
 }
 
-.library {
-  margin-left: 40px;
+.page {
+  margin-right: 40px;
+  &:last-child {
+    margin-right: 0;
+  }
 }
+// .page:last-child {
+//   margin-right: 40px;
+// }
+
+// .library {
+//   margin-left: 40px;
+// }
 
 .page-link {
   font-style: normal;
@@ -90,5 +98,3 @@ nav {
     background-color: $accent-color;
   }
 }
-
-

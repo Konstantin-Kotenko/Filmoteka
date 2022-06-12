@@ -8,7 +8,6 @@
   }
   @media screen and (min-width: $desktop) {
     flex-basis: calc((100% - 48px) / 3);
-    
   }
   transform: translateY(0);
   transition-duration: 250ms;
@@ -48,8 +47,25 @@
     line-height: 1.14;
   }
 }
-.movie-card__brief {
+.movie-card__data {
+  display: flex;
   margin-top: 7px;
+  font-family: $primary-font;
+  @include font(500, 12px, 1.14);
+  color: $accent-color;
+}
+.movie-card__genres {
+  display: flex;
+  list-style: none;
+}
+
+.movie-card__genre {
+  list-style: none;
+  margin-right: 4px;
+}
+
+.movie-card__text {
+  text-decoration: none;
   font-family: $primary-font;
   @include font(500, 12px, 1.14);
   color: $accent-color;

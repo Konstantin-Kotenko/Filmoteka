@@ -1,7 +1,9 @@
 import axios from 'axios';
-import './fetchByKey.js';
-
-import { currentPage, pageRefs } from '../pagination.js';
+import {
+  currentPage,
+  // maxPage,
+  renderingPaginationMarkup,
+} from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
@@ -27,16 +29,22 @@ export const fetchPopularMovie = async page =>
 
 export const requestForPage = async () => {
   hideLoader();
-  const { data, total_pages } = await fetchPopularMovie(currentPage);
-
+  const { data } = await fetchPopularMovie(currentPage);
   const movies = data.results;
 
-  pageRefs.lastPageBtn.textContent = total_pages;
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
-  console.log(fullInfo);
+
+  console.log(data);
+
   renderMovie(fullInfo);
+  const totalPages = data.total_pages;
+  console.log(data.total_pages);
+  // maxPage = totalPages;
+  renderingPaginationMarkup(currentPage);
   showLoader();
 };
 requestForPage();
-document.addEventListener('DOMContentLoaded', fetchPopularMovie);
+document?.addEventListener('DOMContentLoaded', fetchPopularMovie);
+
+export { totalPages };

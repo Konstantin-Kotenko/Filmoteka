@@ -43,5 +43,5 @@ const closeModal = evt => {
     refs.backdrop.classList.add('is-hidden');
   }
 };
-refs.openBtn.addEventListener('click', openModal);
-refs.backdrop.addEventListener('click', closeModal);
+refs.openBtn?.addEventListener('click', openModal);
+refs.backdrop?.addEventListener('click', closeModal);
