@@ -1,36 +1,38 @@
+import axios from 'axios';
 import { getFromStorage } from './storage';
-import movieCard from '../template/movieCard.hbs';
-import { fetchMovie } from './modal_movie';
-//import { renderMovie } from './fetch/fetchByKey';
-
-// const watchedBtn = () => {
-//   refs.watchedBtnRef.classList.add('orange');
-//   refs.queueBtnRef.classList.remove('orange');
-// };
-
-// btnWatched.addEventListener('click', () => {
-//   showFilms('filmsWatched');
-//   watchedBtn();
-// });
+import oneMovieCard from '../template/oneMoviecard.hbs';
+import { BASE_URL, API_KEY } from './api/api';
 
 const watchedBtn = document.querySelector('.btn--watched');
 const libraryGallery = document.querySelector('.gallery--library');
-console.log(watchedBtn);
-console.log(libraryGallery);
 
-const watchedArr = getFromStorage('filmsWatched');
-console.log(watchedArr);
-
-const clearLibrary = () => (libraryGallery.innerHTML = '');
-
-const renderLibrary = data =>
-  libraryGallery.insertAdjacentHTML('beforeend', movieCard(data));
-
-const showFilms = () => {
-  clearLibrary();
-  watchedArr.forEach(id => fetchMovie(id).then(data => renderLibrary(data)));
+const fetchById = async id => {
+  try {
+    const customIdAxios = axios.create({
+      baseURL: `${BASE_URL}/movie/${id}?api_key=${API_KEY}`,
+    });
+    const data = await customIdAxios.get('');
+    return data;
+  } catch {
+    Notiflix.Notify.failure('Search result not successful');
+  }
 };
 
-console.log(showFilms);
+function slicins(string) {
+  return string.slice(0, 4);
+}
 
-watchedBtn?.addEventListener('click', showFilms);
+const requestForWatched = async () => {
+  libraryGallery.innerHTML = '';
+  const watchedArr = getFromStorage('filmsWatched');
+  // console.log(watchedArr);
+  const arrayForRender = watchedArr.map(id => {
+    fetchById(id).then(result => {
+      const { data } = result;
+      data.release_date = slicins(data.release_date);
+      libraryGallery.insertAdjacentHTML('beforeend', oneMovieCard(data));
+    });
+  });
+};
+
+watchedBtn?.addEventListener('click', requestForWatched);
