@@ -35,4 +35,6 @@ const requestForWatched = async () => {
   });
 };
 
+requestForWatched();
+
 watchedBtn?.addEventListener('click', requestForWatched);
