@@ -35,7 +35,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: $secondary-color;
   box-shadow: 0px 8px 43px 0px $accent-color;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
 }
 
 .card {
-  background: #ffffff;
+  background: $secondary-color;
   border-radius: 4px;
   color: #444444;
 }
@@ -80,7 +80,7 @@
   margin: 10px;
   padding: 10px 0 10px 0;
   text-align: center;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid $secondary-color;
   color: #999999;
   text-transform: uppercase;
   font-weight: bold;
@@ -139,14 +139,14 @@
   margin: 0 auto;
   border-radius: 20px;
   text-transform: uppercase;
-  color: #212529;
+  color: $secondary-color;
   font-weight: bold;
   background-color: $accent-color;
   box-shadow: 0px 8px 43px 0px $accent-color;
 }
 
 .btn-submit:hover {
-  color: #212529;
+  color: $secondary-color;
   background-color: $accent-color;
   box-shadow: 0px 8px 43px 0px $accent-color;
 }
@@ -179,24 +179,24 @@ form {
   outline: none;
   border-radius: 30px;
   background-color: $accent-color;
-  color: #fff;
+  color: $secondary-color;
   transition: 0.4s;
 }
 
 ::-webkit-input-placeholder {
-  color: #fff;
+  color: $secondary-color;
 }
 ::-moz-placeholder {
-  color: #fff;
+  color: $secondary-color;
 }
 :-ms-input-placeholder {
-  color: #fff;
+  color: $secondary-color;
 }
 ::-ms-input-placeholder {
-  color: #fff;
+  color: $secondary-color;
 }
 ::placeholder {
-  color: #fff;
+  color: $secondary-color;
 }
 
 .input-field input:focus {

@@ -74,11 +74,6 @@ if (
   window.location.pathname === '/library.html'
 ) {
   window.location.replace('index.html');
-} else if (
-  !localStorage.getItem('user') &&
-  window.location.pathname === '/myLibrary.html'
-) {
-  window.location.replace('index.html');
 }
 
 const onHandleSignOutBtn = async () => {
@@ -94,4 +89,5 @@ const onHandleSignOutBtn = async () => {
 signOutBtn?.addEventListener('click', onHandleSignOutBtn);
 loginForm?.addEventListener('submit', onHandleLoginForm);
 signupForm?.addEventListener('submit', onHandleSubmitForm);
-// export {};
+
+export { onHandleSubmitForm, onHandleSignOutBtn, onHandleLoginForm };

@@ -10,7 +10,6 @@ document?.addEventListener('DOMContentLoaded', event => {
   btnSignup?.addEventListener('click', rotateCard);
   btnLogin?.addEventListener('click', rotateCard);
 
-  /*See passwod*/
   const seePassword = () => {
     const seePwdIcon = document.querySelector('.see-password'),
       pwdInput = document.querySelector('.group input');
