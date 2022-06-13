@@ -9,4 +9,6 @@ import './js/storage.js';
 import './js/fetch/fetchTrailer';
 import './js/pagination.js';
 import './js/loginForm';
-// import './js/firebase';
+import './js/watched.js';
+import './js/queue.js';
+import './js/firebase';

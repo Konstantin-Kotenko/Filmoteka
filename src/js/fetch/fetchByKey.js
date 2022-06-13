@@ -27,6 +27,7 @@ Notify.init({
 const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 
+
 const renderMovie = data =>
   gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
