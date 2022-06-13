@@ -1,5 +1,6 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { BASE_URL, API_KEY } from './api/api';
+import { body } from './change-theme';
 import { getFromStorage, addToStorage, removeFromStorage } from './storage';
 
 const modalRefs = {
@@ -8,7 +9,8 @@ const modalRefs = {
   overlayModal: document.querySelector('.modal-movie-overlay'),
   galleryMovie: document.querySelector('.gallery'),
   mainContainer: document.querySelector('.main__container'),
-};
+  body: document.querySelector('body'),
+  };
 
 function pressEsc(evt) {
   if (
@@ -25,19 +27,20 @@ function onOverlayClick(evt) {
   }
   closeModal();
 }
-
 function openModal() {
   modalRefs.lightbox.classList.add('modal-is-open');
-  // modalRefs.mainContainer.style.overflow = 'hidden';
-  window.addEventListener('keydown', pressEsc);
-  modalRefs.closeModalBtn.addEventListener('click', closeModal);
+  modalRefs.body.classList.add('overflowModal');
+    window.addEventListener('keydown', pressEsc);
+    modalRefs.closeModalBtn.addEventListener('click', closeModal);
   modalRefs.overlayModal.addEventListener('click', onOverlayClick);
-}
+ 
+    };
 
 function closeModal() {
   modalRefs.lightbox.classList.remove('modal-is-open');
   window.removeEventListener('keydown', pressEsc);
   modalRefs.closeModalBtn.removeEventListener('click', closeModal);
+  modalRefs.body.classList.remove('overflowModal');
   modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
   modalRefs.overlayModal.innerHTML = '';
 }
@@ -56,6 +59,7 @@ async function showMovieCard(event) {
   }
   event.preventDefault();
   openModal();
+ 
   id = event.target.id;
   console.log(id);
   const data = await fetchMovie(id);
