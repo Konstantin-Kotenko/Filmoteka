@@ -1,11 +1,12 @@
 import { Notify } from 'notiflix';
 import axios from 'axios';
 
-import { currentPage } from '../pagination.js';
+import { currentPage, pageRefs, onPageSearch } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import movieCard from '../../template/movieCard.hbs';
 import { getGenres, dataCombine } from './fetchDateAndGenres.js';
+
 Notify.init({
   width: '550px',
   position: 'center-top',
@@ -26,8 +27,9 @@ Notify.init({
 const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 
-export const renderMovie = data =>
-  gallery.insertAdjacentHTML('beforeend', movieCard(data));
+
+const renderMovie = data =>
+  gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const filmsParams = {
   query: '',
@@ -40,31 +42,28 @@ const fetchfilmsByKey = async params =>
 
 export const requestForMovie = async () => {
   hideLoader();
-
+  const { data } = await fetchfilmsByKey(filmsParams);
+  const movies = data.results;
+  const totalPages = data.total_pages;
 
   if (movies.length === 0) {
+    showLoader();
     return Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
   }
-  console.log(data);
-  pageRefs.lastPageBtn.textContent = total_pages;
+  console.log(totalPages);
+
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
 
-  await fetchfilmsByKey(filmsParams).then(({ data }) => {
-    const movies = data.results;
-    const totalPages = data.total_pages;
-    console.log(data);
-    console.log(totalPages);
-    renderMovie(movies);
-    showLoader();
-  });
+  renderMovie(fullInfo);
+  showLoader();
 };
 
 const onSearch = e => {
   e.preventDefault();
- 
+
   gallery.innerHTML = '';
   filmsParams.query = e.currentTarget.elements[0].value;
 
@@ -73,7 +72,6 @@ const onSearch = e => {
       'Search result not successful. Enter the correct movie name and try again.'
     );
   }
-
   requestForMovie();
 };
 
