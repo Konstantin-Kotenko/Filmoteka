@@ -29,3 +29,13 @@ document?.addEventListener('DOMContentLoaded', event => {
 
   seePassword();
 });
+
+const comebacks = document.getElementById('comebacks');
+
+export const onHandleComebacksClick = () => {
+  window.location.replace(
+    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
+  );
+};
+
+comebacks.addEventListener('click', onHandleComebacksClick);

@@ -1,5 +1,4 @@
 .overlay {
-  
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -50,9 +49,7 @@ nav {
     margin-left: 10px;
   }
   font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
+  @include font(500, 30px, 1.17);
   color: $secondary-color;
 }
 
@@ -61,17 +58,18 @@ nav {
 }
 
 .page {
-  margin-right: 40px;
   &:last-child {
     margin-right: 0;
+  }
+  margin-right: 40px;
+  @media screen and (max-width: ($tablet - 1)) {
+    margin-right: 15px;
   }
 }
 
 .page-link {
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
+  @include font(500, 12px, 1.17);
   color: $secondary-color;
   text-decoration: none;
   text-transform: uppercase;

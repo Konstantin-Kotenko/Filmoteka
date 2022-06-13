@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -23,6 +24,17 @@ const login = document.getElementById('authorization');
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+const onHandleGoogle = async () => {
+  await signInWithPopup(auth, googleProvider)
+    .then(result => {
+      localStorage.setItem('user', JSON.stringify(result.user.uid));
+      exit.classList.remove('is-hidden');
+    })
+    .catch(error => {
+      console.log('sorry');
+    });
+};
 
 const onHandleSubmitForm = async e => {
   e.preventDefault();

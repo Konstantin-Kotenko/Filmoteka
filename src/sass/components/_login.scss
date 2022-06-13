@@ -2,33 +2,29 @@
   width: 100vw;
   overflow: hidden;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center-style;
   font-size: 14px;
-  background: $secondary-color; /* fallback for old browsers */
-  background: $secondary-color; /* Chrome 10-25, Safari 5.1-6 */
-  background: $secondary-color; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $secondary-color;
+  background: $secondary-color;
+  background: $secondary-color;
   z-index: 0;
 }
 
-/* entire container, keeps perspective */
 .card-container {
   perspective: 500px;
   margin-bottom: 30px;
 }
-/* flip the pane when hovered */
+
 .card-container.rotate .card {
   transform: rotateY(180deg);
 }
-/* flip speed goes here */
+
 .card {
   transition: transform 0.85s;
   transform-style: preserve-3d;
   position: relative;
 }
 
-/* hide back of pane during swap */
 .login-form,
 .signup-form {
   backface-visibility: hidden;
@@ -36,23 +32,20 @@
   top: 0;
   left: 0;
   background-color: $secondary-color;
-  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 15px 0px $accent-color;
   display: flex;
   flex-direction: column;
 }
 
-/* front pane, placed above back */
 .login-form {
   z-index: 2;
 }
 
-/* back, initially hidden pane */
 .signup-form {
   transform: rotateY(180deg);
   z-index: 3;
 }
 
-/*        Style       */
 .card-container {
   width: 300px;
   margin: 0 auto;
@@ -61,7 +54,7 @@
 .card {
   background: $secondary-color;
   border-radius: 4px;
-  color: #444444;
+  color: $secondary-color-shade-dark;
 }
 
 .card-container,
@@ -81,22 +74,20 @@
   padding: 10px 0 10px 0;
   text-align: center;
   border-bottom: 1px solid $secondary-color;
-  color: #999999;
+  color: $secondary-color-shade-dark;
   text-transform: uppercase;
   font-weight: bold;
-  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 10px 0px $accent-color;
 }
 .card .content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center-style;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
   flex: 1;
 }
 .card .footer {
-  border-top: 1px solid #eeeeee;
-  color: #999999;
+  border-top: 1px solid $secondary-color-shade-light;
+  color: $secondary-color-shade-dark;
   padding: 5px 0 5px 0;
   text-align: center;
 }
@@ -120,13 +111,13 @@
 }
 
 .btn-rotate {
-  color: #212529;
-  background-color: #ddd;
+  color: $primary-color;
+  background-color: $secondary-color-shade-light;
 }
 
 .btn-rotate:hover {
-  color: #212529;
-  background-color: #ccc;
+  color: $primary-color;
+  background-color: $secondary-color-shade-light;
 }
 
 .btn-rotate:focus {
@@ -142,13 +133,13 @@
   color: $secondary-color;
   font-weight: bold;
   background-color: $accent-color;
-  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 10px 0px $accent-color;
 }
 
 .btn-submit:hover {
   color: $secondary-color;
   background-color: $accent-color;
-  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 10px 0px $accent-color;
 }
 
 .btn-submit:focus {
@@ -165,9 +156,7 @@ form {
   width: 90%;
   margin: 20px auto;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center-style;
 }
 
 .input-field input {
@@ -200,8 +189,8 @@ form {
 }
 
 .input-field input:focus {
-  box-shadow: 0px 8px 43px 0px $accent-color;
-  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 15px 0px $accent-color;
+  box-shadow: 0px 8px 15px 0px $accent-color;
 }
 
 .see-password {
@@ -213,4 +202,33 @@ form {
 
 .group input {
   padding-right: 40px;
+}
+
+.login-button {
+  @extend %flex-center-style;
+  width: 250px;
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background-color: $secondary-color;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $secondary-color-shade-dark;
+  }
+
+  &__icon {
+    width: 30px;
+  }
+
+  &__title {
+    @include font(400, 18px, 32px);
+    color: $secondary-color-shade-dark;
+    transition: color $secondary-color;
+  }
+
+  &:hover &__title {
+    color: $primary-color;
+  }
 }
