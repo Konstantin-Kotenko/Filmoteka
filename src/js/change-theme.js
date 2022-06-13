@@ -14,6 +14,7 @@ if (localStorage.getItem('theme')) {
     toggle.setAttribute('checked', true);
     body.classList.add(Theme.DARK);
     footerDarktheme?.classList.add(Theme.DARK);
+    wrapper?.classList.add(Theme.DARK);
 }
 
 const onChange = () => {
