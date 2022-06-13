@@ -19,6 +19,7 @@ const firebaseConfig = {
 const signupForm = document.getElementById('signupForm');
 const loginForm = document.getElementById('loginForm');
 const signOutBtn = document.getElementById('signOut');
+const login = document.getElementById('authorization');
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -34,6 +35,7 @@ const onHandleSubmitForm = async e => {
       console.log('+++++');
       const user = userCredential.user;
       localStorage.setItem('user', JSON.stringify(user.uid));
+      login.classList.add('is-hidden');
     })
     .catch(error => {
       console.log('You are signup');
@@ -66,6 +68,7 @@ if (
   localStorage.getItem('user') &&
   window.location.pathname === '/login.html'
 ) {
+  login.classList.add('is-hidden');
   window.location.replace('index.html');
 }
 
@@ -74,20 +77,23 @@ if (
   window.location.pathname === '/library.html'
 ) {
   window.location.replace('index.html');
+  login.classList.remove('is-hidden');
 }
 
-const onHandleSignOutBtn = async () => {
+const onHandleSignOut = async () => {
   await signOut(auth)
     .then(() => {
-      localStorage.removeItem(user);
+      localStorage.removeItem('user');
+      login.classList.remove('is-hidden');
     })
     .catch(error => {
+      console.log(error);
       console.log('------');
     });
 };
 
-signOutBtn?.addEventListener('click', onHandleSignOutBtn);
+signOutBtn?.addEventListener('click', onHandleSignOut);
 loginForm?.addEventListener('submit', onHandleLoginForm);
 signupForm?.addEventListener('submit', onHandleSubmitForm);
 
-export { onHandleSubmitForm, onHandleSignOutBtn, onHandleLoginForm };
+export { onHandleSubmitForm, onHandleSignOut, onHandleLoginForm };
