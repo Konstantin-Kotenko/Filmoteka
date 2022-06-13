@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -21,15 +22,19 @@ const signupForm = document.getElementById('signupForm');
 const loginForm = document.getElementById('loginForm');
 const signOutBtn = document.getElementById('signOut');
 const login = document.getElementById('authorization');
+const googleBtn = document.getElementById('googleBtn');
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider(app);
 
 const onHandleGoogle = async () => {
-  await signInWithPopup(auth, googleProvider)
+  await signInWithPopup(auth, provider)
     .then(result => {
       localStorage.setItem('user', JSON.stringify(result.user.uid));
-      exit.classList.remove('is-hidden');
+      window.location.replace(
+        'https://konstantin-kotenko.github.io/Filmoteka/index.html'
+      );
     })
     .catch(error => {
       console.log('sorry');
@@ -103,5 +108,5 @@ const onHandleSignOut = async () => {
 signOutBtn?.addEventListener('click', onHandleSignOut);
 loginForm?.addEventListener('submit', onHandleLoginForm);
 signupForm?.addEventListener('submit', onHandleSubmitForm);
-
+googleBtn.addEventListener('click', onHandleGoogle);
 export { onHandleSubmitForm, onHandleSignOut, onHandleLoginForm };
