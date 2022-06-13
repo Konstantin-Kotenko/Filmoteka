@@ -1,12 +1,21 @@
 {{#each this}}
   <div class='movie-card'>
-    <img
-      id='{{id}}'
-      class='movie-card__img'
-      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-      alt='#'
-      loading='lazy'
-    />
+    {{#if poster_path}}
+      <img
+        id='{{id}}'
+        class='movie-card__img'
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='poster'
+        loading='lazy'
+      />
+    {{else}}
+      <img
+        class='movie-card__img'
+        src='https://goit.ua/wp-content/uploads/2018/07/cropped-LOGOOOO-e1531571952503-1.png'
+        alt='poster'
+        loading='lazy'
+      />
+    {{/if}}
     <div class='movie-card__info'>
       <h2 class='movie-card__title'>{{original_title}}</h2>
 
@@ -14,18 +23,17 @@
         <ul class='movie-card__genres'>
           {{#if genres}}
             {{#each genres}}
-              <li class='movie-card__genre'><a
-                  href=''
-                  class='movie-card__text'
-                >{{this}}{{#unless @last}},{{/unless}}</a>
+              <li class='movie-card__genre'>
+                <a href='' class='movie-card__text'>{{this}}{{#unless @last}},
+                  {{/unless}}</a>
               </li>
             {{/each}}
-          {{else}}<li class='movie-card__genre movie-card__text'>N/A</li>
+          {{else}}<li class='movie-card__genre movie-card__text'> N/A </li>
           {{/if}}
         </ul>
         {{#if year}}
-          <p class='movie-card__year movie-card__text'>| {{year}}</p>
-        {{else}}<p class='movie-card__text'>| N/A</p>
+          <p class='movie-card__year movie-card__text'> | {{year}}</p>
+        {{else}}<p class='movie-card__text'> | N/A </p>
         {{/if}}
       </div>
 

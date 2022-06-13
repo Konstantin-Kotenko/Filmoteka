@@ -1,20 +1,31 @@
 const body = document.querySelector('body');
 const toggle = document.querySelector('.theme-switch__toggle');
 const footerDarktheme = document.querySelector('.footer');
+const wrapper = document.querySelector('.main-wrapper');
 
-toggle.addEventListener('change', event => {
-  if (body.classList.contains('dark-theme')) {
-    body.classList.remove('dark-theme');
-    body.classList.add('light-theme');
-    body.classList.add('theme-switch__icon--accent2');
-    footerDarktheme.classList.remove('dark-theme');
-  } else {
-    body.classList.remove('light-theme');
-    body.classList.remove('theme-switch__icon--accent1');
-    body.classList.add('theme-switch__icon--accent2');
-    body.classList.add('dark-theme');
-    footerDarktheme.classList.add('dark-theme');
-  }
-});
+const Theme = {
+    LIGHT: 'light-theme',
+    DARK: 'dark-theme',
+};
 
-export { body, toggle, footerDarktheme };
+body.classList.add(Theme.LIGHT);
+
+if (localStorage.getItem('theme')) {
+    toggle.setAttribute('checked', true);
+    body.classList.add(Theme.DARK);
+    footerDarktheme?.classList.add(Theme.DARK);
+    wrapper?.classList.add(Theme.DARK);
+}
+
+const onChange = () => {
+    body.classList.toggle(Theme.DARK);
+    footerDarktheme?.classList.toggle(Theme.DARK);
+    wrapper?.classList.toggle(Theme.DARK);
+    if (body.classList.contains(Theme.DARK)) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.removeItem('theme');
+    }
+};
+
+toggle?.addEventListener('change', onChange);

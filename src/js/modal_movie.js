@@ -45,13 +45,15 @@ function closeModal() {
   modalRefs.overlayModal.innerHTML = '';
 }
 
-async function fetchMovie(id) {
+export async function fetchMovie(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
-  console.log('object :>> ', url);
+  //console.log('object :>> ', url);
   const response = await fetch(url);
   return await response.json();
 }
+
 modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
+
 let id;
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -64,6 +66,8 @@ async function showMovieCard(event) {
   console.log(id);
   const data = await fetchMovie(id);
   modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+
+  console.log('data:', data);
 
   const watchedBtn = document.querySelector('.modal-watched-button');
   const queueBtn = document.querySelector('.modal-queue-button');

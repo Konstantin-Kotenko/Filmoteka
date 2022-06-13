@@ -5,7 +5,7 @@ body.light-theme {
 }
 
 body.dark-theme {
-  background-color: #333333;
+  background-color: $primary-color;
   color: $secondary-color;
   transition: 0.5s;
 
@@ -52,14 +52,38 @@ body.dark-theme {
   & .modal-movie-descript{
     color: $primary-color;
   }
+
+  & .main-wrapper{
+    background-color: $primary-color;
+  }
 }
 
 .toolbar {
   display: flex;
   justify-content: flex-end;
   padding: revert;
-  bottom: 50;
+  bottom: 25px;
   right: 0;
+  position: absolute;
+  
+    @media screen and (min-width: $mobile) {
+      padding-right:20px;
+    }
+  
+    @media screen and (min-width: $tablet) {
+      padding-right:32px;
+    }
+  
+    @media screen and (min-width: $desktop) {
+      padding-right: 71px;
+    }
+}
+
+.toolbar--login {
+  display: flex;
+  justify-content: flex-end;
+  top: 175px;
+  right: 15;
   position: absolute;
   
     @media screen and (min-width: $mobile) {
@@ -88,6 +112,19 @@ body.dark-theme {
   width: 15px;
   margin-right: 8px;
   margin-left: 8px;
+}
+
+.toolbar__background {
+  background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 96px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+  z-index: 100;
 }
 
 .theme-switch__control {
