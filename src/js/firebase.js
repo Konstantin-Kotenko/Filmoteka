@@ -32,17 +32,13 @@ const onHandleSubmitForm = async e => {
 
   await createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
-      console.log('+++++');
       const user = userCredential.user;
-      localStorage.setItem('user', JSON.stringify(user.uid));
+      signOutBtn.classList.remove('is-hidden');
       login.classList.add('is-hidden');
+      window.location.replace('index.html');
+      localStorage.setItem('user', JSON.stringify(user.uid));
     })
-    .catch(error => {
-      console.log('You are signup');
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-  window.location.replace('index.html');
+    .catch(error => {});
 };
 
 const onHandleLoginForm = async e => {
@@ -52,16 +48,15 @@ const onHandleLoginForm = async e => {
 
   await signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
-      console.log('+++++');
       const user = userCredential.user;
       localStorage.setItem('user', JSON.stringify(user.uid));
+      signOutBtn.classList.remove('is-hidden');
+      login.classList.add('is-hidden');
+      window.location.replace('index.html');
     })
     .catch(error => {
-      console.log('-----');
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log('----');
     });
-  window.location.replace('index.html');
 };
 
 if (
@@ -69,7 +64,6 @@ if (
   window.location.pathname ===
     'https://konstantin-kotenko.github.io/Filmoteka/login.html'
 ) {
-  login.classList.add('is-hidden');
   window.location.replace(
     'https://konstantin-kotenko.github.io/Filmoteka/index.html'
   );
@@ -83,7 +77,6 @@ if (
   window.location.replace(
     'https://konstantin-kotenko.github.io/Filmoteka/index.html'
   );
-  login.classList.remove('is-hidden');
 }
 
 const onHandleSignOut = async () => {
@@ -92,10 +85,7 @@ const onHandleSignOut = async () => {
       localStorage.removeItem('user');
       login.classList.remove('is-hidden');
     })
-    .catch(error => {
-      console.log(error);
-      console.log('------');
-    });
+    .catch(error => {});
 };
 
 signOutBtn?.addEventListener('click', onHandleSignOut);
