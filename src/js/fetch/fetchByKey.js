@@ -13,16 +13,60 @@ Notify.init({
   distance: '150px',
   opacity: 1,
   fontSize: '16px',
+  useIcon: false,
+  fontAwesomeIconSize: '0px',
   failure: {
     background: 'transparent',
     textColor: '#FF001B',
-    childClassName: 'notiflix-notify-failure',
-    notiflixIconColor: 'rgba(0,0,0,0.2)',
-    fontAwesomeClassName: 'fas fa-times-circle',
-    fontAwesomeIconColor: 'rgba(0,0,0,0.2)',
-    backOverlayColor: 'rgba(255,85,73,0.2)',
   },
 });
+
+if (window.innerWidth < 768) {
+  Notify.init({
+    width: '300px',
+    position: 'center-top',
+    distance: '0px',
+    fontSize: '12px',
+    useIcon: false,
+    fontAwesomeIconSize: '0px',
+    failure: {
+      background: 'transparent',
+      textColor: '#FF001B',
+    },
+  });
+}
+
+const onChangeSize = () => {
+  if (window.innerWidth < 768) {
+    Notify.init({
+      width: '300px',
+      position: 'center-top',
+      distance: '0px',
+      fontSize: '12px',
+      useIcon: false,
+      fontAwesomeIconSize: '0px',
+      failure: {
+        background: 'transparent',
+        textColor: '#FF001B',
+      },
+    });
+  } else {
+    Notify.init({
+      width: '550px',
+      position: 'center-top',
+      distance: '150px',
+      opacity: 1,
+      fontSize: '16px',
+      useIcon: false,
+      fontAwesomeIconSize: '0px',
+      failure: {
+        background: 'transparent',
+        textColor: '#FF001B',
+      },
+    });
+  }
+};
+window.addEventListener('resize', onChangeSize);
 
 const formEl = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
