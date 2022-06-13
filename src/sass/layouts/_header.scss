@@ -1,5 +1,5 @@
 .overlay {
-  //max-width: 1600px;
+  
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -45,25 +45,26 @@ nav {
     display: block;
     margin-left: 8px;
   }
-    @media screen and (min-width: $desktop) {
-      display: block;
-      margin-left: 10px;
-    }
+  @media screen and (min-width: $desktop) {
+    display: block;
+    margin-left: 10px;
+  }
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 1.17;
   color: $secondary-color;
-  
-  
 }
 
 .pages {
   display: flex;
 }
 
-.library {
-  margin-left: 40px;
+.page {
+  margin-right: 40px;
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .page-link {
@@ -90,5 +91,3 @@ nav {
     background-color: $accent-color;
   }
 }
-
-

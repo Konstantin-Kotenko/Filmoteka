@@ -58,7 +58,7 @@ body.dark-theme {
   display: flex;
   justify-content: flex-end;
   padding: revert;
-  bottom: 50;
+  bottom: 25px;
   right: 0;
   position: absolute;
   
@@ -88,6 +88,19 @@ body.dark-theme {
   width: 15px;
   margin-right: 8px;
   margin-left: 8px;
+}
+
+.toolbar__background {
+  background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 96px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+  z-index: 100;
 }
 
 .theme-switch__control {
