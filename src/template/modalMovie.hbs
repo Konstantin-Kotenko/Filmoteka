@@ -1,9 +1,13 @@
 <article class='modal-movie-wrapper' id='{{id}}'>
   <div class='modal-info'>
-    <img
-      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-      class='modal-movie-poster'
-      alt='#'loading='lazy'/>
+    <div class='card-poster-wrapper'>
+      <img
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        class='modal-movie-poster'
+        alt='#'
+        loading='lazy'
+      />
+    </div>
     <div class='modal-movie-information'>
       <h2 class='modal-movie-title'>{{title}}</h2>
       <div class='modal-movie-data-reiting'>
@@ -21,9 +25,13 @@
           </p>
           <p class='modal-movie-popularity'>{{popularity}}</p>
           <p class='modal-movie-description-title'>{{original_title}}</p>
-          <p class='modal-movie-description'>
-            <span class='modal-movie-genre-name'>{{name}}</span>
-            </p>
+          <div class='modal-movie-description-genres'>
+            {{#each genres}}
+              <span class='modal-movie-genre-name'>{{name}}{{#unless
+                  @last
+                }},{{/unless}}</span>
+            {{/each}}
+          </div>
         </div>
       </div>
       <p class='modal-movie-about'>About</p>
@@ -48,10 +56,12 @@
       <div class='buttonTrailer'>
         <button
           data-name='Trailer'
-          data-attribute="{{id}}"
-          class='modal-movie-trailer modal-right-button'
+          data-attribute='{{id}}'
+          class='buttonYouTubeTrailer'
           type='button'>
-          TRAILER
+          <svg class='iconYouTube' alt="YouTube Trailer">
+            <use href='./images/icons.svg#icon-youtube'></use>
+          </svg>
         </button>
       </div>
     </div>
