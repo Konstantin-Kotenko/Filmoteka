@@ -6,19 +6,9 @@
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  font-family: 'Helvetica Nueue', Arial, Verdana, sans-serif;
-  /*background:  url(https://github.com/amaury-diallo/pure-javascript-todolist-app/blob/master/blue-bg.svg) no-repeat center; */
-  background: #9d50bb; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #6e48aa,
-    #9d50bb
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #6e48aa,
-    #9d50bb
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $accent-color; /* fallback for old browsers */
+  background: $accent-color; /* Chrome 10-25, Safari 5.1-6 */
+  background: $accent-color; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 0;
 }
 
@@ -46,7 +36,7 @@
   top: 0;
   left: 0;
   background-color: #fff;
-  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 43px 0px $accent-color;
   display: flex;
   flex-direction: column;
 }
@@ -94,8 +84,7 @@
   color: #999999;
   text-transform: uppercase;
   font-weight: bold;
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 43px 0px $accent-color;
 }
 .card .content {
   display: flex;
@@ -152,12 +141,14 @@
   text-transform: uppercase;
   color: #212529;
   font-weight: bold;
-  background-color: #809be0;
+  background-color: $accent-color;
+  box-shadow: 0px 8px 43px 0px $accent-color;
 }
 
 .btn-submit:hover {
   color: #212529;
-  background-color: #4d8cde;
+  background-color: $accent-color;
+  box-shadow: 0px 8px 43px 0px $accent-color;
 }
 
 .btn-submit:focus {
@@ -187,7 +178,7 @@ form {
   border: none;
   outline: none;
   border-radius: 30px;
-  background-color: #a2b2de;
+  background-color: $accent-color;
   color: #fff;
   transition: 0.4s;
 }
@@ -209,8 +200,8 @@ form {
 }
 
 .input-field input:focus {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 43px 0px $accent-color;
+  box-shadow: 0px 8px 43px 0px $accent-color;
 }
 
 .see-password {
