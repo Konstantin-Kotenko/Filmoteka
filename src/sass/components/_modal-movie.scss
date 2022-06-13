@@ -7,7 +7,7 @@
   display: none;
 }
 
-.modal-is-open .modal-movie-overlay {  
+.modal-is-open .modal-movie-overlay {
   overflow-y: hidden;
   width: 100%;
   height: 100%;
@@ -20,7 +20,7 @@
     rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;
   padding: 20px 15px;
   background: linear-gradient(rgba(17, 17, 18, 0.4), rgba(12, 12, 14, 0.4));
-   @media screen and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     overflow: avto;
   }
 }
@@ -38,14 +38,13 @@
 
   @media screen and (min-width: $desktop) {
     display: flex;
-    
   }
 }
 .modal-movie-wrapper {
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid $secondary-color;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 5px, rgba(0, 0, 0, 0.1) -1px -1px 5px,
@@ -193,7 +192,7 @@
   line-height: 1.33;
   @media screen and (max-width: 767px) {
     margin-bottom: 6px;
-  }  
+  }
 }
 
 .modal-movie-description-vote {
@@ -219,7 +218,6 @@
   font-size: 12px;
   line-height: 1.33;
 }
-
 
 .modal-movie-about {
   margin-top: 20px;
@@ -334,8 +332,8 @@
   }
 }
 
-.buttonYouTubeTrailer{
- position: absolute;
+.buttonYouTubeTrailer {
+  position: absolute;
   top: 30px;
   left: 300px;
   width: 70px;
@@ -357,21 +355,21 @@
     pointer-events: none;
   }
   @media screen and (max-width: 767px) {
-     top: 20px;
-  left: 180px;
+    top: 20px;
+    left: 180px;
   }
 
   @media screen and (min-width: $tablet) {
     top: 25px;
-  left: 200px;
-  }  
+    left: 200px;
+  }
   @media screen and (min-width: $desktop) {
     top: 30px;
-  left: 300px;
+    left: 300px;
   }
 }
 
-.iconYouTube{
+.iconYouTube {
   // // display: flex;
   // flex-wrap: wrap;
   // align-items: center;

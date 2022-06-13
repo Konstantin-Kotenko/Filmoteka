@@ -66,17 +66,23 @@ const onHandleLoginForm = async e => {
 
 if (
   localStorage.getItem('user') &&
-  window.location.pathname === '/login.html'
+  window.location.pathname ===
+    'https://konstantin-kotenko.github.io/Filmoteka/login.html'
 ) {
   login.classList.add('is-hidden');
-  window.location.replace('index.html');
+  window.location.replace(
+    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
+  );
 }
 
 if (
   !localStorage.getItem('user') &&
-  window.location.pathname === '/library.html'
+  window.location.pathname ===
+    'https://konstantin-kotenko.github.io/Filmoteka/library.html'
 ) {
-  window.location.replace('index.html');
+  window.location.replace(
+    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
+  );
   login.classList.remove('is-hidden');
 }
 
