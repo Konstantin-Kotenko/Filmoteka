@@ -6,9 +6,9 @@
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  background: $accent-color; /* fallback for old browsers */
-  background: $accent-color; /* Chrome 10-25, Safari 5.1-6 */
-  background: $accent-color; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $secondary-color; /* fallback for old browsers */
+  background: $secondary-color; /* Chrome 10-25, Safari 5.1-6 */
+  background: $secondary-color; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 0;
 }
 
