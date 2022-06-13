@@ -1,30 +1,32 @@
-const loginText = document.querySelector('.title-text .login');
-const loginForm = document.querySelector('form.login');
-const loginBtn = document.querySelector('label.login');
-const signupBtn = document.querySelector('label.signup');
-const signupLink = document.querySelector('form .signup-link a');
-const iconBack = document.querySelector('#iconBack');
+document?.addEventListener('DOMContentLoaded', event => {
+  const rotateCard = () => {
+    const cardContainer = document.querySelector('.card-container');
+    cardContainer.classList.toggle('rotate');
+  };
 
-const onHandleSignupBtn = () => {
-  loginForm.style.marginLeft = '-50%';
-  loginText.style.marginLeft = '-50%';
-};
+  const btnSignup = document.querySelector('#btn-signup'),
+    btnLogin = document.querySelector('#btn-login');
 
-const onHandleloginBtn = () => {
-  loginForm.style.marginLeft = '0%';
-  loginText.style.marginLeft = '0%';
-};
+  btnSignup.addEventListener('click', rotateCard);
+  btnLogin.addEventListener('click', rotateCard);
 
-const onHandleSignupLink = () => {
-  onHandleSignupBtn();
-  return false;
-};
+  /*See passwod*/
+  const seePassword = () => {
+    const seePwdIcon = document.querySelector('.see-password'),
+      pwdInput = document.querySelector('.group input');
 
-const onHandleIconBack = () => {
-  window.location.replace('index.html');
-};
+    seePwdIcon.addEventListener('mousedown', () => {
+      pwdInput.type = 'text';
+    });
 
-iconBack?.addEventListener('click', onHandleIconBack);
-signupBtn?.addEventListener('click', onHandleSignupBtn);
-loginBtn?.addEventListener('click', onHandleloginBtn);
-signupLink?.addEventListener('click', onHandleSignupLink);
+    seePwdIcon.addEventListener('mouseup', () => {
+      pwdInput.type = 'password';
+    });
+
+    seePwdIcon.addEventListener('mouseover', () => {
+      pwdInput.type = 'password';
+    });
+  };
+
+  seePassword();
+});
