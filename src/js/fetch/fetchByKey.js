@@ -46,6 +46,7 @@ export const requestForMovie = async () => {
   const totalPages = data.total_pages;
 
   if (movies.length === 0) {
+    showLoader();
     return Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
