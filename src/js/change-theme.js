@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 const toggle = document.querySelector('.theme-switch__toggle');
 const footerDarktheme = document.querySelector('.footer');
+const wrapper = document.querySelector('.main-wrapper');
 
 const Theme = {
     LIGHT: 'light-theme',
@@ -18,6 +19,7 @@ if (localStorage.getItem('theme')) {
 const onChange = () => {
     body.classList.toggle(Theme.DARK);
     footerDarktheme?.classList.toggle(Theme.DARK);
+    wrapper?.classList.toggle(Theme.DARK);
     if (body.classList.contains(Theme.DARK)) {
         localStorage.setItem('theme', 'dark');
     } else {
