@@ -7,23 +7,23 @@ document?.addEventListener('DOMContentLoaded', event => {
   const btnSignup = document.querySelector('#btn-signup'),
     btnLogin = document.querySelector('#btn-login');
 
-  btnSignup.addEventListener('click', rotateCard);
-  btnLogin.addEventListener('click', rotateCard);
+  btnSignup?.addEventListener('click', rotateCard);
+  btnLogin?.addEventListener('click', rotateCard);
 
   /*See passwod*/
   const seePassword = () => {
     const seePwdIcon = document.querySelector('.see-password'),
       pwdInput = document.querySelector('.group input');
 
-    seePwdIcon.addEventListener('mousedown', () => {
+    seePwdIcon?.addEventListener('mousedown', () => {
       pwdInput.type = 'text';
     });
 
-    seePwdIcon.addEventListener('mouseup', () => {
+    seePwdIcon?.addEventListener('mouseup', () => {
       pwdInput.type = 'password';
     });
 
-    seePwdIcon.addEventListener('mouseover', () => {
+    seePwdIcon?.addEventListener('mouseover', () => {
       pwdInput.type = 'password';
     });
   };
