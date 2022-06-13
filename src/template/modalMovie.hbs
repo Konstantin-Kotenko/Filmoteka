@@ -1,39 +1,50 @@
 <article class='modal-movie-wrapper' id='{{id}}'>
   <div class='modal-info'>
-    <div class='card-poster-wrapper'>
       <img
         src='https://image.tmdb.org/t/p/w500{{poster_path}}'
         class='modal-movie-poster'
         alt='#'
         loading='lazy'
       />
-    </div>
+      <div class='buttonTrailer'>
+        <button
+          data-name='Trailer'
+          data-attribute='{{id}}'
+          class='buttonYouTubeTrailer'
+          type='button'>
+          <svg class="icon-Youtube" width="40" height="32" fill="red">
+<path d="M30.662 5.003c-4.488-0.645-9.448-1.003-14.662-1.003s-10.174 0.358-14.662 1.003c-0.86 3.366-1.338 7.086-1.338 10.997s0.477 7.63 1.338 10.997c4.489 0.645 9.448 1.003 14.662 1.003s10.174-0.358 14.662-1.003c0.86-3.366 1.338-7.086 1.338-10.997s-0.477-7.63-1.338-10.997zM12 22v-12l10 6-10 6z"></path>
+        </svg>
+        </button>
+      </div>
     <div class='modal-movie-information'>
       <h2 class='modal-movie-title'>{{title}}</h2>
-      <div class='modal-movie-data-reiting'>
-        <div class='modal-movie-data'>
-          <p class='modal-movie-data-name'>Vote / Votes</p>
-          <p class='modal-movie-data-name'>Popularity</p>
-          <p class='modal-movie-data-name'>Original Title</p>
-          <p class='modal-movie-data-name'>Genre</p>
-        </div>
-        <div class='modal-movie-info'>
-          <p class='modal-movie-description'>
-            <span class='modal-movie-description-vote'>{{vote_average}}</span>
-            <span class='modal-movie-data-slash'>/</span>
-            <span class='modal-movie-description-votes'>{{vote_count}}</span>
-          </p>
-          <p class='modal-movie-popularity'>{{popularity}}</p>
-          <p class='modal-movie-description-title'>{{original_title}}</p>
-          <div class='modal-movie-description-genres'>
-            {{#each genres}}
-              <span class='modal-movie-genre-name'>{{name}}{{#unless
-                  @last
-                }},{{/unless}}</span>
-            {{/each}}
-          </div>
-        </div>
-      </div>
+      <ul class="modal-movie-data">
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Vote / Votes</p>
+                <p class="modal-movie-description">
+                    <span class="modal-movie-description-vote">{{vote_average}}</span>
+                    <span class="modal-movie-data-slash">/</span>
+                    <span class="modal-movie-description-votes">{{vote_count}}</span>
+                </p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Popularity</p>
+                <p class="modal-movie-description">{{popularity}}</p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Original Title</p>
+                <p class="modal-movie-description-title">{{original_title}}</p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Genre</p>
+                <p class="modal-movie-description">
+                    {{#each genres}}
+                    <span class="modal-movie-genre-name">{{name}} </span>
+                    {{/each}}
+                </p>
+            </li>
+        </ul>
       <p class='modal-movie-about'>About</p>
       <p class='modal-movie-descript'>{{overview}}
       </p>
@@ -52,18 +63,7 @@
         >
           ADD TO QUEUE
         </button>
-      </div>
-      <div class='buttonTrailer'>
-        <button
-          data-name='Trailer'
-          data-attribute='{{id}}'
-          class='buttonYouTubeTrailer'
-          type='button'>
-          <svg class='iconYouTube' alt="YouTube Trailer">
-            <use href='./images/icons.svg#icon-youtube'></use>
-          </svg>
-        </button>
-      </div>
+      </div>      
     </div>
   </div>
 </article>
