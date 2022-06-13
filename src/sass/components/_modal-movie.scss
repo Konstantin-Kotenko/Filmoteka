@@ -29,7 +29,7 @@
   display: flex;
   @media screen and (max-width: 767px) {
     display: block;
-    height: 100vh;
+    height: 100%;
   }
 
   @media screen and (min-width: $tablet) {
@@ -75,6 +75,7 @@
   width: 280px;
   height: auto;
   border-radius: 5px;
+  position: relative;
   @media screen and (max-width: 767px) {
     width: 240px;
     height: 357px;
@@ -129,22 +130,24 @@
     margin-bottom: 0;
   }
 }
-.modal-movie-data-reiting {
-  display: flex;
-}
+
 .modal-movie-data {
+  margin: 0;
   margin-top: 20px;
-  padding: 0;
+}
+.modal-movie-item {
+  display: flex;
+  margin-top: 10px;
 }
 
 .modal-movie-info {
   margin-top: 20px;
+  margin-left: 39px;
 }
 .modal-movie-data-name {
   font-family: $primary-font;
-  margin: 0;
+  width: 69px;
   margin-right: 30px;
-  padding-bottom: 8px;
   color: #8c8c8c;
   font-style: normal;
   font-weight: 500;
@@ -165,20 +168,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
-}
-
-.modal-movie-popularity {
-  line-height: 1.16;
-  margin-bottom: 9px;
-  margin-top: 0;
-  font-family: $primary-font;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.16;
-  @media screen and (min-width: $tablet) {
-    margin-bottom: 8px;
-  }
 }
 
 .modal-movie-description-title {
@@ -336,24 +325,18 @@
   position: absolute;
   top: 30px;
   left: 300px;
-  width: 70px;
-  height: 49px;
-  border-radius: 16px;
+  width: 48px;
+  height: 36px;
+  border-radius: 10px;
   border: solid 1px #f61c0d;
   cursor: pointer;
-  display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
     border: solid 1px #ff1100b7;
+    
   }
-
-  &:hover .watch-trailer-btn__icon {
-    fill: #ff1100b7;
-  }
-  & > .watch-trailer-btn__icon {
-    pointer-events: none;
-  }
+  
   @media screen and (max-width: 767px) {
     top: 20px;
     left: 180px;
@@ -369,11 +352,8 @@
   }
 }
 
-.iconYouTube {
-  // // display: flex;
-  // flex-wrap: wrap;
-  // align-items: center;
-  width: 40px;
-  height: 40px;
-  // fill: #f61c0d;
+.icon-Youtube{
+   display: flex;
+  justify-content: center;
+  align-items: center;
 }
