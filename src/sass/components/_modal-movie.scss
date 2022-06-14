@@ -6,7 +6,7 @@
 .modal-is-open .modal-movie-overlay {
   overflow-y: hidden;
   width: 100%;
-  height: 100%;  
+  height: 100%;
   z-index: 999;
   top: 0;
   left: 0;
@@ -251,11 +251,11 @@
   border: 1px solid $primary-color;
   color: $primary-color;
   font-family: $primary-font;
-  &:focus,
-  &:hover {
-    border: none;
-    background-color: $accent-color;
-  }
+  // &:focus,
+  // &:hover {
+  //   border: none;
+  //   background-color: $accent-color;
+  // }
 }
 
 .modal-movie-trailer {
