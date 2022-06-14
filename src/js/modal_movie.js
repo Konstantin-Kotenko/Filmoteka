@@ -3,6 +3,8 @@ import { BASE_URL, API_KEY } from './api/api';
 import { body } from './change-theme';
 import { getFromStorage, addToStorage, removeFromStorage } from './storage';
 import { renderTrailer } from './fetch/fetchTrailer';
+import { requestForWatched } from './watched';
+import { requestForQueue } from './queue';
 
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
@@ -98,6 +100,7 @@ async function showMovieCard(event) {
       filmsWatched.splice(index, 1);
     } else filmsWatched.push(id);
     addToStorage('filmsWatched', filmsWatched);
+    requestForWatched();
     monitorBtnChange();
   }
 
@@ -113,6 +116,7 @@ async function showMovieCard(event) {
       filmsQueue.splice(index, 1);
     } else filmsQueue.push(id);
     addToStorage('filmsQueue', filmsQueue);
+    requestForQueue();
     monitorBtnChange();
   }
 
