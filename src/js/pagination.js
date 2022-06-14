@@ -1,111 +1,109 @@
-import { requestForMovie, filmsParams } from '../js/fetch/fetchByKey';
+import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
 
-const pageRefs = {
-  paginationContainer: document.querySelector('.pagination__container'),
-  pageBtn: document.querySelector('.pagination__button'),
-  arrowLeft: document.querySelector('.arrow-left'),
-  arrowRight: document.querySelector('.arrow-right'),
-  page1Btn: document.querySelector('.startBtn'),
-  pageArr: document.querySelectorAll('[data-index]'),
-  lastPageBtn: document.querySelector('.pagination__button--last'),
-  prevDots: document.querySelector('#previous'),
-  afterDots: document.querySelector('#after'),
+const refs = {
+  paginationList: document.querySelector('.pagination-list'),
   input: document.querySelector('.search-field'),
 };
-
-let currentPage = 1;
-let btns = document.querySelectorAll('.pagination__button');
-
-
-const onPageBtnClick = e => {
-  let lastPage = pageRefs.lastPageBtn.textContent;
-  if (e.target.tagName === 'BUTTON') {
-    if (Number(e.target.textContent)) {
-      currentPage = Number(e.target.textContent);
-    }
-    if (pageRefs.pageBtn) {
-      btns.forEach(btn => btn.classList.remove('pagination__button--current'));
-      e.target.classList.add('pagination__button--current');
-    }
-    if (e.target === pageRefs.arrowRight && currentPage < Number(lastPage)) {
-      pageRefs.pageArr.forEach(page => {
-        page.textContent = Number(page.textContent) + 5;
-      });
-      currentPage = pageRefs.pageArr[0].textContent;
-      pageRefs.pageArr[0].classList.add('pagination__button--current');
-    }
-    if (e.target === pageRefs.arrowLeft && currentPage >= 5) {
-      pageRefs.pageArr.forEach(page => {
-        page.textContent = Number(page.textContent) - 5;
-      });
-      currentPage = pageRefs.pageArr[0].textContent;
-      pageRefs.pageArr[4].classList.add('pagination__button--current');
-    }
-    if (
-      e.target === pageRefs.page1Btn ||
-      e.target === pageRefs.pageArr[0].textContent
-    ) {
-      pageRefs.pageArr[0].textContent = 1;
-      pageRefs.pageArr[1].textContent = 2;
-      pageRefs.pageArr[2].textContent = 3;
-      pageRefs.pageArr[3].textContent = 4;
-      pageRefs.pageArr[4].textContent = 5;
-      pageRefs.page1Btn.classList.add('pagination__button--current');
-      pageRefs.pageArr[0].classList.add('pagination__button--current');
-      currentPage = pageRefs.page1Btn.textContent;
-      pageRefs.arrowLeft.hidden = true;
-      pageRefs.prevDots.hidden = true;
-      pageRefs.page1Btn.hidden = true;
-    }
-    if (e.target === pageRefs.lastPageBtn) {
-      pageRefs.pageArr[0].textContent =
-        Number(lastPage) - 4;
-      pageRefs.pageArr[1].textContent =
-        Number(lastPage) - 3;
-      pageRefs.pageArr[2].textContent =
-        Number(lastPage) - 2;
-      pageRefs.pageArr[3].textContent =
-        Number(lastPage) - 1;
-      pageRefs.pageArr[4].textContent = lastPage;
-      pageRefs.pageArr[4].classList.add('pagination__button--current');
-      currentPage = pageRefs.pageArr[4].textContent;
-      pageRefs.arrowRight.hidden = true;
-      pageRefs.afterDots.hidden = true;
-      pageRefs.lastPageBtn.hidden = true;
-    }
-    if (Number(currentPage) > 5) {
-      pageRefs.arrowLeft.hidden = false;
-      pageRefs.prevDots.hidden = false;
-      pageRefs.page1Btn.hidden = false;
-    }
-    const lastRawPage = Number(lastPage) - 4;
-    
-    if (Number(currentPage) < lastRawPage) {
-      pageRefs.arrowRight.hidden = false;
-      pageRefs.afterDots.hidden = false;
-      pageRefs.lastPageBtn.hidden = false;
-    }
-    if (Number(currentPage) >= lastRawPage) {
-      pageRefs.arrowRight.hidden = true;
-      pageRefs.afterDots.hidden = true;
-      pageRefs.lastPageBtn.hidden = true;
-    }
-    const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
+function renderCollection () {
+  if(!refs.input.value.length){
     gallery.innerHTML = '';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (pageRefs.input.value !== '') {
-      console.log(pageRefs.input.value);
-      filmsParams.page = currentPage; 
-      requestForMovie();
-    } else {
-      requestForPage();
-    }
+    requestForPage();
+    return;
+  } 
+  if (refs.input.value.length) {
+    refs.paginationList.innerHTML = ''
+    gallery.innerHTML = '';
+    requestForMovie();
   }
-};
-const onPageSearch = () => {
-  btns.forEach(btn => btn.classList.remove('pagination__button--current'));
-  pageRefs.pageArr[0].classList.add('pagination__button--current');
 }
-pageRefs.paginationContainer.addEventListener('click', onPageBtnClick);
-export { currentPage, pageRefs, onPageSearch };
+
+function renderSpan(value) {
+  return `<span data-value='${value}'>${value}</span>`;
+}
+
+export async function renderingPaginationMarkup(currentPage, maxPage) {
+  const pagesArray = Array.apply(null, {
+    length: maxPage ?? 0,
+  })
+    .map(Number.call, Number)
+    .map(item => item + 1);
+  let result =
+    pagesArray.length <= 3
+      ? pagesArray.map(item => renderSpan(item))
+      : pagesArray
+          .map(item => {
+            if (
+              item === maxPage ||
+              item === 1 ||
+              item === currentPage - 1 ||
+              item === currentPage + 1 ||
+              item === currentPage - 2 ||
+              item === currentPage + 2 ||
+              item === currentPage
+            ) {
+              return renderSpan(item);
+            }
+            if (item === currentPage - 3) {
+              return "<span class='dots' data-value='minDots'>...</span>";
+            } 
+            if (item === currentPage + 3) {return "<span class='dots' data-value='maxDots'>...</span>";}
+            return '';
+          })
+          .join('');
+  if (currentPage > 1) {
+    result = "<span class='arrow-left' data-span='prev'></span>" + result;
+  }
+  if (currentPage >= 1 && currentPage !== maxPage) {
+    result = result + "<span class='arrow-right' data-span='next'></span>";
+  }
+  refs.paginationList.innerHTML = result;
+  console.log(refs.paginationList.querySelectorAll('span'));
+  refs.paginationList.querySelectorAll('span').forEach(item => {
+    if (item.innerHTML == currentPage) {
+      console.log(item);
+      item.classList.toggle('active');
+    }
+  });
+  
+}
+
+function onPaginationBtnClick(event) {
+  // event.preventDefault();
+  gallery.innerHTML = '';
+  page = Number(event.target.textContent);
+  if (event.target.nodeName !== 'SPAN') {
+    
+    return;
+  }
+  if (event.target.dataset.span === 'prev') {
+    page -= 1;
+    renderCollection ();
+    return;
+  }
+  if (event.target.dataset.span === 'next') {
+    page += 1;
+    renderCollection ();
+    return;
+  }
+  if (event.target.dataset.value === 'maxDots') {
+      page += 1;
+      renderCollection ();
+      console.log('max dots');
+      return;
+    } 
+    if (event.target.dataset.value === 'minDots') {
+      page -= 1;
+      console.log('min dots');
+      renderCollection ();
+      return;
+    }
+    requestForPage();
+    renderingPaginationMarkup(page)
+} 
+refs.paginationList?.addEventListener('click', onPaginationBtnClick); 
+// renderingPaginationMarkup(1);
+
+
+

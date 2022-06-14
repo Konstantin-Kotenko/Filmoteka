@@ -1,7 +1,6 @@
 .header-library {
   position: relative;
 
-  
   background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.56),
@@ -16,7 +15,6 @@
   margin-right: auto;
   height: 230px;
   @media screen and (min-width: $mobile) {
-    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -38,7 +36,6 @@
     }
   }
   @media screen and (min-width: $tablet) {
-    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -50,7 +47,6 @@
     background-position: center;
   }
   @media screen and (min-width: $tablet) {
-    
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -71,7 +67,6 @@
         url('/src/images/header-library/tablet\ 2x.webp');
     }
     @media screen and (min-width: $desktop) {
-      
       background: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.56),
@@ -98,7 +93,6 @@
 .header-buttons-list {
   display: flex;
   justify-content: center;
-  // margin-bottom: 40px;
 }
 
 .header-button {
@@ -110,8 +104,8 @@
   height: 44px;
 
   @media screen and (min-width: $mobile) {
-      width: 130px;
-    }
+    width: 130px;
+  }
 }
 
 .btn--queue {

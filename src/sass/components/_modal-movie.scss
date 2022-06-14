@@ -3,10 +3,6 @@
   pointer-events: auto;
 }
 
-.is-hidden {
-  display: none;
-}
-
 .modal-is-open .modal-movie-overlay {
   overflow-y: hidden;
   width: 100%;
@@ -31,15 +27,14 @@
     display: block;
     height: 100%;
   }
-
   @media screen and (min-width: $tablet) {
     display: flex;
   }
-
   @media screen and (min-width: $desktop) {
     display: flex;
   }
 }
+
 .modal-movie-wrapper {
   position: absolute;
   z-index: 200;                                                        
@@ -50,22 +45,17 @@
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 5px, rgba(0, 0, 0, 0.1) -1px -1px 5px,
     rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;
-
   padding: 20px 15px;
-
   background-color: $secondary-color;
-
   @media screen and (max-width: 767px) {
     max-width: 280px;
     overflow:auto;
     height: 100%;
   }
-
   @media screen and (min-width: $tablet) {
     display: block;
     width: 704px;
   }
-
   @media screen and (min-width: $desktop) {
     width: 814px;
     display: block;
@@ -82,12 +72,10 @@
     width: 240px;
     height: 357px;
   }
-
   @media screen and (min-width: $tablet) {
     width: 264px;
     height: 374px;
   }
-
   @media screen and (min-width: $desktop) {
     width: 375px;
     height: auto;
@@ -116,7 +104,6 @@
   font-size: 20px;
   line-height: 1.15;
   text-transform: uppercase;
-
   @media screen and (max-width: 767px) {
     font-family: $primary-font;
     font-style: normal;
@@ -137,6 +124,7 @@
   margin: 0;
   margin-top: 20px;
 }
+
 .modal-movie-item {
   display: flex;
   margin-top: 10px;
@@ -146,6 +134,7 @@
   margin-top: 20px;
   margin-left: 39px;
 }
+
 .modal-movie-data-name {
   font-family: $primary-font;
   width: 69px;
@@ -168,12 +157,25 @@
   @include font(500, 12px, 1.16);
 }
 
+.modal-movie-popularity {
+  margin-bottom: 9px;
+  margin-top: 0;
+  font-family: $primary-font;
+  font-style: normal;
+  @include font(500, 12px, 1.16);
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 8px;
+  }
+}
 .modal-movie-description-title {
   text-transform: uppercase;
   color: $primary-color;
   font-family: $primary-font;
   font-style: normal;  
   @include font(500, 12px, 1.33);
+  @media screen and (max-width: 767px) {
+    margin-bottom: 6px;
+
   }
 
 .modal-movie-description-vote {
@@ -192,6 +194,7 @@
   @include font(500, 12px, 1.16);
   color: $primary-color;
 }
+  
 .modal-movie-genre-name {
   font-family: $primary-font;  
   @include font(500, 12px, 1.33);
@@ -203,7 +206,8 @@
   margin-top: 20px;
   margin-bottom: 8px;
   font-family: $primary-font;
-  font-style: normal;  
+  font-style: normal;
+  @include font(500, 12px, 1.33);
   text-transform: uppercase;
   color: $primary-color;
 }
@@ -213,23 +217,22 @@
   @include font(500, 12px, 1.67);
   color: $primary-color;
   margin-right: 0;
-
   @media screen and (min-width: $tablet) {
     margin-left: 0;
     margin-right: 0;
   }
-  
+  @media screen and (min-width: $desktop) {
+  }
 }
+  
 .modal-movie-button-wrapper {
   display: flex;
   @media screen and (max-width: 767px) {
     margin-top: 20px;
   }
-
   @media screen and (min-width: $tablet) {
     margin-top: 20px;
   }
-
   @media screen and (min-width: $desktop) {
     margin-top: 20px;
     margin-left: 8px;
@@ -247,7 +250,6 @@
   border: 1px solid $primary-color;
   color: $primary-color;
   font-family: $primary-font;
- 
   &:focus,
   &:hover {
     border: none;
@@ -274,11 +276,9 @@
   @media screen and (max-width: 767px) {
     margin-top: 20px;
   }
-
   @media screen and (min-width: $tablet) {
     margin-top: 20px;
   }
-
   @media screen and (min-width: $desktop) {
     margin-top: 20px;
     margin-left: 8px;
@@ -293,16 +293,30 @@
 .modal-watched-button {
   margin-right: 15px;
   background-color: $secondary-color;
-  &:focus,
+  //&:focus,
   &:hover {
-    color: #ffffff;
+    background-color: #ff6b08;
+    border: 2px solid #ff6b08;
+    box-shadow: 0 8px 43px #ff6b08;
+    color: $secondary-color;
   }
 }
+
 .modal-queue-button {
-  &:focus,
+  //&:focus,
   &:hover {
-    color: #ffffff;
+    background-color: #ff6b08;
+    border: 2px solid #ff6b08;
+    box-shadow: 0 8px 43px #ff6b08;
+    color: $secondary-color;
   }
+}
+
+.active {
+  background-color: #ff6b08;
+  border: 2px solid #ff6b08;
+  box-shadow: 0 8px 43px #ff6b08;
+  color: $secondary-color;
 }
 
 .buttonYouTubeTrailer {
@@ -316,14 +330,14 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  @extend %flex-center-style;
   &:hover {
     border: solid 1px #ff1100b7;
-      }
-   @media screen and (max-width: 767px) {
+  }
+  @media screen and (max-width: 767px) {
     top: 20px;
     left: 180px;
   }
-
   @media screen and (min-width: $tablet) {
     top: 25px;
     left: 200px;
@@ -340,3 +354,4 @@
    background-position: 50%;
    flex-direction: column;
 }
+

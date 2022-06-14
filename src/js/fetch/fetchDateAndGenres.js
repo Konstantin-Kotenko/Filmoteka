@@ -6,7 +6,6 @@ const getGenres = async () =>
   await axios
     .get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
     .then(({ data }) => {
-      console.log(data.genres);
       return data;
     })
     .catch(e => console.error(e));
@@ -16,7 +15,9 @@ function createYear(obj) {
 }
 
 function createGenresFromTrend(array, allGenres) {
-  return array.map(id => allGenres.find(element => element.id === id)?.name);
+  return array
+    .map(id => allGenres.find(element => element.id === id)?.name)
+    .slice(0, 3);
 }
 
 function dataCombine(films, allGenres) {
@@ -27,4 +28,4 @@ function dataCombine(films, allGenres) {
   }));
 }
 
-export { dataCombine, createGenresFromTrend, createYear, getGenres, allGenres };
+export { dataCombine, createGenresFromTrend, createYear, getGenres };

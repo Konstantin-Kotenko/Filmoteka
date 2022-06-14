@@ -1,14 +1,27 @@
+body {
+height: 100%;
+min-height: 100vh;
+position: relative;
+}
 .footer {
-    padding: 30px 0;
+    background-color: $secondary-color-shade-light;
     text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;  
+}
+.footer_container {
+    padding: 30px 0;
+    color: $secondary-color-shade-dark;
     transition: 0.5s;
     @include font(400, 14px, 1.14);
-    color: $secondary-color-shade-dark;
-    background-color: $secondary-color-shade-light;
+    
+
     @media screen and (min-width: $tablet) {
         display: flex;
         justify-content: center;
-    }
+        
+    }      
 }
 
 .footer__text {
@@ -39,3 +52,4 @@
         transform: rotateY(360deg);
     }
 }
+
