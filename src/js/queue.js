@@ -23,7 +23,7 @@ function slicins(string) {
   return string.slice(0, 4);
 }
 
-const requestForWatched = async () => {
+export const requestForQueue = async () => {
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsQueue');
   console.log(watchedArr);
@@ -37,5 +37,7 @@ const requestForWatched = async () => {
   renderingPaginationMarkup(libraryPage, maxPages);
 };
 
+
 btnQueue?.addEventListener('click', requestForWatched);
+btnQueue?.addEventListener('click', requestForQueue);
 
