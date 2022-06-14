@@ -22,20 +22,6 @@ const signupForm = document.getElementById('signupForm');
 const loginForm = document.getElementById('loginForm');
 const signOutBtn = document.getElementById('signOut');
 const googleBtn = document.getElementById('googleBtn');
-const authorization = document.querySelector('.authorization');
-const pagesHeader = document.querySelector('.pages');
-
-const signOutLi = `
-  <li class="page">
-    <a href="/src/login.htm" class="page-link" id="signOutli">
-      Sign Out
-    </a>
-  </li>`;
-const loginLi = `<li class="page authorization">
-          <a href="/src/login.htm" class="page-link" id="authorization"
-            >Login</a
-          >
-        </li>`;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -45,8 +31,6 @@ const onHandleGoogle = async () => {
   await signInWithPopup(auth, provider)
     .then(result => {
       localStorage.setItem('user', JSON.stringify(result.user.uid));
-      authorization.remove();
-      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
       window.location.replace('index.html');
     })
     .catch(error => {
@@ -65,13 +49,15 @@ const onHandleSubmitForm = async e => {
       const user = userCredential.user;
       window.location.replace('index.html');
       localStorage.setItem('user', JSON.stringify(user.uid));
-      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
     })
-    .catch(error => {});
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 const onHandleLoginForm = async e => {
   e.preventDefault();
+
   const email = e.currentTarget.elements[0].value;
   const password = e.currentTarget.elements[1].value;
 
@@ -79,11 +65,10 @@ const onHandleLoginForm = async e => {
     .then(userCredential => {
       const user = userCredential.user;
       localStorage.setItem('user', JSON.stringify(user.uid));
-      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
       window.location.replace('index.html');
     })
     .catch(error => {
-      console.log('----');
+      console.log(error);
     });
 };
 
@@ -102,13 +87,13 @@ if (
 }
 
 const onHandleSignOut = async () => {
-  pagesHeader.insertAdjacentHTML = ('beforeend', loginLi);
   await signOut(auth)
     .then(() => {
       localStorage.removeItem('user');
-      signOutLi.remove();
     })
-    .catch(error => {});
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 signOutBtn?.addEventListener('click', onHandleSignOut);

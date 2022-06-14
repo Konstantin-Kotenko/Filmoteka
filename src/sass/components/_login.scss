@@ -209,9 +209,11 @@ form {
   width: 250px;
   height: 40px;
   padding: 0 15px;
-  border-radius: 8px;
+  border-radius: 20px;
   margin: 0 auto;
-  background-color: $secondary-color;
+  background-color: $accent-color;
+  outline: none;
+  border: none;
 
   &:hover {
     cursor: pointer;
@@ -224,11 +226,9 @@ form {
 
   &__title {
     @include font(400, 18px, 32px);
-    color: $secondary-color-shade-dark;
-    transition: color $secondary-color;
+    color: $secondary-color;
   }
-
-  &:hover &__title {
-    color: $primary-color;
+  &:focus {
+    box-shadow: 0px 8px 15px 0px $accent-color;
   }
 }

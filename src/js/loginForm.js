@@ -33,9 +33,7 @@ document?.addEventListener('DOMContentLoaded', event => {
 const comebacks = document.getElementById('comebacks');
 
 export const onHandleComebacksClick = () => {
-  window.location.replace(
-    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
-  );
+  window.location.replace('index.html');
 };
 
 comebacks?.addEventListener('click', onHandleComebacksClick);
