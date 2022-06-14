@@ -108,5 +108,5 @@ const onHandleSignOut = async () => {
 signOutBtn?.addEventListener('click', onHandleSignOut);
 loginForm?.addEventListener('submit', onHandleLoginForm);
 signupForm?.addEventListener('submit', onHandleSubmitForm);
-googleBtn.addEventListener('click', onHandleGoogle);
+googleBtn?.addEventListener('click', onHandleGoogle);
 export { onHandleSubmitForm, onHandleSignOut, onHandleLoginForm };
