@@ -37,7 +37,4 @@ export const requestForQueue = async () => {
   renderingPaginationMarkup(libraryPage, maxPages);
 };
 
-
-btnQueue?.addEventListener('click', requestForWatched);
 btnQueue?.addEventListener('click', requestForQueue);
-
