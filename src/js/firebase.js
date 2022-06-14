@@ -21,19 +21,21 @@ const firebaseConfig = {
 const signupForm = document.getElementById('signupForm');
 const loginForm = document.getElementById('loginForm');
 const signOutBtn = document.getElementById('signOut');
-const login = document.getElementById('authorization');
 const googleBtn = document.getElementById('googleBtn');
 const authorization = document.querySelector('.authorization');
-
 const pagesHeader = document.querySelector('.pages');
-console.log(pagesHeader);
 
-const logoLi = `
+const signOutLi = `
   <li class="page">
-    <a href="/src/login.htm" class="page-link" id="authorization">
+    <a href="/src/login.htm" class="page-link" id="signOutli">
       Sign Out
     </a>
   </li>`;
+const loginLi = `<li class="page authorization">
+          <a href="/src/login.htm" class="page-link" id="authorization"
+            >Login</a
+          >
+        </li>`;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -43,16 +45,13 @@ const onHandleGoogle = async () => {
   await signInWithPopup(auth, provider)
     .then(result => {
       localStorage.setItem('user', JSON.stringify(result.user.uid));
-      // window.location.replace(
-      //   'https://konstantin-kotenko.github.io/Filmoteka/index.html'
-      // );
-      window.location.replace('/index.html');
+      authorization.remove();
+      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
+      window.location.replace('index.html');
     })
     .catch(error => {
       console.log('sorry');
     });
-  authorization.remove();
-  pagesHeader.insertAdjacentHTML = ('beforeend', logoLi);
 };
 
 const onHandleSubmitForm = async e => {
@@ -60,14 +59,13 @@ const onHandleSubmitForm = async e => {
 
   const email = e.currentTarget.elements[0].value;
   const password = e.currentTarget.elements[1].value;
-  // pagesHeader.insertAdjacentHTML = ('beforeend', logoLi);
+
   await createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user;
-      signOutBtn.classList.remove('is-hidden');
-      login.classList.add('is-hidden');
       window.location.replace('index.html');
       localStorage.setItem('user', JSON.stringify(user.uid));
+      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
     })
     .catch(error => {});
 };
@@ -81,8 +79,7 @@ const onHandleLoginForm = async e => {
     .then(userCredential => {
       const user = userCredential.user;
       localStorage.setItem('user', JSON.stringify(user.uid));
-      signOutBtn.classList.remove('is-hidden');
-      login.classList.add('is-hidden');
+      pagesHeader.insertAdjacentHTML = ('beforeend', signOutLi);
       window.location.replace('index.html');
     })
     .catch(error => {
@@ -92,31 +89,24 @@ const onHandleLoginForm = async e => {
 
 if (
   localStorage.getItem('user') &&
-  // window.location.pathname ===
-  //   'https://konstantin-kotenko.github.io/Filmoteka/login.html'
-  window.location.replace('/login.html')
+  window.location.pathname === '/login.html'
 ) {
-  // window.location.replace(
-  //   'https://konstantin-kotenko.github.io/Filmoteka/index.html');
-  window.location.replace('/index.html');
+  window.location.replace('index.html');
 }
 
 if (
   !localStorage.getItem('user') &&
-  window.location.pathname ===
-    'https://konstantin-kotenko.github.io/Filmoteka/library.html'
+  window.location.pathname === '/library.html'
 ) {
-  window.location.replace(
-    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
-  );
+  window.location.replace('index.html');
 }
 
 const onHandleSignOut = async () => {
+  pagesHeader.insertAdjacentHTML = ('beforeend', loginLi);
   await signOut(auth)
     .then(() => {
       localStorage.removeItem('user');
-      login.classList.remove('is-hidden');
-      logoLi.remove();
+      signOutLi.remove();
     })
     .catch(error => {});
 };
@@ -125,4 +115,10 @@ signOutBtn?.addEventListener('click', onHandleSignOut);
 loginForm?.addEventListener('submit', onHandleLoginForm);
 signupForm?.addEventListener('submit', onHandleSubmitForm);
 googleBtn?.addEventListener('click', onHandleGoogle);
-export { onHandleSubmitForm, onHandleSignOut, onHandleLoginForm };
+
+export {
+  onHandleSubmitForm,
+  onHandleSignOut,
+  onHandleLoginForm,
+  onHandleGoogle,
+};
