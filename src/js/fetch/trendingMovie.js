@@ -1,7 +1,5 @@
 import axios from 'axios';
 import {
-  currentPage,
-  // maxPage,
   renderingPaginationMarkup,
 } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
@@ -9,8 +7,8 @@ import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
 import { getGenres, dataCombine } from './fetchDateAndGenres.js';
 
-// const refsMovie = {
-//   page: currentPage,
+// let popParams = {
+//   page: 1,
 //   language: 'en-US',
 
 // };
@@ -21,28 +19,26 @@ const renderMovie = data =>
   gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const fetchPopularMovie = async page =>
-  await axios
-    .get(
-      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${currentPage}`
-    )
-    .catch(e => console.error(e));
-
-export const requestForPage = async () => {
+  await axios.get(
+      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`).catch(e => console.error(e));
+ 
+    
+export const requestForPage = async (page=1) => {
   hideLoader();
-  const { data } = await fetchPopularMovie(currentPage);
+  const { data } = await fetchPopularMovie(page);
+  const totalPages = data.total_pages;
+  const popPage = data.page;
+  gallery.innerHTML = '';
   const movies = data.results;
-
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
   renderMovie(fullInfo);
-
-  const totalPages = data.total_pages;
+  renderingPaginationMarkup(popPage, totalPages);
   console.log(data.total_pages);
-  // maxPage = totalPages;
-  renderingPaginationMarkup(currentPage);
   showLoader();
 };
+
 requestForPage();
 document?.addEventListener('DOMContentLoaded', fetchPopularMovie);
 
-export { totalPages };
+

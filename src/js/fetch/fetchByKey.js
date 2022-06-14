@@ -1,7 +1,9 @@
 import { Notify } from 'notiflix';
 import axios from 'axios';
 
-import { currentPage, pageRefs, onPageSearch } from '../pagination.js';
+import {
+  renderingPaginationMarkup,
+} from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import movieCard from '../../template/movieCard.hbs';
@@ -77,6 +79,7 @@ const renderMovie = data =>
 
 export const filmsParams = {
   query: '',
+  page: 1,
 };
 
 const fetchfilmsByKey = async params =>
@@ -88,7 +91,7 @@ export const requestForMovie = async () => {
   hideLoader();
   const { data } = await fetchfilmsByKey(filmsParams);
   const movies = data.results;
-  const totalPages = data.total_pages;
+  const totalSearchPages = data.total_pages;
 
   if (movies.length === 0) {
     showLoader();
@@ -96,12 +99,15 @@ export const requestForMovie = async () => {
       'Search result not successful. Enter the correct movie name and try again.'
     );
   }
-  console.log(totalPages);
+  console.log(totalSearchPages);
 
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
-
+  const searchPage = data.page;
+  filmsParams.page = searchPage;
+  gallery.innerHTML = '';
   renderMovie(fullInfo);
+  renderingPaginationMarkup(searchPage, totalSearchPages);
   showLoader();
 };
 
@@ -110,7 +116,6 @@ const onSearch = e => {
 
   gallery.innerHTML = '';
   filmsParams.query = e.currentTarget.elements[0].value;
-
   if (filmsParams.query.length <= 1) {
     return Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
