@@ -237,11 +237,6 @@
   color: $primary-color;
   font-family: $primary-font;
   @include font(500, 12px, 1.33);
-  &:focus,
-  &:hover {
-    border: none;
-    background-color: $accent-color;
-  }
 }
 
 .modal-movie-trailer {
@@ -280,21 +275,30 @@
 .modal-watched-button {
   margin-right: 15px;
   background-color: $secondary-color;
-  &:focus,
+  //&:focus,
   &:hover {
     background-color: #ff6b08;
     border: 2px solid #ff6b08;
     box-shadow: 0 8px 43px #ff6b08;
+    color: $secondary-color;
   }
 }
 
 .modal-queue-button {
-  &:focus,
+  //&:focus,
   &:hover {
     background-color: #ff6b08;
     border: 2px solid #ff6b08;
     box-shadow: 0 8px 43px #ff6b08;
+    color: $secondary-color;
   }
+}
+
+.active {
+  background-color: #ff6b08;
+  border: 2px solid #ff6b08;
+  box-shadow: 0 8px 43px #ff6b08;
+  color: $secondary-color;
 }
 
 .buttonYouTubeTrailer {
