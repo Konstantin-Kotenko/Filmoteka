@@ -10,7 +10,7 @@ const modalRefs = {
   galleryMovie: document.querySelector('.gallery'),
   mainContainer: document.querySelector('.main__container'),
   body: document.querySelector('body'),
-  };
+};
 
 function pressEsc(evt) {
   if (
@@ -30,11 +30,10 @@ function onOverlayClick(evt) {
 function openModal() {
   modalRefs.lightbox.classList.add('modal-is-open');
   modalRefs.body.classList.add('overflowModal');
-    window.addEventListener('keydown', pressEsc);
-    modalRefs.closeModalBtn.addEventListener('click', closeModal);
+  window.addEventListener('keydown', pressEsc);
+  modalRefs.closeModalBtn.addEventListener('click', closeModal);
   modalRefs.overlayModal.addEventListener('click', onOverlayClick);
- 
-    };
+}
 
 function closeModal() {
   modalRefs.lightbox.classList.remove('modal-is-open');
@@ -61,7 +60,7 @@ async function showMovieCard(event) {
   }
   event.preventDefault();
   openModal();
- 
+
   id = event.target.id;
   console.log(id);
   const data = await fetchMovie(id);
@@ -124,10 +123,10 @@ async function showMovieCard(event) {
     let filmId = filmsWatched.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
       watchedBtn.textContent = 'Delete from watched';
-      watchedBtn.classList.remove('active');
+      watchedBtn.classList.add('active');
     } else {
       watchedBtn.textContent = 'Add to watched';
-      watchedBtn.classList.add('active');
+      watchedBtn.classList.remove('active');
     }
 
     let filmsQueue = [];
@@ -139,10 +138,10 @@ async function showMovieCard(event) {
     filmId = filmsQueue.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
       queueBtn.textContent = 'Delete from Queue';
-      queueBtn.classList.remove('active');
+      queueBtn.classList.add('active');
     } else {
       queueBtn.textContent = 'Add to Queue';
-      queueBtn.classList.add('active');
+      queueBtn.classList.remove('active');
     }
   }
 }
