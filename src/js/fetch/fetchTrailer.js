@@ -17,7 +17,8 @@ const fetchTrailer = async id => {
   }
 };
 
-export const renderTrailer = id => {
+export const renderTrailer = evt => {
+  const id = evt.currentTarget.getAttribute('data-attribute');
   const dataBase = fetchTrailer(id).then(result => {
     const trailersArray = result.data.results;
     const trailerData = trailersArray.find(function chectType(object) {

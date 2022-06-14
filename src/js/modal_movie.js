@@ -2,6 +2,7 @@ import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { BASE_URL, API_KEY } from './api/api';
 import { body } from './change-theme';
 import { getFromStorage, addToStorage, removeFromStorage } from './storage';
+import { renderTrailer } from './fetch/fetchTrailer';
 
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
@@ -66,7 +67,8 @@ async function showMovieCard(event) {
   const data = await fetchMovie(id);
   modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
-  console.log('data:', data);
+  trailerBtn = document.querySelector('.buttonYouTubeTrailer');
+  trailerBtn.addEventListener('click', renderTrailer);
 
   const watchedBtn = document.querySelector('.modal-watched-button');
   const queueBtn = document.querySelector('.modal-queue-button');

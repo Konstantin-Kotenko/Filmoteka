@@ -23,6 +23,17 @@ const loginForm = document.getElementById('loginForm');
 const signOutBtn = document.getElementById('signOut');
 const login = document.getElementById('authorization');
 const googleBtn = document.getElementById('googleBtn');
+const authorization = document.querySelector('.authorization');
+
+const pagesHeader = document.querySelector('.pages');
+console.log(pagesHeader);
+
+const logoLi = `
+  <li class="page">
+    <a href="/src/login.htm" class="page-link" id="authorization">
+      Sign Out
+    </a>
+  </li>`;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -32,13 +43,16 @@ const onHandleGoogle = async () => {
   await signInWithPopup(auth, provider)
     .then(result => {
       localStorage.setItem('user', JSON.stringify(result.user.uid));
-      window.location.replace(
-        'https://konstantin-kotenko.github.io/Filmoteka/index.html'
-      );
+      // window.location.replace(
+      //   'https://konstantin-kotenko.github.io/Filmoteka/index.html'
+      // );
+      window.location.replace('/index.html');
     })
     .catch(error => {
       console.log('sorry');
     });
+  authorization.remove();
+  pagesHeader.insertAdjacentHTML = ('beforeend', logoLi);
 };
 
 const onHandleSubmitForm = async e => {
@@ -46,7 +60,7 @@ const onHandleSubmitForm = async e => {
 
   const email = e.currentTarget.elements[0].value;
   const password = e.currentTarget.elements[1].value;
-
+  // pagesHeader.insertAdjacentHTML = ('beforeend', logoLi);
   await createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user;
@@ -78,12 +92,13 @@ const onHandleLoginForm = async e => {
 
 if (
   localStorage.getItem('user') &&
-  window.location.pathname ===
-    'https://konstantin-kotenko.github.io/Filmoteka/login.html'
+  // window.location.pathname ===
+  //   'https://konstantin-kotenko.github.io/Filmoteka/login.html'
+  window.location.replace('/login.html')
 ) {
-  window.location.replace(
-    'https://konstantin-kotenko.github.io/Filmoteka/index.html'
-  );
+  // window.location.replace(
+  //   'https://konstantin-kotenko.github.io/Filmoteka/index.html');
+  window.location.replace('/index.html');
 }
 
 if (
@@ -101,6 +116,7 @@ const onHandleSignOut = async () => {
     .then(() => {
       localStorage.removeItem('user');
       login.classList.remove('is-hidden');
+      logoLi.remove();
     })
     .catch(error => {});
 };
