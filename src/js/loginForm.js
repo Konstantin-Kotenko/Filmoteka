@@ -38,4 +38,4 @@ export const onHandleComebacksClick = () => {
   );
 };
 
-comebacks.addEventListener('click', onHandleComebacksClick);
+comebacks?.addEventListener('click', onHandleComebacksClick);
