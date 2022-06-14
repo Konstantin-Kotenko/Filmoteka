@@ -12,7 +12,7 @@ import { getGenres, dataCombine } from './fetchDateAndGenres.js';
 //   language: 'en-US',
 
 // };
-
+let firstPage =1;
 const gallery = document.querySelector('.gallery');
 
 const renderMovie = data =>
@@ -23,13 +23,12 @@ export const fetchPopularMovie = async page =>
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`).catch(e => console.error(e));
  
     
-export const requestForPage = async () => {
+export const requestForPage = async (page) => {
   hideLoader();
-  let popPage = page;
   
   const { data } = await fetchPopularMovie(page);
   const totalPages = data.total_pages;
-  renderingPaginationMarkup(popPage, totalPages);
+  renderingPaginationMarkup(page, totalPages);
   
   const movies = data.results;
   const { genres } = await getGenres();
@@ -39,7 +38,7 @@ export const requestForPage = async () => {
   showLoader();
 };
 
-requestForPage(page=1);
-document?.addEventListener('DOMContentLoaded', requestForPage);
+requestForPage(firstPage);
+gallery?.addEventListener('DOMContentLoaded', requestForPage);
 
 

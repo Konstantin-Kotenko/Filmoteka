@@ -14,9 +14,7 @@ const paginationList = document.querySelector('.pagination-list');
 // }
 let libraryPage = 1;
 let maxPages = 1;
-renderingPaginationMarkup(libraryPage, maxPages);
 
-removeEventListener('DOMContentLoaded', requestForPage);
 const fetchById = async id => {
   try {
     const customIdAxios = axios.create({
@@ -33,8 +31,9 @@ function slicins(string) {
   return string.slice(0, 4);
 }
 
-const requestForWatched = async () => {
+export const requestForWatched = async () => {
   libraryGallery.innerHTML = '';
+  paginationList.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
   // console.log(watchedArr);
   const arrayForRender = watchedArr.map(id => {
@@ -44,8 +43,11 @@ const requestForWatched = async () => {
       libraryGallery.insertAdjacentHTML('beforeend', oneMovieCard(data));
     });
   });
+  
+  renderingPaginationMarkup(libraryPage, maxPages);
 };
 
 requestForWatched();
 
 watchedBtn?.addEventListener('click', requestForWatched);
+libraryGallery?.addEventListener('DOMContentLoaded', requestForWatched);

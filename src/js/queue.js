@@ -1,27 +1,3 @@
-// import { getFromStorage } from "./storage.js";
-
-// const btnQueue = document.querySelector('.btn--queue');
-// const libraryGallery = document.querySelector('.gallery--library');
-// const clearLibrary = () => libraryGallery. innerHtml = '';
-// const showFilms = (key) => {
-//     clearLibrary();
-//     const localStr = getFromStorage(key);
-
-//     const queueArr = getFromStorage('filmsQueue');
-//     queueArr.forEach(id => searchMovieById.then(data => renderMovie(data)))
-//   }
-//   const queueBtn = () => {
-//     refs.watchedBtnRef.classList.remove('orange');
-//     refs.queueBtnRef.classList.add('orange');
-//   }
-//   const watchedBtn = () => {
-//     refs.watchedBtnRef.classList.add('orange');
-//     refs.queueBtnRef.classList.remove('orange');
-//   }
-// btnQueue.addEventListener('click', () => {
-//     showFilms('filmsQueue');
-//     queueBtn();
-//   });
 
 import axios from 'axios';
 import { getFromStorage } from './storage';
@@ -31,9 +7,7 @@ import { BASE_URL, API_KEY } from './api/api';
 const btnQueue = document.querySelector('.btn--queue');
 const libraryGallery = document.querySelector('.gallery--library');
 const paginationList = document.querySelector('.pagination-list');
-// if(libraryGallery.innerHTML = ''){
-//   paginationList.innerHTML = '';
-// }
+
 const fetchById = async id => {
   try {
     const customIdAxios = axios.create({
@@ -61,6 +35,7 @@ const requestForWatched = async () => {
       libraryGallery.insertAdjacentHTML('beforeend', oneMovieCard(data));
     });
   });
+  renderingPaginationMarkup(libraryPage, maxPages);
 };
 
 btnQueue?.addEventListener('click', requestForWatched);

@@ -86,15 +86,15 @@ const fetchfilmsByKey = async params =>
     .get(`${BASE_URL}/search/movie?api_key=${API_KEY}`, { params })
     .catch(error => console.error(error));
 
-export const requestForMovie = async () => {
+export const requestForMovie = async (page) => {
   hideLoader();
   gallery.innerHTML = '';
- let searchPage = 1;
- filmsParams.page = searchPage;
+
+ filmsParams.page = page;
   const { data } = await fetchfilmsByKey(filmsParams);
   const movies = data.results;
   const totalSearchPages = data.total_pages;
-  renderingPaginationMarkup(searchPage, totalSearchPages);
+  renderingPaginationMarkup(page, totalSearchPages);
   if (movies.length === 0) {
     showLoader();
     return Notify.failure(
@@ -118,7 +118,8 @@ const onSearch = e => {
       'Search result not successful. Enter the correct movie name and try again.'
     );
   }
-  requestForMovie();
+  let startPage =1;
+  requestForMovie(startPage);
 };
 
 formEl?.addEventListener('submit', onSearch);
