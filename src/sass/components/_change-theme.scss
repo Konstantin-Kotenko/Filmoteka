@@ -32,7 +32,7 @@ body.dark-theme {
   }
 
   & .theme-switch__icon--accent1 {
-    fill: $secondary-color;
+    fill: $accent-color-grey;
     transition: 0.5s;
   }
 
@@ -55,6 +55,34 @@ body.dark-theme {
 
   & .main-wrapper {
     background-color: $primary-color;
+  }
+
+  & .login-form, .btn-rotate {
+    background-color: $accent-color-grey;
+  }
+
+  & .card .header {
+    color: $primary-color;
+  }
+
+  & .card .footer, .btn-rotate{
+    color: $secondary-color;
+  }
+
+  & .modal-movie-wrapper,
+  .modal-movie-information {
+    background-color: $accent-color-grey;
+  }
+
+  & .modal-movie-button,
+  .modal-watched-button {
+    background-color: $accent-color-grey;
+
+    &:focus,
+    &:hover {
+      border: none;
+      background-color: $accent-color;
+    }
   }
 }
 
@@ -106,7 +134,7 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-  fill: $secondary-color;
+  fill: rgb(141, 141, 141);
   color: currentColor;
   height: 15px;
   width: 15px;
@@ -178,16 +206,16 @@ body.dark-theme {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.theme-switch__toggle:checked + .theme-switch__track {
+.theme-switch__toggle:checked+.theme-switch__track {
   background-color: #333;
 }
 
-.theme-switch__toggle:checked ~ .theme-switch__marker {
+.theme-switch__toggle:checked~.theme-switch__marker {
   transform: translateX(17px);
 }
 
-.theme-switch__toggle:focus + .theme-switch__track,
-.theme-switch__toggle:active + .theme-switch__track {
+.theme-switch__toggle:focus+.theme-switch__track,
+.theme-switch__toggle:active+.theme-switch__track {
   box-shadow: 0 0 0 3px $accent-color;
   transition: 0.5s;
 }
