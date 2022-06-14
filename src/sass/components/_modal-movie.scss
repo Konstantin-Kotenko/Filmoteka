@@ -37,6 +37,7 @@
 
 .modal-movie-wrapper {
   position: absolute;
+  z-index: 200;                                                        
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -48,7 +49,8 @@
   background-color: $secondary-color;
   @media screen and (max-width: 767px) {
     max-width: 280px;
-    height: avto;
+    overflow:auto;
+    height: 100%;
   }
   @media screen and (min-width: $tablet) {
     display: block;
@@ -82,6 +84,9 @@
 
 .modal-movie-information {
   background-color: $secondary-color;
+@media screen and (max-width: 767px) {
+   padding-bottom: 20px;
+  }
   @media screen and (min-width: $tablet) {
     margin-left: 32px;
     margin-right: 30px;
@@ -135,7 +140,7 @@
   width: 69px;
   margin-right: 30px;
   color: #8c8c8c;
-  font-style: normal;
+  font-style: normal;  
   @include font(500, 12px, 1.33);
 }
 
@@ -144,10 +149,11 @@
 }
 
 .modal-movie-description {
-  margin-bottom: 10px;
+  line-height: 1.16;
   margin-top: 0;
   font-family: $primary-font;
   font-style: normal;
+  color: $primary-color;  
   @include font(500, 12px, 1.16);
 }
 
@@ -163,15 +169,14 @@
 }
 .modal-movie-description-title {
   text-transform: uppercase;
-  margin-bottom: 3px;
-  margin-top: 0;
+  color: $primary-color;
   font-family: $primary-font;
-  font-style: normal;
+  font-style: normal;  
   @include font(500, 12px, 1.33);
   @media screen and (max-width: 767px) {
     margin-bottom: 6px;
+
   }
-}
 
 .modal-movie-description-vote {
   display: inline-block;
@@ -185,26 +190,33 @@
 }
 .modal-movie-description-votes {
   font-family: $primary-font;
-  font-style: normal;
+  font-style: normal;  
   @include font(500, 12px, 1.16);
+  color: $primary-color;
 }
+  
 .modal-movie-genre-name {
-  font-family: $primary-font;
+  font-family: $primary-font;  
   @include font(500, 12px, 1.33);
+  color: $primary-color;
 }
 
 .modal-movie-about {
+  @include font(500, 12px, 1.33);
   margin-top: 20px;
+  margin-bottom: 8px;
   font-family: $primary-font;
   font-style: normal;
   @include font(500, 12px, 1.33);
   text-transform: uppercase;
+  color: $primary-color;
 }
 
 .modal-movie-descript {
-  font-family: $primary-font;
-  @include font(500, 12px, 1.16);
+  font-family: $primary-font;  
+  @include font(500, 12px, 1.67);
   color: $primary-color;
+  margin-right: 0;
   @media screen and (min-width: $tablet) {
     margin-left: 0;
     margin-right: 0;
@@ -212,6 +224,7 @@
   @media screen and (min-width: $desktop) {
   }
 }
+  
 .modal-movie-button-wrapper {
   display: flex;
   @media screen and (max-width: 767px) {
@@ -227,7 +240,8 @@
 }
 
 .modal-movie-button {
-  cursor: pointer;
+  cursor: pointer;  
+  @include font(500, 12px, 1.33);
   width: 136px;
   height: 44px;
   background: $secondary-color;
@@ -236,11 +250,16 @@
   border: 1px solid $primary-color;
   color: $primary-color;
   font-family: $primary-font;
-  @include font(500, 12px, 1.33);
+  &:focus,
+  &:hover {
+    border: none;
+    background-color: $accent-color;
+  }
 }
 
 .modal-movie-trailer {
   cursor: pointer;
+  @include font(500, 12px, 1.33);
   width: 136px;
   height: 44px;
   background: $secondary-color;
@@ -249,7 +268,6 @@
   border: 1px solid $primary-color;
   color: $primary-color;
   font-family: $primary-font;
-  @include font(500, 12px, 1.33);
   &:focus,
   &:hover {
     border: none;
@@ -330,6 +348,10 @@
   }
 }
 
-.icon-Youtube {
-  @extend %flex-center-style;
+.bgButtom{
+   background-image: url('/src/images/modal-movie/YouTube-Icon.svg');
+   background-repeat: no-repeat;
+   background-position: 50%;
+   flex-direction: column;
 }
+
