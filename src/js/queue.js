@@ -30,7 +30,10 @@ import { BASE_URL, API_KEY } from './api/api';
 
 const btnQueue = document.querySelector('.btn--queue');
 const libraryGallery = document.querySelector('.gallery--library');
-
+const paginationList = document.querySelector('.pagination-list');
+// if(libraryGallery.innerHTML = ''){
+//   paginationList.innerHTML = '';
+// }
 const fetchById = async id => {
   try {
     const customIdAxios = axios.create({
