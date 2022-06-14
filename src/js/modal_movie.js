@@ -9,6 +9,7 @@ const modalRefs = {
   closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
   overlayModal: document.querySelector('.modal-movie-overlay'),
   galleryMovie: document.querySelector('.gallery'),
+  galleryMovieLibrary: document.querySelector('.gallery--library'),
   mainContainer: document.querySelector('.main__container'),
   body: document.querySelector('body'),
 };
@@ -34,8 +35,7 @@ function openModal() {
   window.addEventListener('keydown', pressEsc);
   modalRefs.closeModalBtn.addEventListener('click', closeModal);
   modalRefs.overlayModal.addEventListener('click', onOverlayClick);
-  };
-
+}
 
 function closeModal() {
   modalRefs.lightbox.classList.remove('modal-is-open');
@@ -54,7 +54,7 @@ export async function fetchMovie(id) {
 }
 
 modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
-
+modalRefs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
 let id;
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
