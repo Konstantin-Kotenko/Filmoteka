@@ -123,3 +123,4 @@ const onSearch = e => {
 };
 
 formEl?.addEventListener('submit', onSearch);
+

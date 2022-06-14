@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
@@ -39,3 +38,4 @@ const requestForWatched = async () => {
 };
 
 btnQueue?.addEventListener('click', requestForWatched);
+

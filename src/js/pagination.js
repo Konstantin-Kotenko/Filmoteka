@@ -1,7 +1,6 @@
 import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
 
-
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
   input: document.querySelector('.search-field'),
@@ -19,10 +18,10 @@ function renderCollection (page) {
     gallery.innerHTML = '';
     requestForMovie(page);
   }
-  // if(refs.libraryGallery?.innerHTML){
+  // if(refs.libraryGallery?.innerHTML !== ''){
   //   refs.paginationList.innerHTML = '';
   //   refs.libraryGallery.innerHTML = '';
-  //   requestForWatched();
+  //   return;
   // }
 }
 
