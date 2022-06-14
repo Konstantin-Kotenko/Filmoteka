@@ -1,21 +1,28 @@
 import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
+import { requestForWatched } from './watched';
 
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
   input: document.querySelector('.search-field'),
+  libraryGallery: document.querySelector('.gallery--library'),
 };
 const gallery = document.querySelector('.gallery');
-function renderCollection () {
+function renderCollection (page) {
   if(!refs.input.value.length){
     gallery.innerHTML = '';
-    requestForPage();
+    requestForPage(page);
     return;
   } 
   if (refs.input.value.length) {
-    refs.paginationList.innerHTML = ''
+    refs.paginationList.innerHTML = '';
     gallery.innerHTML = '';
-    requestForMovie();
+    requestForMovie(page);
+  }
+  if(refs.libraryGallery?.innerHTML){
+    refs.paginationList.innerHTML = '';
+    refs.libraryGallery.innerHTML = '';
+    requestForWatched();
   }
 }
 
@@ -23,7 +30,7 @@ function renderSpan(value) {
   return `<span data-value='${value}'>${value}</span>`;
 }
 
-export async function renderingPaginationMarkup(currentPage, maxPage) {
+export function renderingPaginationMarkup(currentPage, maxPage) {
   const pagesArray = Array.apply(null, {
     length: maxPage ?? 0,
   })
@@ -66,44 +73,41 @@ export async function renderingPaginationMarkup(currentPage, maxPage) {
       item.classList.toggle('active');
     }
   });
-  
+  refs.paginationList?.addEventListener('click', onPaginationBtnClick); 
 }
 
 function onPaginationBtnClick(event) {
   // event.preventDefault();
   gallery.innerHTML = '';
-  page = Number(event.target.textContent);
+  currentPage = Number(event.target.textContent);
   if (event.target.nodeName !== 'SPAN') {
     
     return;
   }
   if (event.target.dataset.span === 'prev') {
-    page -= 1;
-    renderCollection ();
+    currentPage -= 1;
+    renderCollection (currentPage);
     return;
   }
   if (event.target.dataset.span === 'next') {
-    page += 1;
-    renderCollection ();
+    currentPage += 1;
+    renderCollection (currentPage);
     return;
   }
   if (event.target.dataset.value === 'maxDots') {
-      page += 1;
-      renderCollection ();
-      console.log('max dots');
+    currentPage += 1;
+      renderCollection (currentPage);
       return;
     } 
     if (event.target.dataset.value === 'minDots') {
-      page -= 1;
-      console.log('min dots');
-      renderCollection ();
+      currentPage -= 1;
+      renderCollection (currentPage);
       return;
     }
-    requestForPage();
-    renderingPaginationMarkup(page)
+    renderCollection(currentPage)
 } 
-refs.paginationList?.addEventListener('click', onPaginationBtnClick); 
-// renderingPaginationMarkup(1);
+
+
 
 
 
