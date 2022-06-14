@@ -57,8 +57,10 @@ body.dark-theme {
     background-color: $primary-color;
   }
 
-  & .login-form, .btn-rotate {
+  & .login-form, .signup-form, .btn-rotate {
     background-color: $accent-color-grey;
+    transition: 0.5s;
+
   }
 
   & .card .header {
@@ -77,12 +79,18 @@ body.dark-theme {
   & .modal-movie-button,
   .modal-watched-button {
     background-color: $accent-color-grey;
+    transition: 0.5s;
 
     &:focus,
     &:hover {
       border: none;
       background-color: $accent-color;
     }
+  }
+
+  & .footer{
+    background-color: $secondary-color-shade-dark;
+    transition: 0.5s;
   }
 }
 
@@ -134,7 +142,7 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-  fill: rgb(141, 141, 141);
+  fill:$accent-color-grey;
   color: currentColor;
   height: 15px;
   width: 15px;
