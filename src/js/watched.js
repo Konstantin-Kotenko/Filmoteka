@@ -4,13 +4,12 @@ import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
 import {renderingPaginationMarkup} from './pagination.js'
 
-
 const watchedBtn = document.querySelector('.btn--watched');
 const libraryGallery = document.querySelector('.gallery--library');
-const pagination = document.querySelector('.pagination')
 
-let libraryPage = 1;
-let maxPages = 1;
+
+// let libraryPage = 1;
+// let totalPages = 1;
 
 const fetchById = async id => {
   try {
@@ -38,10 +37,13 @@ export const requestForWatched = async () => {
       const { data } = result;
       data.release_date = slicins(data.release_date);
       libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(data));
-    // renderingPaginationMarkup(libraryPage, maxPages);
+      
+      console.log(data);
+    
     });
+    
   });
-  
+  // renderingPaginationMarkup(libraryPage, totalPages);
 };
 
 requestForWatched();

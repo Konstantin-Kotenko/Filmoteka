@@ -42,3 +42,4 @@ requestForPage(firstPage);
 gallery?.addEventListener('DOMContentLoaded', requestForPage);
 
 
+
