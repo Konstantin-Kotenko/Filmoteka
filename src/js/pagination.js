@@ -1,6 +1,6 @@
 import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
-import { requestForWatched } from './watched';
+
 
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
@@ -19,11 +19,11 @@ function renderCollection (page) {
     gallery.innerHTML = '';
     requestForMovie(page);
   }
-  if(refs.libraryGallery?.innerHTML){
-    refs.paginationList.innerHTML = '';
-    refs.libraryGallery.innerHTML = '';
-    requestForWatched();
-  }
+  // if(refs.libraryGallery?.innerHTML){
+  //   refs.paginationList.innerHTML = '';
+  //   refs.libraryGallery.innerHTML = '';
+  //   requestForWatched();
+  // }
 }
 
 function renderSpan(value) {
