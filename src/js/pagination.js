@@ -3,9 +3,21 @@ import { requestForPage } from '../js/fetch/trendingMovie';
 
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
+  input: document.querySelector('.search-field'),
 };
 const gallery = document.querySelector('.gallery');
-
+function renderCollection () {
+  if(!refs.input.value.length){
+    gallery.innerHTML = '';
+    requestForPage();
+    return;
+  } 
+  if (refs.input.value.length) {
+    refs.paginationList.innerHTML = ''
+    gallery.innerHTML = '';
+    requestForMovie();
+  }
+}
 
 function renderSpan(value) {
   return `<span data-value='${value}'>${value}</span>`;
@@ -54,38 +66,41 @@ export async function renderingPaginationMarkup(currentPage, maxPage) {
       item.classList.toggle('active');
     }
   });
+  
 }
 
 function onPaginationBtnClick(event) {
   // event.preventDefault();
+  gallery.innerHTML = '';
   page = Number(event.target.textContent);
   if (event.target.nodeName !== 'SPAN') {
-    requestForPage();
+    
     return;
   }
   if (event.target.dataset.span === 'prev') {
     page -= 1;
-    requestForPage();
+    renderCollection ();
     return;
   }
   if (event.target.dataset.span === 'next') {
     page += 1;
-    requestForPage();
+    renderCollection ();
     return;
   }
   if (event.target.dataset.value === 'maxDots') {
       page += 1;
-      requestForPage();
+      renderCollection ();
       console.log('max dots');
       return;
     } 
     if (event.target.dataset.value === 'minDots') {
       page -= 1;
       console.log('min dots');
-      requestForPage();
+      renderCollection ();
       return;
     }
     requestForPage();
+    renderingPaginationMarkup(page)
 } 
 refs.paginationList?.addEventListener('click', onPaginationBtnClick); 
 // renderingPaginationMarkup(1);

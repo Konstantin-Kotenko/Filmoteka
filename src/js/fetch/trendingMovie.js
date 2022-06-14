@@ -23,22 +23,23 @@ export const fetchPopularMovie = async page =>
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`).catch(e => console.error(e));
  
     
-export const requestForPage = async (page=1) => {
+export const requestForPage = async () => {
   hideLoader();
+  let popPage = page;
+  
   const { data } = await fetchPopularMovie(page);
   const totalPages = data.total_pages;
-  const popPage = data.page;
-  gallery.innerHTML = '';
+  renderingPaginationMarkup(popPage, totalPages);
+  
   const movies = data.results;
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
   renderMovie(fullInfo);
-  renderingPaginationMarkup(popPage, totalPages);
-  console.log(data.total_pages);
+  
   showLoader();
 };
 
-requestForPage();
-document?.addEventListener('DOMContentLoaded', fetchPopularMovie);
+requestForPage(page=1);
+document?.addEventListener('DOMContentLoaded', requestForPage);
 
 

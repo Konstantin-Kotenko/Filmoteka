@@ -2,10 +2,21 @@ import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
+import {renderingPaginationMarkup} from './pagination.js'
+import {requestForPage} from './fetch/trendingMovie.js'
 
 const watchedBtn = document.querySelector('.btn--watched');
 const libraryGallery = document.querySelector('.gallery--library');
+const paginationList = document.querySelector('.pagination-list');
+// const gallery = document.querySelector('.gallery');
+// if(libraryGallery.innerHTML = ''){
+//   paginationList.innerHTML = '';
+// }
+let libraryPage = 1;
+let maxPages = 1;
+renderingPaginationMarkup(libraryPage, maxPages);
 
+removeEventListener('DOMContentLoaded', requestForPage);
 const fetchById = async id => {
   try {
     const customIdAxios = axios.create({
