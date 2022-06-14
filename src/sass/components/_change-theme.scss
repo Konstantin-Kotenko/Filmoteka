@@ -57,17 +57,19 @@ body.dark-theme {
     background-color: $primary-color;
   }
 
-  & .login-form, .signup-form, .btn-rotate {
+  & .login-form,
+  .signup-form,
+  .btn-rotate {
     background-color: $accent-color-grey;
     transition: 0.5s;
-
   }
 
   & .card .header {
     color: $primary-color;
   }
 
-  & .card .footer, .btn-rotate{
+  & .card .footer,
+  .btn-rotate {
     color: $secondary-color;
   }
 
@@ -76,19 +78,40 @@ body.dark-theme {
     background-color: $accent-color-grey;
   }
 
-  & .modal-movie-button,
-  .modal-watched-button {
+  & .modal-movie-button {
     background-color: $accent-color-grey;
     transition: 0.5s;
+  }
 
-    &:focus,
+  .modal-watched-button {
+    margin-right: 15px;
+    //&:focus,
     &:hover {
-      border: none;
-      background-color: $accent-color;
+      background-color: #ff6b08;
+      border: 2px solid #ff6b08;
+      box-shadow: 0 8px 43px #ff6b08;
+      color: $secondary-color;
     }
   }
 
-  & .footer{
+  .modal-queue-button {
+    //&:focus,
+    &:hover {
+      background-color: #ff6b08;
+      border: 2px solid #ff6b08;
+      box-shadow: 0 8px 43px #ff6b08;
+      color: $secondary-color;
+    }
+  }
+
+  .active {
+    background-color: #ff6b08;
+    border: 2px solid #ff6b08;
+    box-shadow: 0 8px 43px #ff6b08;
+    color: $secondary-color;
+  }
+
+  & .footer {
     background-color: $secondary-color-shade-dark;
     transition: 0.5s;
   }
@@ -142,7 +165,7 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-  fill:$accent-color-grey;
+  fill: $accent-color-grey;
   color: currentColor;
   height: 15px;
   width: 15px;
@@ -214,16 +237,16 @@ body.dark-theme {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.theme-switch__toggle:checked+.theme-switch__track {
+.theme-switch__toggle:checked + .theme-switch__track {
   background-color: #333;
 }
 
-.theme-switch__toggle:checked~.theme-switch__marker {
+.theme-switch__toggle:checked ~ .theme-switch__marker {
   transform: translateX(17px);
 }
 
-.theme-switch__toggle:focus+.theme-switch__track,
-.theme-switch__toggle:active+.theme-switch__track {
+.theme-switch__toggle:focus + .theme-switch__track,
+.theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px $accent-color;
   transition: 0.5s;
 }
