@@ -282,14 +282,18 @@
   background-color: $secondary-color;
   &:focus,
   &:hover {
-    color: #ffffff;
+    background-color: #ff6b08;
+    border: 2px solid #ff6b08;
+    box-shadow: 0 8px 43px #ff6b08;
   }
 }
 
 .modal-queue-button {
   &:focus,
   &:hover {
-    color: #ffffff;
+    background-color: #ff6b08;
+    border: 2px solid #ff6b08;
+    box-shadow: 0 8px 43px #ff6b08;
   }
 }
 
