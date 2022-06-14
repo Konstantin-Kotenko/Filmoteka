@@ -33,8 +33,7 @@ function openModal() {
     window.addEventListener('keydown', pressEsc);
     modalRefs.closeModalBtn.addEventListener('click', closeModal);
   modalRefs.overlayModal.addEventListener('click', onOverlayClick);
- 
-    };
+  };
 
 function closeModal() {
   modalRefs.lightbox.classList.remove('modal-is-open');
