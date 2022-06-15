@@ -1,14 +1,11 @@
 import { Notify } from 'notiflix';
 import axios from 'axios';
 
-import {
-  renderingPaginationMarkup,
-} from '../pagination.js';
+import { renderingPaginationMarkup } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import movieCard from '../../template/movieCard.hbs';
 import { getGenres, dataCombine } from './fetchDateAndGenres.js';
-import { removeFromStorage } from '../storage.js';
 
 Notify.init({
   width: '550px',
@@ -86,11 +83,11 @@ const fetchfilmsByKey = async params =>
     .get(`${BASE_URL}/search/movie?api_key=${API_KEY}`, { params })
     .catch(error => console.error(error));
 
-export const requestForMovie = async (page) => {
+export const requestForMovie = async page => {
   hideLoader();
   gallery.innerHTML = '';
 
- filmsParams.page = page;
+  filmsParams.page = page;
   const { data } = await fetchfilmsByKey(filmsParams);
   const movies = data.results;
   const totalSearchPages = data.total_pages;
@@ -118,9 +115,8 @@ const onSearch = e => {
       'Search result not successful. Enter the correct movie name and try again.'
     );
   }
-  let startPage =1;
+  let startPage = 1;
   requestForMovie(startPage);
 };
 
 formEl?.addEventListener('submit', onSearch);
-

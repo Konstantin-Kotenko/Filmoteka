@@ -1,5 +1,3 @@
-//import {modalTpl} from '../template/modal_movie.hbs';
-
 export const addToStorage = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);

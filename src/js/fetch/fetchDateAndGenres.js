@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix';
 import axios from 'axios';
 import { BASE_URL, API_KEY } from '../api/api.js';
 

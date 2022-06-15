@@ -7,12 +7,12 @@ const refs = {
   libraryGallery: document.querySelector('.gallery--library'),
 };
 const gallery = document.querySelector('.gallery');
-function renderCollection (page) {
-  if(!refs.input.value.length){
+function renderCollection(page) {
+  if (!refs.input.value.length) {
     gallery.innerHTML = '';
     requestForPage(page);
     return;
-  } 
+  }
   if (refs.input.value.length) {
     refs.paginationList.innerHTML = '';
     gallery.innerHTML = '';
@@ -53,8 +53,10 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
             }
             if (item === currentPage - 3) {
               return "<span class='dots' data-value='minDots'>...</span>";
-            } 
-            if (item === currentPage + 3) {return "<span class='dots' data-value='maxDots'>...</span>";}
+            }
+            if (item === currentPage + 3) {
+              return "<span class='dots' data-value='maxDots'>...</span>";
+            }
             return '';
           })
           .join('');
@@ -72,7 +74,7 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
       item.classList.toggle('active');
     }
   });
-  refs.paginationList?.addEventListener('click', onPaginationBtnClick); 
+  refs.paginationList?.addEventListener('click', onPaginationBtnClick);
 }
 
 function onPaginationBtnClick(event) {
@@ -80,33 +82,27 @@ function onPaginationBtnClick(event) {
   gallery.innerHTML = '';
   currentPage = Number(event.target.textContent);
   if (event.target.nodeName !== 'SPAN') {
-    
     return;
   }
   if (event.target.dataset.span === 'prev') {
     currentPage -= 1;
-    renderCollection (currentPage);
+    renderCollection(currentPage);
     return;
   }
   if (event.target.dataset.span === 'next') {
     currentPage += 1;
-    renderCollection (currentPage);
+    renderCollection(currentPage);
     return;
   }
   if (event.target.dataset.value === 'maxDots') {
     currentPage += 1;
-      renderCollection (currentPage);
-      return;
-    } 
-    if (event.target.dataset.value === 'minDots') {
-      currentPage -= 1;
-      renderCollection (currentPage);
-      return;
-    }
-    renderCollection(currentPage)
-} 
-
-
-
-
-
+    renderCollection(currentPage);
+    return;
+  }
+  if (event.target.dataset.value === 'minDots') {
+    currentPage -= 1;
+    renderCollection(currentPage);
+    return;
+  }
+  renderCollection(currentPage);
+}

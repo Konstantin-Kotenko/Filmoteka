@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
+import '../js/refs';
+import Notiflix from 'notiflix';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAFkZ6D2f8O7g-et1VUXHdX7SWSbB_PNSU',
@@ -17,11 +19,6 @@ const firebaseConfig = {
   messagingSenderId: '847374011352',
   appId: '1:847374011352:web:df0884b079d52baa4440ad',
 };
-
-const signupForm = document.getElementById('signupForm');
-const loginForm = document.getElementById('loginForm');
-const signOutBtn = document.getElementById('signOut');
-const googleBtn = document.getElementById('googleBtn');
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -34,7 +31,7 @@ const onHandleGoogle = async () => {
       window.location.replace('index.html');
     })
     .catch(error => {
-      console.log('sorry');
+      Notiflix.Notify.failure('Sorry, you don`t sign up');
     });
 };
 
@@ -51,7 +48,7 @@ const onHandleSubmitForm = async e => {
       localStorage.setItem('user', JSON.stringify(user.uid));
     })
     .catch(error => {
-      console.log(error);
+      Notiflix.Notify.failure('Sorry, you don`t sign up');
     });
 };
 
@@ -68,7 +65,7 @@ const onHandleLoginForm = async e => {
       window.location.replace('index.html');
     })
     .catch(error => {
-      console.log(error);
+      Notiflix.Notify.failure('Sorry, you don`t sign up');
     });
 };
 
@@ -92,14 +89,14 @@ const onHandleSignOut = async () => {
       localStorage.removeItem('user');
     })
     .catch(error => {
-      console.log(error);
+      Notiflix.Notify.failure('Sorry, you don`t sign out');
     });
 };
 
-signOutBtn?.addEventListener('click', onHandleSignOut);
-loginForm?.addEventListener('submit', onHandleLoginForm);
-signupForm?.addEventListener('submit', onHandleSubmitForm);
-googleBtn?.addEventListener('click', onHandleGoogle);
+refs.auth.signOutBtn?.addEventListener('click', onHandleSignOut);
+refs.auth.loginForm?.addEventListener('submit', onHandleLoginForm);
+refs.auth.signupForm?.addEventListener('submit', onHandleSubmitForm);
+refs.auth.googleBtn?.addEventListener('click', onHandleGoogle);
 
 export {
   onHandleSubmitForm,
