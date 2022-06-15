@@ -1,12 +1,12 @@
 export const refs = {
   home: {
     formEl: document.querySelector('#search-form'),
+    gallery: document.querySelector('.gallery'),
   },
   library: {
-    gallery: document.querySelector('.gallery'),
     btnQueue: document.querySelector('.btn--queue'),
     libraryGallery: document.querySelector('.gallery--library'),
-    watchedBtn: document.querySelector('.btn--watched'),
+    btnWatched: document.querySelector('.btn--watched'),
   },
   pagination: {
     paginationList: document.querySelector('.pagination-list'),

@@ -85,8 +85,7 @@ const fetchfilmsByKey = async params =>
 
 export const requestForMovie = async page => {
   hideLoader();
-  gallery.innerHTML = '';
-
+  
   filmsParams.page = page;
   const { data } = await fetchfilmsByKey(filmsParams);
   const movies = data.results;
@@ -94,9 +93,11 @@ export const requestForMovie = async page => {
   renderingPaginationMarkup(page, totalSearchPages);
   if (movies.length === 0) {
     showLoader();
-    return Notify.failure(
+    paginationList.innerHTML = '';
+     Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
+    return;
   }
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
@@ -111,11 +112,12 @@ const onSearch = e => {
   filmsParams.query = e.currentTarget.elements[0].value;
   if (filmsParams.query.length <= 1) {
     paginationList.innerHTML = '';
-    return Notify.failure(
+     Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
+    return;
   }
-  let startPage = 1;
+  let startPage = filmsParams.page;
   requestForMovie(startPage);
 };
 

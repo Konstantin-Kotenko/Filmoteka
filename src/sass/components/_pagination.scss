@@ -1,14 +1,10 @@
 .pagination {
      @extend %flex-center-style;
-   
      padding-bottom: 150px;
     @media screen and (min-width: $mobile) {
-        
         padding-bottom: 150px;
         }
-     
     @media screen and (min-width: $tablet) {
-      
         padding-bottom: 140px;  
     }
 }
