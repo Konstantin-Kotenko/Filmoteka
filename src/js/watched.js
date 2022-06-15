@@ -2,12 +2,9 @@ import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
-import {refs} from './refs.js'
-import {renderingPaginationMarkup} from './pagination.js'
+import { refs } from './refs.js';
 
-const {libraryGallery, btnWatched, btnQueue} = refs.library;
-let libraryPage = 1;
-let totalPages = 1;
+const { libraryGallery, btnWatched, btnQueue } = refs.library;
 
 const fetchById = async id => {
   try {
@@ -37,10 +34,7 @@ export const requestForWatched = async () => {
   });
   btnWatched.classList.add('orange');
   btnQueue.classList.remove('orange');
-  renderingPaginationMarkup(libraryPage, totalPages);
 };
-
-
 
 btnWatched?.addEventListener('click', requestForWatched);
 libraryGallery?.addEventListener('DOMContentLoaded', requestForWatched);
