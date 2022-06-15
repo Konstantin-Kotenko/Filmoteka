@@ -1,10 +1,6 @@
 import Swiper from 'swiper/swiper-bundle';
 import 'swiper/swiper-bundle.min.css';
-
-const refs = {
-  openBtn: document.querySelector('.js-open-modal'),
-  backdrop: document.querySelector('.backdrop'),
-};
+import { refs } from './refs';
 
 const swiper = new Swiper('.swiper', {
   navigation: {
@@ -17,7 +13,6 @@ const swiper = new Swiper('.swiper', {
     clickable: true,
     dynamicBullets: true,
   },
-  slideToClickedSlide: true,
   keyboard: {
     enabled: true,
     onlyInViewport: true,
@@ -36,19 +31,19 @@ const swiper = new Swiper('.swiper', {
 });
 
 const openModal = () => {
-  refs.backdrop.classList.remove('is-hidden');
+  refs.footer.backdrop.classList.remove('is-hidden');
   window.addEventListener('keydown', pressEsc);
 };
 const closeModal = evt => {
   if (evt.target === evt.currentTarget) {
-    refs.backdrop.classList.add('is-hidden');
+    refs.footer.backdrop.classList.add('is-hidden');
   }
 };
 const pressEsc = (evt) => {
   if (evt.code === 'Escape') {
-    refs.backdrop.classList.add('is-hidden');
+    refs.footer.backdrop.classList.add('is-hidden');
   }
 }
 
-refs.openBtn?.addEventListener('click', openModal);
-refs.backdrop?.addEventListener('click', closeModal);
+refs.footer.openBtn?.addEventListener('click', openModal);
+refs.footer.backdrop?.addEventListener('click', closeModal);

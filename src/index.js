@@ -6,7 +6,7 @@ import './js/fetch/fetchDateAndGenres.js';
 import './js/change-theme';
 import './js/modal_movie.js';
 import './js/storage.js';
-import './js/fetch/fetchTrailer';
+import './js/fetch/video-trailer';
 import './js/pagination.js';
 import './js/loginForm';
 import { requestForWatched } from './js/watched.js';
