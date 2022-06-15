@@ -77,7 +77,7 @@ const onHandleLoginForm = async e => {
 const isHasUser = () => {
   if (
     localStorage.getItem('user') &&
-    window.location.pathname === '/login.html'
+    window.location.pathname === '/auth.html'
   ) {
     window.location.replace('index.html');
   }
