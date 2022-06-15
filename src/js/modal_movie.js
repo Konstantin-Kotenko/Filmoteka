@@ -1,10 +1,10 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
-import { BASE_URL, API_KEY } from './api/api';
 import { getFromStorage, addToStorage } from './storage';
 import { renderTrailer } from './fetch/video-trailer';
 import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
-import {dynamicRefs} from './dynamicRefs';
+import { dynamicRefs } from './dynamicRefs';
+import { getDataFilms } from '/src/api/getDataFilms';
 
 const refs = dynamicRefs();
 
@@ -29,7 +29,7 @@ function openModal() {
   window.addEventListener('keydown', pressEsc);
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.overlayModal.addEventListener('click', onOverlayClick);
-  (e) => showMovieCard(e);
+  e => showMovieCard(e);
 }
 
 function closeModal() {
@@ -40,15 +40,6 @@ function closeModal() {
   refs.overlayModal.removeEventListener('click', onOverlayClick);
   refs.overlayModal.innerHTML = '';
 }
-let id;
-export async function fetchMovie(id) {
-  const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
-  const response = await fetch(url);
-  return await response.json();
-}
-
-refs.galleryMovie?.addEventListener('click', showMovieCard);
-refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
 
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -58,16 +49,10 @@ async function showMovieCard(event) {
   openModal();
 
   id = event.target.id;
-  const data = await fetchMovie(id);
+  const data = await getDataFilms(id);
   refs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
-
-  refs.trailerBtn?.addEventListener('click', renderTrailer);
-
   monitorBtnChange();
-  
-  refs.watchedBtn.addEventListener('click', handleBtnWatched);
-  refs.queueBtn.addEventListener('click', handleBtnQueue);
 
   function handleBtnWatched() {
     toggleToWatched(id);
@@ -141,3 +126,9 @@ async function showMovieCard(event) {
     }
   }
 }
+
+refs.watchedBtn?.addEventListener('click', handleBtnWatched);
+refs.queueBtn?.addEventListener('click', handleBtnQueue);
+refs.trailerBtn?.addEventListener('click', renderTrailer);
+refs.galleryMovie?.addEventListener('click', showMovieCard);
+refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
