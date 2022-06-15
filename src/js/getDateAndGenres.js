@@ -4,7 +4,8 @@ const createYear = obj =>
 const dataCombine = (films, allGenres) => {
   return films.map(film => ({
     ...film,
-    year: film.genre_ids
+    year: createYear(film),
+    genres: film.genre_ids
       .map(id => allGenres.find(element => element.id === id)?.name)
       .slice(0, 3),
   }));
