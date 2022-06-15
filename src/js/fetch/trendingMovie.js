@@ -3,8 +3,8 @@ import { renderingPaginationMarkup } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
-import { getGenres, dataCombine } from '../getDateAndGenres.js';
-
+import { dataCombine } from '../getDateAndGenres.js';
+import { getGenres } from '../../api/getGeners.js';
 // let popParams = {
 //   page: 1,
 //   language: 'en-US',
