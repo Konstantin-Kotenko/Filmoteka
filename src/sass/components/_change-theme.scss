@@ -11,7 +11,7 @@ body.dark-theme {
 
   & .pagination__button {
     background-color: #333333;
-    color: lightgrey;
+    color: $secondary-color-shade-light;
     transition: 0.5s;
   }
 
