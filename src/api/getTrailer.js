@@ -1,8 +1,9 @@
 import { api } from './api';
+import Notiflix from 'notiflix';
 
-const getTrailer = async id => {
+export const getTrailer = async id => {
   try {
-    const { data } = api.get(`/movie/${id}/videos`);
+    const data = await api.get(`/movie/${id}/videos`);
     return data;
   } catch {
     Notiflix.Notify.failure('Search result not successful');

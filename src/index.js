@@ -6,16 +6,10 @@ import './js/fetch/fetchDateAndGenres.js';
 import './js/change-theme';
 import './js/modal_movie.js';
 import './js/storage.js';
-import './js/fetch/fetchTrailer';
+import './js/fetch/video-trailer';
 import './js/pagination.js';
-import './js/loginForm';
 import { requestForWatched } from './js/watched.js';
 import './js/queue.js';
-import './api/firebase';
-import { isHasUser } from './api/firebase';
-import './js/dynamicRefs';
-
-isHasUser();
 
 let firstPage = 1;
 
