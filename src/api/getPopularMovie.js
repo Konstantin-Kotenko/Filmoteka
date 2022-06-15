@@ -1,10 +1,10 @@
 import { api } from './api';
 
-const popularParams = {
+export const popularParams = {
   page: 1,
 };
 
-const getPopularMovie = async () => {
+export const getPopularMovie = async () => {
   try {
     const { data } = await api.get('/trending/movie/day', {
       params: popularParams,
