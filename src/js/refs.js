@@ -28,6 +28,11 @@ export const refs = {
     loginForm: document.getElementById('loginForm'),
     signOutBtn: document.getElementById('signOut'),
     googleBtn: document.getElementById('googleBtn'),
+    cardContainer: document.querySelector('.card-container'),
+    btnSignup: document.querySelector('#btn-signup'),
+    btnLogin: document.querySelector('#btn-login'),
+    seePwdIcon: document.querySelector('.see-password'),
+    pwdInput: document.querySelector('.group input'),
   },
   modalRefs: {
     lightbox: document.querySelector('.modal-movie-lightbox'),

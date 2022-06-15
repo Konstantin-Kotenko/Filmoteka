@@ -1,28 +1,23 @@
+import { refs } from './refs';
+
 document?.addEventListener('DOMContentLoaded', event => {
   const rotateCard = () => {
-    const cardContainer = document.querySelector('.card-container');
-    cardContainer.classList.toggle('rotate');
+    refs.auth.cardContainer.classList.toggle('rotate');
   };
 
-  const btnSignup = document.querySelector('#btn-signup'),
-    btnLogin = document.querySelector('#btn-login');
-
-  btnSignup?.addEventListener('click', rotateCard);
-  btnLogin?.addEventListener('click', rotateCard);
+  refs.auth.btnSignup?.addEventListener('click', rotateCard);
+  refs.auth.btnLogin?.addEventListener('click', rotateCard);
 
   const seePassword = () => {
-    const seePwdIcon = document.querySelector('.see-password'),
-      pwdInput = document.querySelector('.group input');
-
-    seePwdIcon?.addEventListener('mousedown', () => {
+    refs.auth.seePwdIcon?.addEventListener('mousedown', () => {
       pwdInput.type = 'text';
     });
 
-    seePwdIcon?.addEventListener('mouseup', () => {
+    refs.auth.seePwdIcon?.addEventListener('mouseup', () => {
       pwdInput.type = 'password';
     });
 
-    seePwdIcon?.addEventListener('mouseover', () => {
+    refs.auth.seePwdIcon?.addEventListener('mouseover', () => {
       pwdInput.type = 'password';
     });
   };
