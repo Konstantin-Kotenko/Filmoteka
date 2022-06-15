@@ -1,19 +1,18 @@
-import { requestForMovie } from '../js/fetch/fetchByKey';
+import { requestForMovie } from '../js/renderByKey.js';
 import { requestForPage } from '../js/fetch/trendingMovie';
 import { refs } from './refs.js';
 
-const  {pagination: {paginationList, input, libraryGallery},
- home: { gallery }} = refs;
+const {
+  pagination: { paginationList, input, libraryGallery },
+  home: { gallery },
+} = refs;
 let currentPage = 1;
 function renderCollection(currentPage) {
   if (!input.value.length) {
-    
-     requestForPage(currentPage);
-     return;
+    requestForPage(currentPage);
+    return;
   }
   if (input.value.length) {
-
-
     requestForMovie(currentPage);
     return;
   }

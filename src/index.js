@@ -1,5 +1,5 @@
 import { requestForPage } from './js/fetch/trendingMovie.js';
-import './js/fetch/fetchByKey.js';
+import './js/renderByKey.js';
 import './js/scrollTop';
 import './js/footer-modal.js';
 import './js/getDateAndGenres.js';
@@ -10,6 +10,8 @@ import './js/fetch/video-trailer';
 import './js/pagination.js';
 import { requestForWatched } from './js/watched.js';
 import './js/queue.js';
+import './js/Notify.js';
+import { onChangeSize } from './js/Notify.js';
 
 let firstPage = 1;
 
@@ -19,3 +21,5 @@ if (document.title === 'Home') {
 if (document.title === 'My Library') {
   requestForWatched(firstPage);
 }
+
+window.addEventListener('resize', onChangeSize);
