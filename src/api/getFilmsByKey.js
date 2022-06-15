@@ -1,13 +1,8 @@
 import { api } from './api';
 
-const filmsParams = {
-  query: '',
-  page: 1,
-};
-
-const getFilmsByKey = async () => {
+export const getFilmsByKey = async id => {
   try {
-    const { data } = await api.get('/search/movie', { params: filmsParams });
+    const { data } = await api.get('/movie/' + id);
     return data;
   } catch (error) {
     console.log(error);
