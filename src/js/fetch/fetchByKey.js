@@ -5,7 +5,7 @@ import { renderingPaginationMarkup } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import movieCard from '../../template/movieCard.hbs';
-import { getGenres, dataCombine } from './fetchDateAndGenres.js';
+import { getGenres, dataCombine } from '../getDateAndGenres.js';
 
 Notify.init({
   width: '550px',
@@ -85,7 +85,7 @@ const fetchfilmsByKey = async params =>
 
 export const requestForMovie = async page => {
   hideLoader();
-  
+
   filmsParams.page = page;
   const { data } = await fetchfilmsByKey(filmsParams);
   const movies = data.results;
@@ -94,7 +94,7 @@ export const requestForMovie = async page => {
   if (movies.length === 0) {
     showLoader();
     paginationList.innerHTML = '';
-     Notify.failure(
+    Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
     return;
@@ -112,7 +112,7 @@ const onSearch = e => {
   filmsParams.query = e.currentTarget.elements[0].value;
   if (filmsParams.query.length <= 1) {
     paginationList.innerHTML = '';
-     Notify.failure(
+    Notify.failure(
       'Search result not successful. Enter the correct movie name and try again.'
     );
     return;
