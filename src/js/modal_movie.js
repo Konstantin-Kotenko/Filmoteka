@@ -1,7 +1,7 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { BASE_URL, API_KEY } from './api/api';
 import { getFromStorage, addToStorage } from './storage';
-import { renderTrailer } from './fetch/fetchTrailer';
+import { renderTrailer } from './fetch/video-trailer';
 import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
 

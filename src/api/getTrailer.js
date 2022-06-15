@@ -1,6 +1,6 @@
 import { api } from './api';
 
-const getTrailer = async id => {
+export const getTrailer = async id => {
   try {
     const { data } = api.get(`/movie/${id}/videos`);
     return data;
