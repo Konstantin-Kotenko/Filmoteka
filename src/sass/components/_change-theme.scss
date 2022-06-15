@@ -87,20 +87,18 @@ body.dark-theme {
     margin-right: 15px;
     //&:focus,
     &:hover {
-      background-color: #ff6b08;
-      border: 2px solid #ff6b08;
-      box-shadow: 0 8px 43px #ff6b08;
-      color: $secondary-color;
+      background-color: #f7f7f7;
+      border-color: #545454;
+      box-shadow: 0 4px 4px #00000040;
     }
   }
 
   .modal-queue-button {
     //&:focus,
     &:hover {
-      background-color: #ff6b08;
-      border: 2px solid #ff6b08;
-      box-shadow: 0 8px 43px #ff6b08;
-      color: $secondary-color;
+      background-color: #f7f7f7;
+      border-color: #545454;
+      box-shadow: 0 4px 4px #00000040;
     }
   }
 
@@ -109,6 +107,12 @@ body.dark-theme {
     border: 2px solid #ff6b08;
     box-shadow: 0 8px 43px #ff6b08;
     color: $secondary-color;
+    &:hover {
+      background-color: #ff6b08;
+      border: 2px solid #ff6b08;
+      box-shadow: 0 8px 43px #ff6b08;
+      color: $secondary-color;
+    }
   }
 
   & .footer {
