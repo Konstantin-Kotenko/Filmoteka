@@ -92,7 +92,7 @@ body.dark-theme {
     //&:focus,
     &:hover {
       background-color: $secondary-color-shade-light;
-      border-color: #545454;
+      border-color: $secondary-color-shade-dark;
       box-shadow: 0 4px 4px #00000040;
     }
   }
@@ -101,7 +101,7 @@ body.dark-theme {
     //&:focus,
     &:hover {
       background-color: $secondary-color-shade-light;
-      border-color: #545454;
+      border-color: $secondary-color-shade-dark;
       box-shadow: 0 4px 4px #00000040;
     }
   }
@@ -260,7 +260,7 @@ body.dark-theme {
 }
 
 .dark-theme {
-  color: lightgrey;
+  color: $secondary-color-shade-light;
   background-color: $dark-theme-background-color;
   transition: 0.5s;
 }
