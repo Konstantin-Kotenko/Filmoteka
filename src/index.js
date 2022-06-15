@@ -13,6 +13,7 @@ import { requestForWatched } from './js/watched.js';
 import './js/queue.js';
 import './api/firebase';
 import { isHasUser } from './api/firebase';
+import './js/dynamicRefs';
 
 isHasUser();
 

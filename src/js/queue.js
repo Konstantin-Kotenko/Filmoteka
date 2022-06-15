@@ -3,12 +3,8 @@ import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
 import {refs} from './refs.js'
-import {renderingPaginationMarkup} from './pagination.js'
 
 const {libraryGallery, btnWatched, btnQueue} = refs.library;
-let libraryPage = 1;
-let totalPages = 1;
-
 
 const fetchById = async id => {
   try {
@@ -28,8 +24,8 @@ function slicins(string) {
 
 export const requestForQueue = async () => {
   libraryGallery.innerHTML = '';
-  const watchedArr = getFromStorage('filmsQueue');
-  const arrayForRender = watchedArr.map(id => {
+  const queuedArr = getFromStorage('filmsQueue');
+  const arrayRender = queuedArr.map(id => {
     fetchById(id).then(result => {
       const { data } = result;
       data.release_date = slicins(data.release_date);
@@ -38,7 +34,6 @@ export const requestForQueue = async () => {
   });
   btnQueue.classList.add('orange');
   btnWatched.classList.remove('orange');
-  renderingPaginationMarkup(libraryPage, totalPages);
 };
 
 btnQueue?.addEventListener('click', requestForQueue);
