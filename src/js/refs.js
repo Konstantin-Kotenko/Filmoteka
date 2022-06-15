@@ -31,7 +31,7 @@ export const refs = {
   },
   modalRefs: {
     lightbox: document.querySelector('.modal-movie-lightbox'),
-    closeModalBtn: document.querySelector('[data-action:"close-lightbox"]'),
+    closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
     overlayModal: document.querySelector('.modal-movie-overlay'),
     galleryMovie: document.querySelector('.gallery'),
     galleryMovieLibrary: document.querySelector('.gallery--library'),

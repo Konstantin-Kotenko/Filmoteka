@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  renderingPaginationMarkup,
+  renderingPaginationMarkup
 } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api';
 import movieCard from '../../template/movieCard.hbs';
@@ -12,7 +12,7 @@ import { getGenres, dataCombine } from './fetchDateAndGenres.js';
 //   language: 'en-US',
 
 // };
-let firstPage =1;
+
 const gallery = document.querySelector('.gallery');
 
 const renderMovie = data =>
@@ -38,7 +38,7 @@ export const requestForPage = async (page) => {
   showLoader();
 };
 
-requestForPage(firstPage);
+
 gallery?.addEventListener('DOMContentLoaded', requestForPage);
 
 
