@@ -47,6 +47,23 @@ body.dark-theme {
     color: $primary-color;
   }
 
+  & .pagination-list span {
+    background-color: $secondary-color-shade-dark;
+    color: $secondary-color;
+
+    &:hover,
+    &:focus {
+    border-color: $secondary-color-shade-dark;
+    background-color: $accent-color;
+    color: $primary-color;
+    box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
+    }
+
+    &:active{
+      background-color: #fff;
+    }
+  }
+
   & .main-wrapper {
     background-color: $primary-color;
   }
