@@ -23,18 +23,6 @@ export const refs = {
     videoplayerBackdrop: document.querySelector('.videoplayer-backdrop'),
     videoplayerContainer: document.querySelector('.videoplayer-container'),
   },
-  auth: {
-    signupForm: document.getElementById('signupForm'),
-    loginForm: document.getElementById('loginForm'),
-    signOutBtn: document.getElementById('signOut'),
-    googleBtn: document.getElementById('googleBtn'),
-    cardContainer: document.querySelector('.card-container'),
-    library: document.getElementById('libraryLink'),
-    btnSignup: document.querySelector('#btn-signup'),
-    btnLogin: document.querySelector('#btn-login'),
-    seePwdIcon: document.querySelector('.see-password'),
-    pwdInput: document.querySelector('.group input'),
-  },
   modalRefs: {
     lightbox: document.querySelector('.modal-movie-lightbox'),
     closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
