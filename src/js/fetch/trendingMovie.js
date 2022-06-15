@@ -29,7 +29,6 @@ export const requestForPage = async (page) => {
   const { data } = await fetchPopularMovie(page);
   const totalPages = data.total_pages;
   renderingPaginationMarkup(page, totalPages);
-  
   const movies = data.results;
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);

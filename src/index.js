@@ -16,11 +16,11 @@ import { isHasUser } from './api/firebase';
 
 isHasUser();
 
-let currentPage = 1;
-console.log(document.title);
+let firstPage = 1;
+
 if (document.title === 'Home') {
-  requestForPage(currentPage);
+  requestForPage(firstPage);
 }
 if (document.title === 'My Library') {
-  requestForWatched(currentPage);
+  requestForWatched(firstPage);
 }

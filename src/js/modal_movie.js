@@ -74,6 +74,8 @@ async function showMovieCard(event) {
   const queueBtn = document.querySelector('.modal-queue-button');
 
   monitorBtnChange();
+  
+
   watchedBtn.addEventListener('click', handleBtnWatched);
   queueBtn.addEventListener('click', handleBtnQueue);
 

@@ -1,30 +1,22 @@
 import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
+import { refs } from './refs.js';
 
-
-const refs = {
-  paginationList: document.querySelector('.pagination-list'),
-  input: document.querySelector('.search-field'),
-  libraryGallery: document.querySelector('.gallery--library'),
-};
+const  {pagination: {paginationList, input, libraryGallery},
+ home: { gallery }} = refs;
 let currentPage = 1;
-const gallery = document.querySelector('.gallery');
-function renderCollection(page) {
-  if (!refs.input.value.length) {
-    gallery.innerHTML = '';
-    requestForPage(page);
+function renderCollection(currentPage) {
+  if (!input.value.length) {
+    
+     requestForPage(currentPage);
+     return;
+  }
+  if (input.value.length) {
+
+
+    requestForMovie(currentPage);
     return;
   }
-  if (refs.input.value.length) {
-    refs.paginationList.innerHTML = '';
-    gallery.innerHTML = '';
-    requestForMovie(page);
-  }
-  // if(refs.libraryGallery?.innerHTML !== ''){
-  //   refs.paginationList.innerHTML = '';
-  //   refs.libraryGallery.innerHTML = '';
-  //   return;
-  // }
 }
 
 function renderSpan(value) {
@@ -68,21 +60,17 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
   if (currentPage >= 1 && currentPage !== maxPage) {
     result = result + "<span class='arrow-right' data-span='next'></span>";
   }
-  refs.paginationList.innerHTML = result;
-  console.log(refs.paginationList.querySelectorAll('span'));
-  refs.paginationList.querySelectorAll('span').forEach(item => {
+  paginationList.innerHTML = result;
+  paginationList.querySelectorAll('span').forEach(item => {
     if (item.innerHTML == currentPage) {
-      console.log(item);
       item.classList.toggle('active');
     }
   });
-  refs.paginationList?.addEventListener('click', onPaginationBtnClick);
+  paginationList?.addEventListener('click', onPaginationBtnClick);
 }
 
 function onPaginationBtnClick(event) {
-  // event.preventDefault();
   gallery.innerHTML = '';
-  currentPage = Number(event.target.textContent);
   if (event.target.nodeName !== 'SPAN') {
     return;
   }
@@ -106,5 +94,6 @@ function onPaginationBtnClick(event) {
     renderCollection(currentPage);
     return;
   }
+  currentPage = Number(event.target.textContent);
   renderCollection(currentPage);
 }

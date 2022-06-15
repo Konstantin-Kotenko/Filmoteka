@@ -5,7 +5,7 @@ import { BASE_URL, API_KEY } from './api/api';
 import {refs} from './refs.js'
 import {renderingPaginationMarkup} from './pagination.js'
 
-const {libraryGallery, watchedBtn, btnQueue} = refs.library;
+const {libraryGallery, btnWatched, btnQueue} = refs.library;
 let libraryPage = 1;
 let totalPages = 1;
 
@@ -35,12 +35,12 @@ export const requestForWatched = async () => {
       libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(data));
     });
   });
-  watchedBtn.classList.add('orange');
+  btnWatched.classList.add('orange');
   btnQueue.classList.remove('orange');
   renderingPaginationMarkup(libraryPage, totalPages);
 };
 
 
 
-watchedBtn?.addEventListener('click', requestForWatched);
+btnWatched?.addEventListener('click', requestForWatched);
 libraryGallery?.addEventListener('DOMContentLoaded', requestForWatched);
