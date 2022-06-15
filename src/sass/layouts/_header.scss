@@ -58,11 +58,8 @@ nav {
 }
 
 .page:not(:last-child) {
-  margin-right: 15px;
-  @media screen and (min-width: $tablet) {
     margin-right: 40px;
   }
-}
 
 .page-link {
   font-style: normal;

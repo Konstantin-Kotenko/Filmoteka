@@ -1,6 +1,6 @@
 import { api } from './api';
 
-const popularParams = {
+export const popularParams = {
   page: 1,
 };
 

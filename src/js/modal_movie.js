@@ -4,20 +4,13 @@ import { getFromStorage, addToStorage } from './storage';
 import { renderTrailer } from './fetch/video-trailer';
 import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
+import {dynamicRefs} from './dynamicRefs';
 
-const modalRefs = {
-  lightbox: document.querySelector('.modal-movie-lightbox'),
-  closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
-  overlayModal: document.querySelector('.modal-movie-overlay'),
-  galleryMovie: document.querySelector('.gallery'),
-  galleryMovieLibrary: document.querySelector('.gallery--library'),
-  mainContainer: document.querySelector('.main__container'),
-  body: document.querySelector('body'),
-};
+const refs = dynamicRefs();
 
 function pressEsc(evt) {
   if (
-    modalRefs.lightbox.classList.contains('modal-is-open') &&
+    refs.lightbox.classList.contains('modal-is-open') &&
     evt.code === 'Escape'
   ) {
     closeModal();
@@ -31,31 +24,32 @@ function onOverlayClick(evt) {
   closeModal();
 }
 function openModal() {
-  modalRefs.lightbox.classList.add('modal-is-open');
-  modalRefs.body.classList.add('overflowModal');
+  refs.lightbox.classList.add('modal-is-open');
+  refs.body.classList.add('overflowModal');
   window.addEventListener('keydown', pressEsc);
-  modalRefs.closeModalBtn.addEventListener('click', closeModal);
-  modalRefs.overlayModal.addEventListener('click', onOverlayClick);
+  refs.closeModalBtn.addEventListener('click', closeModal);
+  refs.overlayModal.addEventListener('click', onOverlayClick);
+  (e) => showMovieCard(e);
 }
 
 function closeModal() {
-  modalRefs.lightbox.classList.remove('modal-is-open');
+  refs.lightbox.classList.remove('modal-is-open');
   window.removeEventListener('keydown', pressEsc);
-  modalRefs.closeModalBtn.removeEventListener('click', closeModal);
-  modalRefs.body.classList.remove('overflowModal');
-  modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
-  modalRefs.overlayModal.innerHTML = '';
+  refs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.body.classList.remove('overflowModal');
+  refs.overlayModal.removeEventListener('click', onOverlayClick);
+  refs.overlayModal.innerHTML = '';
 }
-
+let id;
 export async function fetchMovie(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
   const response = await fetch(url);
   return await response.json();
 }
 
-modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
-modalRefs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
-let id;
+refs.galleryMovie?.addEventListener('click', showMovieCard);
+refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
+
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
@@ -65,19 +59,15 @@ async function showMovieCard(event) {
 
   id = event.target.id;
   const data = await fetchMovie(id);
-  modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+  refs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
-  const trailerBtn = document.querySelector('.buttonYouTubeTrailer');
-  trailerBtn?.addEventListener('click', renderTrailer);
 
-  const watchedBtn = document.querySelector('.modal-watched-button');
-  const queueBtn = document.querySelector('.modal-queue-button');
+  refs.trailerBtn?.addEventListener('click', renderTrailer);
 
   monitorBtnChange();
   
-
-  watchedBtn.addEventListener('click', handleBtnWatched);
-  queueBtn.addEventListener('click', handleBtnQueue);
+  refs.watchedBtn.addEventListener('click', handleBtnWatched);
+  refs.queueBtn.addEventListener('click', handleBtnQueue);
 
   function handleBtnWatched() {
     toggleToWatched(id);
@@ -128,11 +118,11 @@ async function showMovieCard(event) {
     let currentIdFilm = id;
     let filmId = filmsWatched.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      watchedBtn.textContent = 'Delete from watched';
-      watchedBtn.classList.add('active');
+      refs.watchedBtn.textContent = 'Delete from watched';
+      refs.watchedBtn.classList.add('active');
     } else {
-      watchedBtn.textContent = 'Add to watched';
-      watchedBtn.classList.remove('active');
+      refs.watchedBtn.textContent = 'Add to watched';
+      refs.watchedBtn.classList.remove('active');
     }
 
     let filmsQueue = [];
@@ -143,11 +133,11 @@ async function showMovieCard(event) {
 
     filmId = filmsQueue.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      queueBtn.textContent = 'Delete from Queue';
-      queueBtn.classList.add('active');
+      refs.queueBtn.textContent = 'Delete from Queue';
+      refs.queueBtn.classList.add('active');
     } else {
-      queueBtn.textContent = 'Add to Queue';
-      queueBtn.classList.remove('active');
+      refs.queueBtn.textContent = 'Add to Queue';
+      refs.queueBtn.classList.remove('active');
     }
   }
 }
