@@ -67,7 +67,7 @@ async function showMovieCard(event) {
   const data = await fetchMovie(id);
   modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
-  trailerBtn = document.querySelector('.buttonYouTubeTrailer');
+  const trailerBtn = document.querySelector('.buttonYouTubeTrailer');
   trailerBtn?.addEventListener('click', renderTrailer);
 
   const watchedBtn = document.querySelector('.modal-watched-button');
