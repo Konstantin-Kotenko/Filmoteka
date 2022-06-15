@@ -49,6 +49,7 @@
 }
 .movie-card__data {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 7px;
   font-family: $primary-font;
   @include font(500, 12px, 1.14);
@@ -56,6 +57,7 @@
 }
 .movie-card__genres {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 
