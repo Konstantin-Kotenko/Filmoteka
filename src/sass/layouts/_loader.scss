@@ -30,7 +30,7 @@
   position: relative;
   width: 200px;
   height: 200px;
-  background-color: #fee8d8;
+  background-color: $loader-box-background;
   border-radius: 50%;
 
   &::before {
@@ -72,7 +72,7 @@
   bottom: 20px;
   left: 20px;
   border-radius: 50%;
-  background-color: #dcdcdc;
+  background-color: $loader-box-element-background;
 }
 
 @keyframes animate {

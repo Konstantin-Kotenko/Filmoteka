@@ -290,8 +290,8 @@
   background-color: $secondary-color;
   //&:focus,
   &:hover {
-    background-color: #f7f7f7;
-    border-color: #545454;
+    background-color: $secondary-color-shade-light;
+    border-color: $secondary-color-shade-dark;
     box-shadow: 0 4px 4px #00000040;
   }
 }
@@ -299,8 +299,8 @@
 .modal-queue-button {
   //&:focus,
   &:hover {
-    background-color: #f7f7f7;
-    border-color: #545454;
+    background-color: $secondary-color-shade-light;
+    border-color: $secondary-color-shade-dark;
     box-shadow: 0 4px 4px #00000040;
   }
 }

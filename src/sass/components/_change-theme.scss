@@ -9,16 +9,6 @@ body.dark-theme {
   color: $secondary-color;
   transition: 0.5s;
 
-  & .pagination__button {
-    background-color: #333333;
-    color: $secondary-color-shade-light;
-    transition: 0.5s;
-  }
-
-  & .pagination__button--current {
-    background-color: $accent-color;
-  }
-
   & .movie-card__title {
     color: $secondary-color-shade-light;
   }
