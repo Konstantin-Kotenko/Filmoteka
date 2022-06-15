@@ -29,6 +29,7 @@ export const refs = {
     signOutBtn: document.getElementById('signOut'),
     googleBtn: document.getElementById('googleBtn'),
     cardContainer: document.querySelector('.card-container'),
+    library: document.getElementById('libraryLink'),
     btnSignup: document.querySelector('#btn-signup'),
     btnLogin: document.querySelector('#btn-login'),
     seePwdIcon: document.querySelector('.see-password'),

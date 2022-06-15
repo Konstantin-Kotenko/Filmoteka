@@ -32,6 +32,9 @@ const onHandleGoogle = async () => {
   } catch (error) {
     Notiflix.Notify.failure('Sorry, you don`t sign up');
   }
+  refs.auth.library.hidden = false;
+  refs.auth.signOut.hidden = false;
+  refs.auth.authorization.hidden = true;
 };
 
 const onHandleSubmitForm = async e => {
@@ -52,6 +55,9 @@ const onHandleSubmitForm = async e => {
   } catch (error) {
     Notiflix.Notify.failure('Sorry, you don`t sign up');
   }
+  refs.auth.library.hidden = false;
+  refs.auth.signOut.hidden = false;
+  refs.auth.authorization.hidden = true;
 };
 
 const onHandleLoginForm = async e => {
@@ -72,6 +78,9 @@ const onHandleLoginForm = async e => {
   } catch (error) {
     Notiflix.Notify.failure('Sorry, you don`t sign up');
   }
+  refs.auth.library.hidden = false;
+  refs.auth.signOut.hidden = false;
+  refs.auth.authorization.hidden = true;
 };
 
 const isHasUser = () => {
@@ -94,6 +103,9 @@ const onHandleSignOut = async () => {
   try {
     const result = await signOut(auth).then(() => {
       localStorage.removeItem('user');
+      refs.auth.authorization.hidden = false;
+      refs.auth.library.hidden = true;
+      refs.auth.signOut.hidden = true;
     });
   } catch (error) {
     Notiflix.Notify.failure('Sorry, you don`t sign out');
