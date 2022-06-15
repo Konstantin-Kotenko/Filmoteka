@@ -10,10 +10,6 @@ import './js/fetch/video-trailer';
 import './js/pagination.js';
 import { requestForWatched } from './js/watched.js';
 import './js/queue.js';
-import './api/firebase';
-import { isHasUser } from './api/firebase';
-
-isHasUser();
 
 let firstPage = 1;
 
