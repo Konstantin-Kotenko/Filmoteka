@@ -5,7 +5,8 @@ import { renderingPaginationMarkup } from '../pagination.js';
 import { BASE_URL, API_KEY } from '../api/api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import movieCard from '../../template/movieCard.hbs';
-import { getGenres, dataCombine } from '../getDateAndGenres.js';
+import { dataCombine } from '../getDateAndGenres.js';
+import { getGenres } from '/src/api/getGeners';
 
 Notify.init({
   width: '550px',
