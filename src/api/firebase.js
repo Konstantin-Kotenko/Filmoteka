@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import '../js/refs';
+import { refs } from '../js/refs';
 import Notiflix from 'notiflix';
 
 const firebaseConfig = {

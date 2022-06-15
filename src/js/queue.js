@@ -2,9 +2,12 @@ import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
+import {refs} from './refs.js'
+import {renderingPaginationMarkup} from './pagination.js'
 
-const btnQueue = document.querySelector('.btn--queue');
-const libraryGallery = document.querySelector('.gallery--library');
+const {libraryGallery, btnQueue, watchedBtn} = refs.library;
+let libraryPage = 1;
+let totalPages = 1;
 
 const fetchById = async id => {
   try {
@@ -32,7 +35,9 @@ export const requestForQueue = async () => {
       libraryGallery.insertAdjacentHTML('beforeend', oneMovieCard(data));
     });
   });
-  renderingPaginationMarkup(libraryPage, maxPages);
+  btnQueue.classList.add('orange');
+  watchedBtn.classList.remove('orange');
+  renderingPaginationMarkup(libraryPage, totalPages);
 };
 
 btnQueue?.addEventListener('click', requestForQueue);

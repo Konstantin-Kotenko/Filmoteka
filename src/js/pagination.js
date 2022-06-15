@@ -1,11 +1,13 @@
 import { requestForMovie } from '../js/fetch/fetchByKey';
 import { requestForPage } from '../js/fetch/trendingMovie';
 
+
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
   input: document.querySelector('.search-field'),
   libraryGallery: document.querySelector('.gallery--library'),
 };
+let currentPage = 1;
 const gallery = document.querySelector('.gallery');
 function renderCollection(page) {
   if (!refs.input.value.length) {
