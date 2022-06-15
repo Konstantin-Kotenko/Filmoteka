@@ -20,7 +20,7 @@ body.dark-theme {
   }
 
   & .movie-card__title {
-    color: #cccccc;
+    color: $secondary-color-shade-light;
   }
 
   & .movie-card__brief {
@@ -28,7 +28,11 @@ body.dark-theme {
   }
 
   & .footer__text {
-    color: lightgrey;
+    color: $secondary-color-shade-light;
+  }
+
+  & .footer__info {
+    color: $secondary-color-shade-light;
   }
 
   & .theme-switch__icon--accent1 {
@@ -87,7 +91,7 @@ body.dark-theme {
     margin-right: 15px;
     //&:focus,
     &:hover {
-      background-color: #f7f7f7;
+      background-color: $secondary-color-shade-light;
       border-color: #545454;
       box-shadow: 0 4px 4px #00000040;
     }
@@ -96,21 +100,21 @@ body.dark-theme {
   .modal-queue-button {
     //&:focus,
     &:hover {
-      background-color: #f7f7f7;
+      background-color: $secondary-color-shade-light;
       border-color: #545454;
       box-shadow: 0 4px 4px #00000040;
     }
   }
 
   .active {
-    background-color: #ff6b08;
-    border: 2px solid #ff6b08;
-    box-shadow: 0 8px 43px #ff6b08;
+    background-color: $accent-color;
+    border: 2px solid $accent-color;
+    box-shadow: 0 8px 43px $accent-color;
     color: $secondary-color;
     &:hover {
-      background-color: #ff6b08;
-      border: 2px solid #ff6b08;
-      box-shadow: 0 8px 43px #ff6b08;
+      background-color: $accent-color;
+      border: 2px solid $accent-color;
+      box-shadow: 0 8px 43px $accent-color;
       color: $secondary-color;
     }
   }
@@ -257,7 +261,7 @@ body.dark-theme {
 
 .dark-theme {
   color: lightgrey;
-  background-color: #222;
+  background-color: $dark-theme-background-color;
   transition: 0.5s;
 }
 
