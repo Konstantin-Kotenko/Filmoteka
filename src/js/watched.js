@@ -2,9 +2,9 @@ import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
-import { refs } from './refs.js';
+import {refs} from './refs.js'
 
-const { libraryGallery, btnWatched, btnQueue } = refs.library;
+const {libraryGallery, btnWatched, btnQueue} = refs.library;
 
 const fetchById = async id => {
   try {
@@ -37,4 +37,4 @@ export const requestForWatched = async () => {
 };
 
 btnWatched?.addEventListener('click', requestForWatched);
-libraryGallery?.addEventListener('DOMContentLoaded', requestForWatched);
+
