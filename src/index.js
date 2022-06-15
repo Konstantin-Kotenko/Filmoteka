@@ -13,11 +13,11 @@ import {requestForWatched} from './js/watched.js';
 import './js/queue.js';
 import './api/firebase';
 
-
+let currentPage=1;
 console.log(document.title);
 if(document.title === 'Home'){
-    requestForPage(currentPage=1);
+    requestForPage(currentPage);
 }
 if(document.title === 'My Library'){
-    requestForWatched(currentPage=1);
+    requestForWatched(currentPage);
 }
