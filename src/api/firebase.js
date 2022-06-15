@@ -25,14 +25,13 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
 const onHandleGoogle = async () => {
-  await signInWithPopup(auth, provider)
-    .then(result => {
-      localStorage.setItem('user', JSON.stringify(result.user.uid));
-      window.location.replace('index.html');
-    })
-    .catch(error => {
-      Notiflix.Notify.failure('Sorry, you don`t sign up');
-    });
+  try {
+    const result = await signInWithPopup(auth, provider);
+    localStorage.setItem('user', JSON.stringify(result.user.uid));
+    window.location.replace('index.html');
+  } catch (error) {
+    Notiflix.Notify.failure('Sorry, you don`t sign up');
+  }
 };
 
 const onHandleSubmitForm = async e => {
@@ -41,15 +40,18 @@ const onHandleSubmitForm = async e => {
   const email = e.currentTarget.elements[0].value;
   const password = e.currentTarget.elements[1].value;
 
-  await createUserWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
-      window.location.replace('index.html');
-      localStorage.setItem('user', JSON.stringify(user.uid));
-    })
-    .catch(error => {
-      Notiflix.Notify.failure('Sorry, you don`t sign up');
-    });
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    window.location.replace('index.html');
+    localStorage.setItem('user', JSON.stringify(user.uid));
+  } catch (error) {
+    Notiflix.Notify.failure('Sorry, you don`t sign up');
+  }
 };
 
 const onHandleLoginForm = async e => {
@@ -58,39 +60,44 @@ const onHandleLoginForm = async e => {
   const email = e.currentTarget.elements[0].value;
   const password = e.currentTarget.elements[1].value;
 
-  await signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
-      localStorage.setItem('user', JSON.stringify(user.uid));
-      window.location.replace('index.html');
-    })
-    .catch(error => {
-      Notiflix.Notify.failure('Sorry, you don`t sign up');
-    });
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    localStorage.setItem('user', JSON.stringify(user.uid));
+    window.location.replace('index.html');
+  } catch (error) {
+    Notiflix.Notify.failure('Sorry, you don`t sign up');
+  }
 };
 
-if (
-  localStorage.getItem('user') &&
-  window.location.pathname === '/login.html'
-) {
-  window.location.replace('index.html');
-}
+const isHasUser = () => {
+  if (
+    localStorage.getItem('user') &&
+    window.location.pathname === '/login.html'
+  ) {
+    window.location.replace('index.html');
+  }
 
-if (
-  !localStorage.getItem('user') &&
-  window.location.pathname === '/library.html'
-) {
-  window.location.replace('index.html');
-}
+  if (
+    !localStorage.getItem('user') &&
+    window.location.pathname === '/library.html'
+  ) {
+    window.location.replace('index.html');
+  }
+};
 
 const onHandleSignOut = async () => {
-  await signOut(auth)
-    .then(() => {
+  try {
+    const result = await signOut(auth).then(() => {
       localStorage.removeItem('user');
-    })
-    .catch(error => {
-      Notiflix.Notify.failure('Sorry, you don`t sign out');
     });
+  } catch (error) {
+    Notiflix.Notify.failure('Sorry, you don`t sign out');
+  }
 };
 
 refs.auth.signOutBtn?.addEventListener('click', onHandleSignOut);
@@ -103,4 +110,5 @@ export {
   onHandleSignOut,
   onHandleLoginForm,
   onHandleGoogle,
+  isHasUser,
 };
