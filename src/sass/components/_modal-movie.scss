@@ -47,7 +47,7 @@
   padding: 20px 15px;
   background-color: $secondary-color;
   @media screen and (max-width: 767px) {
-    max-width: 280px;
+    max-width: 400px;
     overflow: auto;
     height: 100%;
   }
@@ -63,13 +63,14 @@
 }
 
 .modal-movie-poster {
-  width: 280px;
+  width: avto;
   height: auto;
   border-radius: 5px;
-  position: relative;
+  position: relative;  
+  @extend %flex-center-style;
   @media screen and (max-width: 767px) {
-    width: 240px;
-    height: 357px;
+    width: 280px;
+    height: avto;
   }
   @media screen and (min-width: $tablet) {
     width: 264px;
@@ -334,8 +335,8 @@
     border: solid 1px $youtube-color-hover;
   }
   @media screen and (max-width: 767px) {
-    top: 20px;
-    left: 180px;
+    top: 25px;
+    left: 240px;
   }
   @media screen and (min-width: $tablet) {
     top: 25px;

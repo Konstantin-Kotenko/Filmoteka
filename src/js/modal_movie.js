@@ -3,8 +3,8 @@ import { getFromStorage, addToStorage } from './storage';
 import { renderTrailer } from './fetch/video-trailer';
 import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
-import { getFilmsByKey } from '../api/getFilmsByKey';
-import {dynamicRefs} from './dynamicRefs';
+import { dynamicRefs } from './dynamicRefs';
+import { getDataFilms } from '/src/api/getDataFilms';
 
 const refs = dynamicRefs();
 
@@ -29,7 +29,7 @@ function openModal() {
   window.addEventListener('keydown', pressEsc);
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.overlayModal.addEventListener('click', onOverlayClick);
-  (e) => showMovieCard(e);
+  e => showMovieCard(e);
 }
 
 function closeModal() {
@@ -41,9 +41,6 @@ function closeModal() {
   refs.overlayModal.innerHTML = '';
 }
 
-refs.galleryMovie?.addEventListener('click', showMovieCard);
-refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
-
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
@@ -52,16 +49,10 @@ async function showMovieCard(event) {
   openModal();
 
   id = event.target.id;
-  const data = await getFilmsByKey(id);
+  const data = await getDataFilms(id);
   refs.overlayModal.innerHTML = cardModalMovieTemplate(data);
 
-
-  refs.trailerBtn?.addEventListener('click', renderTrailer);
-
   monitorBtnChange();
-  
-  refs.watchedBtn.addEventListener('click', handleBtnWatched);
-  refs.queueBtn.addEventListener('click', handleBtnQueue);
 
   function handleBtnWatched() {
     toggleToWatched(id);
@@ -135,3 +126,9 @@ async function showMovieCard(event) {
     }
   }
 }
+
+refs.watchedBtn?.addEventListener('click', handleBtnWatched);
+refs.queueBtn?.addEventListener('click', handleBtnQueue);
+refs.trailerBtn?.addEventListener('click', renderTrailer);
+refs.galleryMovie?.addEventListener('click', showMovieCard);
+refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
