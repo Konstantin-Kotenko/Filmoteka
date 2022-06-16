@@ -1,11 +1,11 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
 import { getFromStorage, addToStorage } from './storage';
-import { renderTrailer } from './fetch/video-trailer';
+import { renderTrailer } from './video-trailer';
 import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
 import { dynamicRefs } from './dynamicRefs';
 import { getDataFilms } from '/src/api/getDataFilms';
-import {refs} from './refs.js'
+import { refs } from './refs.js';
 
 function pressEsc(evt) {
   if (
@@ -50,7 +50,7 @@ export async function showMovieCard(event) {
   openModal();
 
   id = event.target.id;
-  const {...data} = await getDataFilms(id);
+  const { ...data } = await getDataFilms(id);
   refs.modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
   const liveRefs = dynamicRefs();
 
@@ -76,8 +76,9 @@ export async function showMovieCard(event) {
       filmsWatched.splice(index, 1);
     } else filmsWatched.push(id);
     addToStorage('filmsWatched', filmsWatched);
-    if(refs.modalRefs.galleryMovieLibrary){
-    requestForWatched();}
+    if (refs.modalRefs.galleryMovieLibrary) {
+      requestForWatched();
+    }
     monitorBtnChange();
   }
 
@@ -93,8 +94,9 @@ export async function showMovieCard(event) {
       filmsQueue.splice(index, 1);
     } else filmsQueue.push(id);
     addToStorage('filmsQueue', filmsQueue);
-    if(refs.modalRefs.galleryMovieLibrary){
-   requestForQueue();}
+    if (refs.modalRefs.galleryMovieLibrary) {
+      requestForQueue();
+    }
     monitorBtnChange();
   }
 
@@ -129,9 +131,9 @@ export async function showMovieCard(event) {
       liveRefs.queueBtn.classList.remove('active');
     }
   }
-liveRefs.watchedBtn?.addEventListener('click', handleBtnWatched);
-liveRefs.queueBtn?.addEventListener('click', handleBtnQueue);
-liveRefs.trailerBtn?.addEventListener('click', renderTrailer);
+  liveRefs.watchedBtn?.addEventListener('click', handleBtnWatched);
+  liveRefs.queueBtn?.addEventListener('click', handleBtnQueue);
+  liveRefs.trailerBtn?.addEventListener('click', renderTrailer);
 }
 
 refs.modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
