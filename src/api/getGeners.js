@@ -4,7 +4,7 @@ export const getGenres = async () => {
   try {
     const { data } = await api.get('/genre/movie/list');
     return data;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };
