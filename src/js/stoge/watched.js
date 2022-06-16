@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 import { getFromStorage } from './storage';
 import oneMovieCard from '/src/template/oneMoviecard.hbs';
 import { refs } from '../refs/refs';
@@ -19,7 +19,8 @@ export const requestForWatched = async () => {
   const watchedArr = getFromStorage('filmsWatched');
 
   if (watchedArr.length === 0) {
-    Notiflix.Notify.info("You don't have watched movies");
+    Notify.info("You don't have watched movies. Time to relax! Choose interesting movies to watch and ENJOY!");
+    btnWatched.classList.remove('orange');
   } else {
     watchedArr.map(id => {
       getDataFilms(id).then(result => {
