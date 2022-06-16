@@ -20,7 +20,7 @@
 
 .swiper-modal {
   width: 280px;
-  height: 280px;
+  height: 330px;
   @media screen and (min-width: $tablet) {
     width: 560px;
   }
@@ -49,6 +49,12 @@
   height: 180px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.slides__position {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: $secondary-color;
 }
 
 .swiper-slider__name {
