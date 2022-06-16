@@ -55,22 +55,21 @@ body.dark-theme {
 
     &:hover,
     &:focus {
-    border-color: $secondary-color-shade-dark;
-    background-color: $accent-color;
-    color: $primary-color;
-    box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
+      border-color: $secondary-color-shade-dark;
+      background-color: $accent-color;
+      color: $primary-color;
+      box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
     }
 
-    &:active{
+    &:active {
       background-color: #fff;
     }
     &.active {
       background-color: $accent-color;
       color: $secondary-color;
-   box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
+      box-shadow: 0px 4px 4px rgba($primary-color, 0.25);
+    }
   }
-  }
-
 
   & .main-wrapper {
     background-color: $primary-color;
@@ -96,10 +95,13 @@ body.dark-theme {
     background-color: $accent-color-grey;
   }
 
-
   & .footer {
     background-color: $secondary-color-shade-dark;
     transition: 0.5s;
+  }
+
+  & .loader-box__elem {
+    background-color: $dark-theme-background-color;
   }
 }
 
