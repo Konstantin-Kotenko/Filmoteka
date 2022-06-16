@@ -5,12 +5,11 @@ import { requestForWatched } from './watched';
 import { requestForQueue } from './queue';
 import { dynamicRefs } from './dynamicRefs';
 import { getDataFilms } from '/src/api/getDataFilms';
-
-const refs = dynamicRefs();
+import {refs} from './refs.js'
 
 function pressEsc(evt) {
   if (
-    refs.lightbox.classList.contains('modal-is-open') &&
+    refs.modalRefs.lightbox.classList.contains('modal-is-open') &&
     evt.code === 'Escape'
   ) {
     closeModal();
@@ -24,22 +23,24 @@ function onOverlayClick(evt) {
   closeModal();
 }
 function openModal() {
-  refs.lightbox.classList.add('modal-is-open');
-  refs.body.classList.add('overflowModal');
+  refs.modalRefs.lightbox.classList.add('modal-is-open');
+  refs.modalRefs.body.classList.add('overflowModal');
   window.addEventListener('keydown', pressEsc);
-  refs.closeModalBtn.addEventListener('click', closeModal);
-  refs.overlayModal.addEventListener('click', onOverlayClick);
+  refs.modalRefs.closeModalBtn.addEventListener('click', closeModal);
+  refs.modalRefs.overlayModal.addEventListener('click', onOverlayClick);
   e => showMovieCard(e);
 }
 
 function closeModal() {
-  refs.lightbox.classList.remove('modal-is-open');
+  refs.modalRefs.lightbox.classList.remove('modal-is-open');
   window.removeEventListener('keydown', pressEsc);
-  refs.closeModalBtn.removeEventListener('click', closeModal);
-  refs.body.classList.remove('overflowModal');
-  refs.overlayModal.removeEventListener('click', onOverlayClick);
-  refs.overlayModal.innerHTML = '';
+  refs.modalRefs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.modalRefs.body.classList.remove('overflowModal');
+  refs.modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
+  refs.modalRefs.overlayModal.innerHTML = '';
 }
+let id;
+console.log(refs.modalRefs.overlayModal.innerHTML);
 
 async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -49,8 +50,9 @@ async function showMovieCard(event) {
   openModal();
 
   id = event.target.id;
-  const data = await getDataFilms(id);
-  refs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+  const {...data} = await getDataFilms(id);
+  refs.modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+  const liveRefs = dynamicRefs();
 
   monitorBtnChange();
 
@@ -74,7 +76,6 @@ async function showMovieCard(event) {
       filmsWatched.splice(index, 1);
     } else filmsWatched.push(id);
     addToStorage('filmsWatched', filmsWatched);
-    requestForWatched();
     monitorBtnChange();
   }
 
@@ -90,7 +91,6 @@ async function showMovieCard(event) {
       filmsQueue.splice(index, 1);
     } else filmsQueue.push(id);
     addToStorage('filmsQueue', filmsQueue);
-    requestForQueue();
     monitorBtnChange();
   }
 
@@ -103,11 +103,11 @@ async function showMovieCard(event) {
     let currentIdFilm = id;
     let filmId = filmsWatched.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      refs.watchedBtn.textContent = 'Delete from watched';
-      refs.watchedBtn.classList.add('active');
+      liveRefs.watchedBtn.textContent = 'Delete from watched';
+      liveRefs.watchedBtn.classList.add('active');
     } else {
-      refs.watchedBtn.textContent = 'Add to watched';
-      refs.watchedBtn.classList.remove('active');
+      liveRefs.watchedBtn.textContent = 'Add to watched';
+      liveRefs.watchedBtn.classList.remove('active');
     }
 
     let filmsQueue = [];
@@ -118,17 +118,17 @@ async function showMovieCard(event) {
 
     filmId = filmsQueue.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      refs.queueBtn.textContent = 'Delete from Queue';
-      refs.queueBtn.classList.add('active');
+      liveRefs.queueBtn.textContent = 'Delete from Queue';
+      liveRefs.queueBtn.classList.add('active');
     } else {
-      refs.queueBtn.textContent = 'Add to Queue';
-      refs.queueBtn.classList.remove('active');
+      liveRefs.queueBtn.textContent = 'Add to Queue';
+      liveRefs.queueBtn.classList.remove('active');
     }
   }
+  liveRefs.watchedBtn?.addEventListener('click', handleBtnWatched);
+liveRefs.queueBtn?.addEventListener('click', handleBtnQueue);
+liveRefs.trailerBtn?.addEventListener('click', renderTrailer);
 }
 
-refs.watchedBtn?.addEventListener('click', handleBtnWatched);
-refs.queueBtn?.addEventListener('click', handleBtnQueue);
-refs.trailerBtn?.addEventListener('click', renderTrailer);
-refs.galleryMovie?.addEventListener('click', showMovieCard);
-refs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
+refs.modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
+refs.modalRefs.galleryMovieLibrary?.addEventListener('click', showMovieCard);

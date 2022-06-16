@@ -31,9 +31,6 @@ export const refs = {
     galleryMovieLibrary: document.querySelector('.gallery--library'),
     mainContainer: document.querySelector('.main__container'),
     body: document.querySelector('body'),
-    trailerBtn: document.querySelector('.buttonYouTubeTrailer'),
-    watchedBtn: document.querySelector('.modal-watched-button'),
-    queueBtn: document.querySelector('.modal-queue-button'),
   },
   scroll: {
     rootElement: document.documentElement,
