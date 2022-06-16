@@ -14,6 +14,7 @@
 .pagination-list span {
     @include transition (border-color);
     @include transition (box-shadow);
+    @include transition (background-color);
     @include font(500, 12px, 1.33);
     font-family: $primary-font;
     @extend %flex-center-style; 
