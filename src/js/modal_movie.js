@@ -40,7 +40,6 @@ function closeModal() {
   refs.modalRefs.overlayModal.innerHTML = '';
 }
 let id;
-console.log(refs.modalRefs.overlayModal.innerHTML);
 
 export async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -50,8 +49,10 @@ export async function showMovieCard(event) {
   openModal();
 
   id = event.target.id;
+  
   const {...data} = await getDataFilms(id);
   refs.modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+
   const liveRefs = dynamicRefs();
 
   monitorBtnChange();
@@ -135,4 +136,4 @@ liveRefs.trailerBtn?.addEventListener('click', renderTrailer);
 }
 
 refs.modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
-console.log(refs.modalRefs.galleryMovie);
+

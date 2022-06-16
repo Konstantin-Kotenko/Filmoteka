@@ -40,4 +40,10 @@ export const refs = {
     openBtn: document.querySelector('.js-open-modal'),
     backdrop: document.querySelector('.backdrop'),
   },
+  filter: {
+    popularBtn: document.querySelector('.popular-btn'),
+    topRatedBtn: document.querySelector('.top-rated-btn'),
+    upcomingBtn: document.querySelector('.upcoming-btn'),
+    searchBtnContainer: document.querySelector('.search-btn'),
+  },
 };

@@ -1,6 +1,10 @@
 import { requestForMovie } from '../js/renderByKey.js';
 import { requestForPage } from '../js/renderPopularMovies';
 import { refs } from './refs.js';
+import {getFromStorage} from './storage';
+import {renderTopRated} from './renderTopRated';
+import {renderUpComing} from './renderUpComing'
+
 
 const {
   pagination: { paginationList, input, libraryGallery },
@@ -8,13 +12,22 @@ const {
 } = refs;
 let currentPage = 1;
 function renderCollection(currentPage) {
-  if (!input.value.length) {
-    requestForPage(currentPage);
-    return;
-  }
   if (input.value.length) {
     requestForMovie(currentPage);
     return;
+  } else {
+  if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
+    requestForPage(currentPage);
+    return;
+  }
+  if(refs.filter.topRatedBtn.classList.contains('btn-tab-active')){
+    renderTopRated(currentPage);
+    return;
+  }
+  if(refs.filter.upcomingBtn.classList.contains('btn-tab-active')){
+    renderUpComing(currentPage);
+    return;
+  }
   }
 }
 
@@ -70,6 +83,18 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
 
 function onPaginationBtnClick(event) {
   gallery.innerHTML = '';
+  if(input?.value){
+    currentPage = Number(getFromStorage('active-search'))}
+  else {if(refs.filter.popularBtn.classList.contains('btn-tab-active')){
+    currentPage = Number(getFromStorage("active-popular"))
+  }
+  if(refs.filter.upcomingBtn.classList.contains('btn-tab-active')){
+    currentPage = Number(getFromStorage("active-up"))
+  }
+  if(refs.filter.topRatedBtn.classList.contains('btn-tab-active')){
+    currentPage = Number(getFromStorage("active-top"))
+  }
+}
   if (event.target.nodeName !== 'SPAN') {
     return;
   }
