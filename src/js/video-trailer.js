@@ -4,7 +4,7 @@ import { refs } from './refs.js';
 
 export const renderTrailer = evt => {
   const id = evt.currentTarget.getAttribute('data-attribute');
-  const dataBase = getTrailer(id).then(result => {
+  getTrailer(id).then(result => {
     const trailersArray = result.data.results;
     const trailerData = trailersArray.find(function chectType(object) {
       return object.type === 'Trailer';
