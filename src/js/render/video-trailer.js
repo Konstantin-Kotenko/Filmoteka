@@ -10,7 +10,7 @@ export const renderTrailer = evt => {
       return object.type === 'Trailer';
     });
     if (!trailerData) {
-      Notiflix.Notify.failure(
+      Notiflix.Notify.warning(
         "This film don't have official trailer at this moment"
       );
     } else {
