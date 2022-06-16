@@ -17,19 +17,20 @@ const fetchById = async id => {
     Notiflix.Notify.failure('Search result not successful');
   }
 };
-
-function slicins(string) {
-  return string.slice(0, 4);
+const dataCombine = (movie) => {
+  return {
+    ...movie,
+    year: movie.release_date.slice(0, 4),
+};
 }
-
 export const requestForQueue = async () => {
   libraryGallery.innerHTML = '';
   const queuedArr = getFromStorage('filmsQueue');
   const arrayRender = queuedArr.map(id => {
     fetchById(id).then(result => {
       const { data } = result;
-      data.release_date = slicins(data.release_date);
-      libraryGallery.insertAdjacentHTML('beforeend', oneMovieCard(data));
+      const fullData = dataCombine(data);
+      libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(fullData));
     });
   });
   btnQueue.classList.add('orange');

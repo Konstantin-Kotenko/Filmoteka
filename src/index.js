@@ -19,7 +19,7 @@ if (document.title === 'Home') {
   requestForPage(firstPage);
 }
 if (document.title === 'My Library') {
-  requestForWatched(firstPage);
+  requestForWatched();
 }
 
 window.addEventListener('resize', onChangeSize);

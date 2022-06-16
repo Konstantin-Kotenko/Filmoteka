@@ -42,7 +42,7 @@ function closeModal() {
 let id;
 console.log(refs.modalRefs.overlayModal.innerHTML);
 
-async function showMovieCard(event) {
+export async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -76,6 +76,8 @@ async function showMovieCard(event) {
       filmsWatched.splice(index, 1);
     } else filmsWatched.push(id);
     addToStorage('filmsWatched', filmsWatched);
+    if(refs.modalRefs.galleryMovieLibrary){
+    requestForWatched();}
     monitorBtnChange();
   }
 
@@ -91,6 +93,8 @@ async function showMovieCard(event) {
       filmsQueue.splice(index, 1);
     } else filmsQueue.push(id);
     addToStorage('filmsQueue', filmsQueue);
+    if(refs.modalRefs.galleryMovieLibrary){
+   requestForQueue();}
     monitorBtnChange();
   }
 
@@ -125,10 +129,10 @@ async function showMovieCard(event) {
       liveRefs.queueBtn.classList.remove('active');
     }
   }
-  liveRefs.watchedBtn?.addEventListener('click', handleBtnWatched);
+liveRefs.watchedBtn?.addEventListener('click', handleBtnWatched);
 liveRefs.queueBtn?.addEventListener('click', handleBtnQueue);
 liveRefs.trailerBtn?.addEventListener('click', renderTrailer);
 }
 
 refs.modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
-refs.modalRefs.galleryMovieLibrary?.addEventListener('click', showMovieCard);
+console.log(refs.modalRefs.galleryMovie);

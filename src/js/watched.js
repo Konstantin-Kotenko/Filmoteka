@@ -2,10 +2,12 @@ import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { BASE_URL, API_KEY } from './api/api';
-import {refs} from './refs.js'
+import {refs} from './refs.js';
+import { dynamicRefs } from './dynamicRefs';
+import { showMovieCard } from './modal_movie';
 
 const {libraryGallery, btnWatched, btnQueue} = refs.library;
-
+console.log(refs.library);
 const fetchById = async id => {
   try {
     const customIdAxios = axios.create({
@@ -18,18 +20,22 @@ const fetchById = async id => {
   }
 };
 
-function slicins(string) {
-  return string.slice(0, 4);
-}
 
+const dataCombine = (movie) => {
+  return {
+    ...movie,
+    year: movie.release_date.slice(0, 4),
+};
+}
 export const requestForWatched = async () => {
+  const liveRefs = dynamicRefs();
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
   const arrayForRender = watchedArr.map(id => {
     fetchById(id).then(result => {
       const { data } = result;
-      data.release_date = slicins(data.release_date);
-      libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(data));
+   const fullData = dataCombine(data);
+      libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(fullData));
     });
   });
   btnWatched.classList.add('orange');
@@ -37,4 +43,4 @@ export const requestForWatched = async () => {
 };
 
 btnWatched?.addEventListener('click', requestForWatched);
-
+libraryGallery?.addEventListener('click', showMovieCard);
