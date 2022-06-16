@@ -1,23 +1,10 @@
-// import axios from 'axios';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
-// import { BASE_URL, API_KEY } from './api/api';
 import { refs } from './refs.js';
 import { getDataFilms } from '../api/getDataFilms';
 
 const { libraryGallery, btnWatched, btnQueue } = refs.library;
 
-// const fetchById = async id => {
-//   try {
-//     const customIdAxios = axios.create({
-//       baseURL: `${BASE_URL}/movie/${id}?api_key=${API_KEY}`,
-//     });
-//     const data = await customIdAxios.get('');
-//     return data;
-//   } catch {
-//     Notiflix.Notify.failure('Search result not successful');
-//   }
-// };
 const dataCombine = movie => {
   return {
     ...movie,
