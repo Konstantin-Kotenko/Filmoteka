@@ -12,6 +12,9 @@ Notify.init({
     background: 'transparent',
     textColor: '#FF001B',
   },
+  info: {
+    background: '#ff6b08',
+  }
 });
 
 if (window.innerWidth < 768) {
@@ -26,6 +29,9 @@ if (window.innerWidth < 768) {
       background: 'transparent',
       textColor: '#FF001B',
     },
+    info: {
+      background: '#ff6b08',
+    }
   });
 }
 
@@ -42,6 +48,9 @@ export const onChangeSize = () => {
         background: 'transparent',
         textColor: '#FF001B',
       },
+      info: {
+        background: '#ff6b08',
+      }
     });
   } else {
     Notify.init({
@@ -56,6 +65,9 @@ export const onChangeSize = () => {
         background: 'transparent',
         textColor: '#FF001B',
       },
+      info: {
+        background: '#ff6b08',
+      }
     });
   }
 };

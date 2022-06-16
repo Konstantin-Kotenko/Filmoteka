@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { refs } from './refs.js';
@@ -17,13 +18,16 @@ export const requestForWatched = async () => {
   const liveRefs = dynamicRefs();
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
-  const arrayForRender = watchedArr.map(id => {
-    getDataFilms(id).then(result => {
-      const data = result;
-      const fullData = dataCombine(data);
-      libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(fullData));
+  if (watchedArr.length === 0) {
+    Notiflix.Notify.info("You don't have watched movies");
+  } else {
+    const arrayForRender = watchedArr.map(id => {
+      fetchById(id).then(result => {
+        const { data } = result;
+        data.release_date = slicins(data.release_date);
+        libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(data));
     });
-  });
+  }
   btnWatched.classList.add('orange');
   btnQueue.classList.remove('orange');
 };
