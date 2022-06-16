@@ -1,0 +1,63 @@
+.search-filter {
+    margin-bottom: 30px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 50px;
+    }
+  }
+  
+  .search-btn-item {
+    margin-left: 15px;
+    margin-top: 15px;
+    @media screen and (max-width: 320px) {
+      flex-basis: calc((100% - 40px) / 2);
+    }
+  }
+  
+  .search-btn-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -15px;
+    margin-top: -15px;
+  }
+.popular-btn,
+.top-rated-btn,
+.upcoming-btn,
+.trending-tv-btn {
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid rgba(255, 107, 1, 0.6);
+  border-bottom: 3px solid rgba(255, 107, 1, 0.6);
+  border-radius: 3px;
+  border-radius: 3px;
+box-shadow: 0 2px 8px rgba(255, 107, 1, 0.5), inset 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25),
+    inset 0 -15px 30px rgba(255, 107, 1, 0.3);
+  transition: all var(--duration) var(--timing-function);
+  &:focus,
+  &:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+    opacity: 0.7;
+    transform: scale(1.05);
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 120px;
+    font-size: 16px;
+  }
+}
+.btn-tab-active {
+    opacity: 0.7;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+    background-color: $btn-color;
+    color: $secondary-color;
+    transform: scale(1.05);
+    box-shadow: none;
+  }

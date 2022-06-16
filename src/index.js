@@ -12,6 +12,7 @@ import { requestForWatched } from './js/stoge/watched.js';
 import './js/stoge/queue.js';
 import './js/Notify.js';
 import { onChangeSize } from './js/Notify.js';
+import './js/filter.js'
 
 let firstPage = 1;
 

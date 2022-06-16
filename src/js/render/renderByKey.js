@@ -6,8 +6,9 @@ import { dataCombine } from '../getDateAndGenres.js';
 import { getGenres } from '/src/api/getGeners';
 import { filmsParams, getFilmsByKey } from '../../api/getFilmsByKey.js';
 import { refs } from '../refs/refs';
+import { addToStorage } from '../stoge/storage.js';
 
-const renderMovie = data =>
+export const renderMovie = data =>
   refs.home.gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
 export const requestForMovie = async page => {
@@ -29,6 +30,8 @@ export const requestForMovie = async page => {
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
   renderMovie(fullInfo);
+  const currentPage = data.page;
+  addToStorage('active-search', currentPage);
   showLoader();
 };
 
