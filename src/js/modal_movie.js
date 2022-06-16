@@ -40,7 +40,6 @@ function closeModal() {
   refs.modalRefs.overlayModal.innerHTML = '';
 }
 let id;
-console.log(refs.modalRefs.overlayModal.innerHTML);
 
 export async function showMovieCard(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -137,4 +136,3 @@ export async function showMovieCard(event) {
 }
 
 refs.modalRefs.galleryMovie?.addEventListener('click', showMovieCard);
-console.log(refs.modalRefs.galleryMovie);

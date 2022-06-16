@@ -14,7 +14,7 @@ const dataCombine = movie => {
 export const requestForQueue = async () => {
   libraryGallery.innerHTML = '';
   const queuedArr = getFromStorage('filmsQueue');
-  const arrayRender = queuedArr.map(id => {
+  queuedArr.map(id => {
     getDataFilms(id).then(result => {
       const data = result;
       const fullData = dataCombine(data);

@@ -2,7 +2,6 @@ import Notiflix from 'notiflix';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
 import { refs } from './refs.js';
-import { dynamicRefs } from './dynamicRefs';
 import { showMovieCard } from './modal_movie';
 import { getDataFilms } from '../api/getDataFilms';
 
@@ -16,14 +15,13 @@ const dataCombine = movie => {
 };
 
 export const requestForWatched = async () => {
-  const liveRefs = dynamicRefs();
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
 
   if (watchedArr.length === 0) {
     Notiflix.Notify.info("You don't have watched movies");
   } else {
-    const arrayForRender = watchedArr.map(id => {
+    watchedArr.map(id => {
       getDataFilms(id).then(result => {
         const data = result;
         const fullData = dataCombine(data);
