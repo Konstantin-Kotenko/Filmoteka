@@ -9,7 +9,7 @@ export const getTopFilms = async () => {
     const { data } = await api.get('/movie/top_rated', {
       params: topParams});
     return data;
-  } catch {
-    e => console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };

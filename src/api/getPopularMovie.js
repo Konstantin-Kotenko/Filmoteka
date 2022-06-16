@@ -10,7 +10,7 @@ export const getPopularMovie = async () => {
       params: popularParams,
     });
     return data;
-  } catch {
-    e => console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };
