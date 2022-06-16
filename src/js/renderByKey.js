@@ -1,5 +1,4 @@
 import { Notify } from 'notiflix';
-
 import { renderingPaginationMarkup } from './pagination.js';
 import { showLoader, hideLoader } from './loader.js';
 import movieCard from '../template/movieCard.hbs';

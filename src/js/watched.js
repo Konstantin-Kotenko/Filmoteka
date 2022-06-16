@@ -1,29 +1,21 @@
-import axios from 'axios';
 import Notiflix from 'notiflix';
 import { getFromStorage } from './storage';
 import oneMovieCard from '../template/oneMoviecard.hbs';
-import { BASE_URL, API_KEY } from './api/api';
-import {refs} from './refs.js'
+import { refs } from './refs.js';
+import { dynamicRefs } from './dynamicRefs';
+import { showMovieCard } from './modal_movie';
+import { getDataFilms } from '../api/getDataFilms';
 
-const {libraryGallery, btnWatched, btnQueue} = refs.library;
+const { libraryGallery, btnWatched, btnQueue } = refs.library;
 
-const fetchById = async id => {
-  try {
-    const customIdAxios = axios.create({
-      baseURL: `${BASE_URL}/movie/${id}?api_key=${API_KEY}`,
-    });
-    const data = await customIdAxios.get('');
-    return data;
-  } catch {
-    Notiflix.Notify.failure('Search result not successful');
-  }
+const dataCombine = movie => {
+  return {
+    ...movie,
+    year: movie.release_date.slice(0, 4),
+  };
 };
-
-function slicins(string) {
-  return string.slice(0, 4);
-}
-
 export const requestForWatched = async () => {
+  const liveRefs = dynamicRefs();
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
   if (watchedArr.length === 0) {
@@ -34,7 +26,6 @@ export const requestForWatched = async () => {
         const { data } = result;
         data.release_date = slicins(data.release_date);
         libraryGallery?.insertAdjacentHTML('beforeend', oneMovieCard(data));
-      });
     });
   }
   btnWatched.classList.add('orange');
@@ -42,4 +33,4 @@ export const requestForWatched = async () => {
 };
 
 btnWatched?.addEventListener('click', requestForWatched);
-
+libraryGallery?.addEventListener('click', showMovieCard);
