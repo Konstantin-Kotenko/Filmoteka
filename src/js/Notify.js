@@ -13,7 +13,8 @@ Notify.init({
     textColor: '#FF001B',
   },
   info: {
-    background: '#ff6b08',
+    background: 'transparent',
+    textColor: '#ff6b08',
   }
 });
 
@@ -30,7 +31,8 @@ if (window.innerWidth < 768) {
       textColor: '#FF001B',
     },
     info: {
-      background: '#ff6b08',
+      background: 'transparent',
+      textColor: '#ff6b08',
     }
   });
 }
