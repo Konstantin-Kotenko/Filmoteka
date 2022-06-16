@@ -1,7 +1,7 @@
 import { getFromStorage } from './storage';
-import oneMovieCard from '../template/oneMoviecard.hbs';
-import { refs } from './refs.js';
-import { getDataFilms } from '../api/getDataFilms';
+import oneMovieCard from '/src/template/oneMoviecard.hbs';
+import { refs } from '../refs/refs';
+import { getDataFilms } from '../../api/getDataFilms';
 
 const { libraryGallery, btnWatched, btnQueue } = refs.library;
 

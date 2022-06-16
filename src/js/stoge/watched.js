@@ -1,9 +1,9 @@
 import Notiflix from 'notiflix';
 import { getFromStorage } from './storage';
-import oneMovieCard from '../template/oneMoviecard.hbs';
-import { refs } from './refs.js';
-import { showMovieCard } from './modal_movie';
-import { getDataFilms } from '../api/getDataFilms';
+import oneMovieCard from '/src/template/oneMoviecard.hbs';
+import { refs } from '../refs/refs';
+import { showMovieCard } from '../modal_movie';
+import { getDataFilms } from '../../api/getDataFilms';
 
 const { libraryGallery, btnWatched, btnQueue } = refs.library;
 

@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
-import { getTrailer } from '../api/getTrailer';
-import { refs } from './refs.js';
+import { getTrailer } from '../../api/getTrailer';
+import { refs } from '../refs/refs';
 
 export const renderTrailer = evt => {
   const id = evt.currentTarget.getAttribute('data-attribute');

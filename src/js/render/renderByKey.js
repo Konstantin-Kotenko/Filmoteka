@@ -1,11 +1,11 @@
 import { Notify } from 'notiflix';
-import { renderingPaginationMarkup } from './pagination.js';
-import { showLoader, hideLoader } from './loader.js';
-import movieCard from '../template/movieCard.hbs';
-import { dataCombine } from './getDateAndGenres.js';
+import { renderingPaginationMarkup } from '../pagination.js';
+import { showLoader, hideLoader } from '../loader.js';
+import movieCard from '/src/template/movieCard.hbs';
+import { dataCombine } from '../getDateAndGenres.js';
 import { getGenres } from '/src/api/getGeners';
-import { filmsParams, getFilmsByKey } from '../api/getFilmsByKey.js';
-import { refs } from './refs.js';
+import { filmsParams, getFilmsByKey } from '../../api/getFilmsByKey.js';
+import { refs } from '../refs/refs';
 
 const renderMovie = data =>
   refs.home.gallery?.insertAdjacentHTML('beforeend', movieCard(data));

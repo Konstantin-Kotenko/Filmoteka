@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from './refs/refs';
 
 refs.scroll.scrolltop.classList.add('scrolltop');
 refs.scroll.scrolltop.innerHTML =

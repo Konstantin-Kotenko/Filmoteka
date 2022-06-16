@@ -1,6 +1,6 @@
-import { requestForMovie } from '../js/renderByKey.js';
-import { requestForPage } from '../js/renderPopularMovies';
-import { refs } from './refs.js';
+import { requestForMovie } from './render/renderByKey.js';
+import { requestForPage } from './render/renderPopularMovies';
+import { refs } from './refs/refs';
 
 const {
   pagination: { paginationList, input, libraryGallery },

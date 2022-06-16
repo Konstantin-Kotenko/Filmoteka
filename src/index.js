@@ -1,15 +1,15 @@
-import { requestForPage } from './js/renderPopularMovies.js';
-import './js/renderByKey.js';
+import { requestForPage } from './js/render/renderPopularMovies.js';
+import './js/render/renderByKey.js';
 import './js/scrollTop';
 import './js/footer-modal.js';
 import './js/getDateAndGenres.js';
-import './js/change-theme';
+import './js/stoge/change-theme';
 import './js/modal_movie.js';
-import './js/storage.js';
-import './js/video-trailer';
+import './js/stoge/storage';
+import './js/render/video-trailer';
 import './js/pagination.js';
-import { requestForWatched } from './js/watched.js';
-import './js/queue.js';
+import { requestForWatched } from './js/stoge/watched.js';
+import './js/stoge/queue.js';
 import './js/Notify.js';
 import { onChangeSize } from './js/Notify.js';
 

@@ -1,11 +1,11 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
-import { getFromStorage, addToStorage } from './storage';
-import { renderTrailer } from './video-trailer';
-import { requestForWatched } from './watched';
-import { requestForQueue } from './queue';
-import { dynamicRefs } from './dynamicRefs';
+import { getFromStorage, addToStorage } from './stoge/storage';
+import { renderTrailer } from './render/video-trailer';
+import { requestForWatched } from './stoge/watched';
+import { requestForQueue } from './stoge/queue';
+import { dynamicRefs } from './refs/dynamicRefs';
 import { getDataFilms } from '/src/api/getDataFilms';
-import { refs } from './refs.js';
+import { refs } from './refs/refs';
 
 function pressEsc(evt) {
   if (
