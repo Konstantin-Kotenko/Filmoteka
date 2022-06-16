@@ -45,7 +45,8 @@
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 5px, rgba(0, 0, 0, 0.1) -1px -1px 5px,
     rgba(0, 0, 0, 0.1) -1px 1px 5px, rgba(0, 0, 0, 0.1) 1px -1px 5px;
   padding: 20px 15px;
-  background-color: $secondary-color;
+  // background-color: $secondary-color;
+  background-image: url('../images/body/main-bgi-light.jpg');
   @media screen and (max-width: 767px) {
     max-width: 400px;
     overflow: auto;
@@ -83,7 +84,7 @@
 }
 
 .modal-movie-information {
-  background-color: $secondary-color;
+  // background-color: $secondary-color;
   @media screen and (max-width: 767px) {
     padding-bottom: 20px;
   }

@@ -1,11 +1,13 @@
 body.light-theme {
   background-color: $secondary-color;
+  background-image: url('../images/body/main-bgi-light.jpg');
   color: $primary-color;
   transition: 0.5s;
 }
 
 body.dark-theme {
   background-color: $primary-color;
+  background-image: url('../images/body/main-bgi-dark.jpg');
   color: $secondary-color;
   transition: 0.5s;
 
@@ -84,8 +86,7 @@ body.dark-theme {
     color: $secondary-color;
   }
 
-  & .modal-movie-wrapper,
-  .modal-movie-information {
+  & .modal-movie-wrapper {
     background-color: $accent-color-grey;
   }
 
