@@ -98,44 +98,10 @@ body.dark-theme {
 }
 
 .toolbar {
+  margin-top: 25px;
   display: flex;
   justify-content: flex-end;
   padding: revert;
-  bottom: 25px;
-  right: 0;
-  position: absolute;
-
-  @media screen and (min-width: $mobile) {
-    padding-right: 20px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding-right: 71px;
-  }
-}
-
-.toolbar--login {
-  display: flex;
-  justify-content: flex-end;
-  top: 175px;
-  right: 15;
-  position: absolute;
-
-  @media screen and (min-width: $mobile) {
-    padding-right: 20px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding-right: 71px;
-  }
 }
 
 .theme-switch {
@@ -241,3 +207,23 @@ body.dark-theme {
   fill: $accent-color;
   transition: 0.5s;
 }
+
+// .toolbar--login {
+//   display: flex;
+//   justify-content: flex-end;
+//   top: 175px;
+//   right: 15;
+//   position: absolute;
+
+//   @media screen and (min-width: $mobile) {
+//     padding-right: 20px;
+//   }
+
+//   @media screen and (min-width: $tablet) {
+//     padding-right: 32px;
+//   }
+
+//   @media screen and (min-width: $desktop) {
+//     padding-right: 71px;
+//   }
+// }
