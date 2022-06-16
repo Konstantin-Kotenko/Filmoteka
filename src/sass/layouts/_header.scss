@@ -1,85 +1,73 @@
 .overlay {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding:  40px 0;
+  background-color: aqua;
 }
 
-.header-container {
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media screen and (min-width: $mobile) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
+.navigation {
+  margin-bottom: 54px;
   @media screen and (min-width: $tablet) {
-    padding-left: 32px;
-    padding-right: 32px;
+    margin-bottom: 40px;
   }
-  @media screen and (min-width: $desktop) {
-    padding-left: 71px;
-    padding-right: 71px;
-  }
-}
-
-nav {
-  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 35px;
 }
 
 .logo-container {
   display: flex;
   text-decoration: none;
   align-items: center;
-}
 
-.logo-name {
-  @media screen and (max-width: ($tablet - 1)) {
-    display: none;
-  }
-  @media screen and (min-width: $tablet) {
-    display: block;
-    margin-left: 8px;
-  }
-  @media screen and (min-width: $desktop) {
-    display: block;
-    margin-left: 10px;
-  }
-  font-style: normal;
-  @include font(500, 30px, 1.17);
-  color: $secondary-color;
+  .logo-name {
+      @media screen and (max-width: ($tablet - 1)) {
+        display: none;
+      }
+      @media screen and (min-width: $tablet) {
+        display: block;
+        margin-left: 8px;
+      }
+      @media screen and (min-width: $desktop) {
+        display: block;
+        margin-left: 10px;
+      }
+      font-style: normal;
+      @include font(500, 30px, 1.17);
+      color: $secondary-color;
+    }
 }
 
 .pages {
   display: flex;
-}
 
-.page:not(:last-child) {
-    margin-right: 40px;
+  .page:not(:last-child) {
+      margin-right: 40px;
+    }
+
+  .page-link {
+    font-style: normal;
+    @include font(500, 12px, 1.17);
+    color: $secondary-color;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+        color: $accent-color;
+    }
   }
 
-.page-link {
-  font-style: normal;
-  @include font(500, 12px, 1.17);
-  color: $secondary-color;
-  text-decoration: none;
-  text-transform: uppercase;
-}
+  .page-link--current-page {
+    position: relative;
 
-.page-link--current-page {
-  position: relative;
+    &::after {
+      content: '';
 
-  &::after {
-    content: '';
-
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    height: 3px;
-    width: 100%;
-    background-color: $accent-color;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $accent-color;
+    }
   }
 }

@@ -6,3 +6,13 @@
 @mixin transition($property) {
   transition: $property $transition-duration $transition-timing-function;
 }
+
+@mixin bgi($url) {
+  background-image: linear-gradient(to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)),
+      url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
