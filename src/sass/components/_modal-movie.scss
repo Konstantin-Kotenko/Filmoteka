@@ -287,34 +287,48 @@
 }
 
 .modal-watched-button {
+  @include transition (border-color);
+    @include transition (box-shadow);
+    @include transition (background-color);
+  border: none;
   margin-right: 15px;
-  background-color: $secondary-color;
-  //&:focus,
+  border-color: $secondary-color-shade-dark;
+  background-color: $secondary-color-shade-light;
+  box-shadow: 0px 4px 4px rgba($primary-color, 0.45);
   &:hover {
-    background-color: $secondary-color-shade-light;
     border-color: $secondary-color-shade-dark;
-    box-shadow: 0 4px 4px #00000040;
+    background-color: $loader-box-background;
+    box-shadow: 0px 4px 4px rgba($primary-color, 0.45);
   }
 }
 
 .modal-queue-button {
-  //&:focus,
+  @include transition (border-color);
+    @include transition (box-shadow);
+    @include transition (background-color);
+  border: none;
+  border-color: $secondary-color-shade-dark;
+  background-color: $secondary-color-shade-light;
+  box-shadow: 0px 4px 4px rgba($primary-color, 0.45);
   &:hover {
-    background-color: $secondary-color-shade-light;
     border-color: $secondary-color-shade-dark;
-    box-shadow: 0 4px 4px #00000040;
+    background-color: $loader-box-background;
+    box-shadow: 0px 4px 4px rgba($primary-color, 0.45);
   }
 }
 
 .active {
+  @include transition (border-color);
+    @include transition (box-shadow);
+    @include transition (background-color);
   background-color: $accent-color;
-  border: 2px solid $accent-color;
-  box-shadow: 0 8px 43px $accent-color;
+  border: none;
+  box-shadow: 0 8px 18px rgba($accent-color, 0.75);
   color: $secondary-color;
   &:hover {
-    background-color: $accent-color;
-    border: 2px solid $accent-color;
-    box-shadow: 0 8px 43px $accent-color;
+    background-color: $accent-color-grey;
+    border: none;
+    box-shadow: 0 8px 18px rgba($secondary-color-shade-dark, 0.75);
     color: $secondary-color;
   }
 }
@@ -327,6 +341,7 @@
   height: 36px;
   border-radius: 10px;
   border: solid 1px $youtube-color;
+  box-shadow: 0px 4px 4px rgba($primary-color, 0.45);
   cursor: pointer;
   justify-content: center;
   align-items: center;
