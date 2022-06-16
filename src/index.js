@@ -2,17 +2,17 @@ import { requestForPage } from './js/render/renderPopularMovies.js';
 import './js/render/renderByKey.js';
 import './js/scrollTop';
 import './js/footer-modal.js';
-import './js/getDateAndGenres.js';
-import './js/stoge/change-theme';
+import './js/genreUtils.js';
+import './js/localStorage/change-theme';
 import './js/modal_movie.js';
-import './js/stoge/storage';
+import './js/localStorage/storage';
 import './js/render/video-trailer';
 import './js/pagination.js';
-import { requestForWatched } from './js/stoge/watched.js';
-import './js/stoge/queue.js';
+import { requestForWatched } from './js/localStorage/watched.js';
+import './js/localStorage/queue.js';
 import './js/Notify.js';
 import { onChangeSize } from './js/Notify.js';
-import './js/filter.js'
+import './js/filter.js';
 
 let firstPage = 1;
 

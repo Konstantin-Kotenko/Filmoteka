@@ -1,10 +1,10 @@
 import { renderingPaginationMarkup } from '../pagination';
 import { renderMovie } from './renderByKey';
 import { showLoader, hideLoader } from '../loader';
-import { dataCombine } from '../getDateAndGenres';
+import { dataCombine } from '../genreUtils';
 import { getGenres } from '/src/api/getGeners';
 import { upParams, getUpcomingFilms } from '/src/api/getUpComingFilms';
-import { addToStorage } from '../stoge/storage';
+import { addToStorage } from '../localStorage/storage';
 
 export const renderUpComing = async page => {
   hideLoader();

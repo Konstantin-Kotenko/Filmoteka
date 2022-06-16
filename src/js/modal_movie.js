@@ -1,8 +1,8 @@
 import cardModalMovieTemplate from '../template/modalMovie.hbs';
-import { getFromStorage, addToStorage } from './stoge/storage';
+import { getFromStorage, addToStorage } from './localStorage/storage';
 import { renderTrailer } from './render/video-trailer';
-import { requestForWatched } from './stoge/watched';
-import { requestForQueue } from './stoge/queue';
+import { requestForWatched } from './localStorage/watched';
+import { requestForQueue } from './localStorage/queue';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { getDataFilms } from '/src/api/getDataFilms';
 import { refs } from './refs/refs';

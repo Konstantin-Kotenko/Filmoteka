@@ -1,9 +1,9 @@
 import { requestForMovie } from './render/renderByKey';
 import { requestForPage } from './render/renderPopularMovies';
 import { refs } from './refs/refs';
-import {getFromStorage} from '../js/stoge/storage';
-import {renderTopRated} from './render/renderTopRated';
-import {renderUpComing} from './render/renderUpComing'
+import { getFromStorage } from '../js/localStorage/storage';
+import { renderTopRated } from './render/renderTopRated';
+import { renderUpComing } from './render/renderUpComing';
 
 const {
   pagination: { paginationList, input, libraryGallery },
@@ -15,18 +15,18 @@ function renderCollection(currentPage) {
     requestForMovie(currentPage);
     return;
   } else {
-  if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
-    requestForPage(currentPage);
-    return;
-  }
-  if(refs.filter.topRatedBtn.classList.contains('btn-tab-active')){
-    renderTopRated(currentPage);
-    return;
-  }
-  if(refs.filter.upcomingBtn.classList.contains('btn-tab-active')){
-    renderUpComing(currentPage);
-    return;
-  }
+    if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
+      requestForPage(currentPage);
+      return;
+    }
+    if (refs.filter.topRatedBtn.classList.contains('btn-tab-active')) {
+      renderTopRated(currentPage);
+      return;
+    }
+    if (refs.filter.upcomingBtn.classList.contains('btn-tab-active')) {
+      renderUpComing(currentPage);
+      return;
+    }
   }
 }
 
@@ -82,18 +82,19 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
 
 function onPaginationBtnClick(event) {
   gallery.innerHTML = '';
-  if(input?.value){
-    currentPage = Number(getFromStorage('active-search'))}
-  else {if(refs.filter.popularBtn.classList.contains('btn-tab-active')){
-    currentPage = Number(getFromStorage("active-popular"))
+  if (input?.value) {
+    currentPage = Number(getFromStorage('active-search'));
+  } else {
+    if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
+      currentPage = Number(getFromStorage('active-popular'));
+    }
+    if (refs.filter.upcomingBtn.classList.contains('btn-tab-active')) {
+      currentPage = Number(getFromStorage('active-up'));
+    }
+    if (refs.filter.topRatedBtn.classList.contains('btn-tab-active')) {
+      currentPage = Number(getFromStorage('active-top'));
+    }
   }
-  if(refs.filter.upcomingBtn.classList.contains('btn-tab-active')){
-    currentPage = Number(getFromStorage("active-up"))
-  }
-  if(refs.filter.topRatedBtn.classList.contains('btn-tab-active')){
-    currentPage = Number(getFromStorage("active-top"))
-  }
-}
   if (event.target.nodeName !== 'SPAN') {
     return;
   }

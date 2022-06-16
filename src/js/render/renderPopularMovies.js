@@ -1,11 +1,11 @@
 import { renderingPaginationMarkup } from '../pagination.js';
 import movieCard from '/src/template/movieCard.hbs';
 import { showLoader, hideLoader } from '../loader.js';
-import { dataCombine } from '../getDateAndGenres.js';
+import { dataCombine } from '../genreUtils.js';
 import { getGenres } from '/src/api/getGeners';
 import { popularParams, getPopularMovie } from '../../api/getPopularMovie.js';
 import { refs } from '../refs/refs';
-import { addToStorage } from '../stoge/storage.js';
+import { addToStorage } from '../localStorage/storage.js';
 
 const renderMovie = data =>
   refs.home.gallery?.insertAdjacentHTML('beforeend', movieCard(data));
