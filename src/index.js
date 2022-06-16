@@ -1,4 +1,4 @@
-import { requestForPage } from './js/fetch/trendingMovie.js';
+import { requestForPage } from './js/renderPopularMovies.js';
 import './js/renderByKey.js';
 import './js/scrollTop';
 import './js/footer-modal.js';

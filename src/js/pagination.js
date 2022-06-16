@@ -1,5 +1,5 @@
 import { requestForMovie } from '../js/renderByKey.js';
-import { requestForPage } from '../js/fetch/trendingMovie';
+import { requestForPage } from '../js/renderPopularMovies';
 import { refs } from './refs.js';
 
 const {
