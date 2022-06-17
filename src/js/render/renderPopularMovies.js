@@ -12,7 +12,6 @@ const renderMovie = data =>
 
 export const requestForPage = async page => {
   hideLoader();
-
   popularParams.page = page;
   const { ...data } = await getPopularMovie(page);
   const totalPages = data.total_pages;
@@ -24,7 +23,6 @@ export const requestForPage = async page => {
   const currentPage = data.page;
   addToStorage('active-popular', currentPage);
   refs.filter.popularBtn.classList.add('btn-tab-active');
-
   showLoader();
 };
 

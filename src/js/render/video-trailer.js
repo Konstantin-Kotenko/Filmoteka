@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 import { getTrailer } from '../../api/getTrailer';
 import { refs } from '../refs/refs';
 
@@ -10,8 +10,8 @@ export const renderTrailer = evt => {
       return object.type === 'Trailer';
     });
     if (!trailerData) {
-      Notiflix.Notify.warning(
-        "This film don't have official trailer at this moment"
+      Notify.warning(
+        "The film doesn't have official trailer at the moment"
       );
     } else {
       const videoTitle = trailerData.name;

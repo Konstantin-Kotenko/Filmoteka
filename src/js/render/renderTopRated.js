@@ -10,7 +10,6 @@ export const renderTopRated = async page => {
   hideLoader();
   topParams.page = page;
   const { ...data } = await getTopFilms();
-  showLoader();
   const currentPage = data.page;
   renderingPaginationMarkup(page, data.total_pages);
   const { genres } = await getGenres();

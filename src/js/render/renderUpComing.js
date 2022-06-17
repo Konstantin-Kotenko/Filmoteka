@@ -10,7 +10,6 @@ export const renderUpComing = async page => {
   hideLoader();
   upParams.page = page;
   const { ...data } = await getUpcomingFilms(page);
-  showLoader();
   renderingPaginationMarkup(page, data.total_pages);
   const { genres } = await getGenres();
   const fullInfo = dataCombine(data.results, genres);

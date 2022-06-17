@@ -1,5 +1,4 @@
 import { api } from './api';
-
 export const topParams = {
   page: 1,
 };
