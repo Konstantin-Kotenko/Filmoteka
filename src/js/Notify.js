@@ -1,12 +1,12 @@
 import { Notify } from 'notiflix';
 
 Notify.init({
-  width: '550px',
-  position: 'center-top',
-  distance: '150px',
-  timeout: 800,
+  width: '480px',
+  position: 'center-center',
+  distance: '0px',
+  timeout: 1000,
   opacity: 1,
-  fontSize: '16px',
+  fontSize: '20px',
   useIcon: false,
   fontAwesomeIconSize: '0px',
   failure: {
@@ -14,35 +14,36 @@ Notify.init({
     textColor: '#FF001B',
   },
   warning: {
-    background: '#edf5f5d0',
-    textColor: '#ff6b08',
+    background: '#dcdcdc',
+    textColor: '#f61c0d',
   },
   info: {
     background: 'transparent',
-    textColor: '#ff6b08',
+    textColor: '#f61c0d',
   },
 });
 
 if (window.innerWidth < 768) {
   Notify.init({
-    width: '300px',
+    width: '270px',
     timeout: 1000,
-    position: 'center-top',
+    position: 'center-center',
     distance: '0px',
-    fontSize: '12px',
+    fontSize: '18px',
     useIcon: false,
     fontAwesomeIconSize: '0px',
+    cssAnimationStyle: 'fade',
     failure: {
       background: 'transparent',
       textColor: '#FF001B',
     },
     warning: {
-      background: '#edf5f5d0',
-      textColor: '#ff6b08',
+      background: '#dcdcdc',
+      textColor: '#f61c0d',
     },
     info: {
       background: 'transparent',
-      textColor: '#ff6b08',
+      textColor: '#f61c0d',
     },
   });
 }

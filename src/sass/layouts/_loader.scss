@@ -28,11 +28,14 @@
 
 .loader-box {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-color: $loader-box-background;
   border-radius: 50%;
-
+  @media screen and (max-width: 500px) {
+    width: 70px;
+    height: 70px;
+}
   &::before {
     content: '';
     position: absolute;
@@ -53,8 +56,12 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
+    @media screen and (max-width: 500px) {
+      width: 10px;
+      height: 10px;
+  }
     background-color: $btn-color;
     box-shadow: 0 0 10px $btn-color, 0 0 20px $btn-color, 0 0 30px $btn-color,
       0 0 40px $btn-color, 0 0 50px $btn-color, 0 0 60px $btn-color,
@@ -67,10 +74,16 @@
 
 .loader-box__elem {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  @media screen and (max-width: 500px) {
+    top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+}
   border-radius: 50%;
   background-color: $loader-box-element-background;
 }

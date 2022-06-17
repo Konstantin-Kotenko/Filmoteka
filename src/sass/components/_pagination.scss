@@ -9,7 +9,8 @@
     }
 }
 .pagination-list {
-    @extend %flex-center-style;  
+    @extend %flex-center-style; 
+    margin: -0.5px 
 }
 .pagination-list span {
     @include transition (border-color);
@@ -21,12 +22,18 @@
     width: 40px;
     height: 40px;
     padding: 8px;
+    margin: 1px;
     background-color: $secondary-color;
     color: $primary-color;
     border: none;
     border-radius: 5px;
     transition: 0.5s;
     cursor: pointer;
+    @media screen and (max-width: 480px) {
+        width: 28px;
+        height: 28px;
+        margin: 0.5px;
+    }
     &:hover,
     &:focus {
     border-color: $secondary-color-shade-dark;
@@ -46,8 +53,9 @@
     background-image: url('/src/images/arrow-right.svg');
 }
 .dots {
+@extend %flex-center-style; 
 width: 40px;
- height: 40px;
+height: 40px;
 padding: 8px;
  }
 

@@ -14,7 +14,7 @@ const dataCombine = movie => {
   };
 };
 
-export const requestForWatched = async () => {
+export const requestForWatched = () => {
   libraryGallery.innerHTML = '';
   const watchedArr = getFromStorage('filmsWatched');
 
